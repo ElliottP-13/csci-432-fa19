@@ -11,25 +11,23 @@ By the end of this course, a student will:
 
 ## When and Where?
 
-When? MWF 16:10 - 17:00  
-Where? Reid 105 
+When? TODO  
+Where? TODO 
 
 ## How do I contact you?
 
 The preferred method to ask questions relating to this class is a public post on
-Piazza.  Please use [this link](piazza.com/montana/fall2018/csci246) to sign up
+Piazza.  Please use [this link](TODO) to sign up
 for the course in Piazza.
 
-* [Link to Piazza course page](piazza.com/montana/fall2018/csci246/home) - use this link once you are signed up for the class.
+* [Link to Piazza course page](TODO) - use this link once you are signed up for the class.
 * You can direct message Prof. Fasy and the TAs in Piazza, but if you would prefer to email Prof. Fasy, please
 use: brittany.fasy@montana.edu.  
 
 Office hours: 
 
-* Prof. Fasy: M,W 17:10 - 18:30, and by appointment.
-* Sam Micka: T,Th 13:10-14:00
-* Rostik Mertz: M 8:00 - 9:00.
-* Kirby Overman: W,F 15:10 - 16:00.
+* Prof. Fasy: TODO, and by appointment.
+* TA: TODO 
 
 ## What is in this repository?
 
@@ -54,7 +52,7 @@ $ git clone https://bitbucket.org/msu-cs/csci-246-fall2018.git
 
 ## Other Course Tools 
 
-- Group discussions, questions, and announcements will be through [Piazza](piazza.com/montana/fall2018/csci246/home).
+- Group discussions, questions, and announcements will be through [Piazza](TODO).
 - Homework will be graded on Gradescope TODO
  
 
@@ -70,6 +68,8 @@ Your grade for this class will be determined by:
 
 A grade above an 90 will earn at least an A-, above a 80 will earn at least a 
 B-, above 70 will earn at leat a C-, and above 60 will earn at least D-.
+
+## Class Policies
 
 ### Policy on Class Attendance
 
@@ -91,7 +91,7 @@ submitted as a PDF both in D2L and Gradescope. Each problem should be started on
 For code assignments,
 well organized source code with clear comments should be submitted.
 
-## Policy on Collaboration
+### Policy on Collaboration
 Collaboration is encouraged on all aspects of the class, except where explicitly 
 forbidden. Note:
 
@@ -103,7 +103,32 @@ This is best done by writing your solutions when not in a group setting.
 Groups should be small 
 enough that each member plays a significant role.
 
-## Policy on Academic Integrity
+### Classroom Etiquette
+
+Except for note taking and group work requiring a computer, please keep electronic devices off during
+class, as they can be distractions to other students. Disruptions to the class will
+result in being asked to leave the lecture, and one half-point will be deducted
+from the attendance grade.
+
+### Withdrawing
+
+After 20 October 2018, I will only support requests to withdraw from this course
+with a ``W" grade if extraordinary personal circumstances exist.
+If you are considering withdrawing from this class, discussing this with me as 
+early as possible is advised.  Since this class involves a project, the 
+decision to withdraw must be discussed with me, and with your group.
+
+### Special Needs Information
+
+If you have a documented disability for which you are or may be requesting an
+accommodation(s), please contact me and Disabled
+Student Services within the first two weeks of class.
+
+
+
+## MSU Policies
+
+### Academic Integrity
 
 The integrity of the academic process requires that credit be given where credit
 is due. Accordingly, it is academic misconduct to present the ideas or works of
@@ -136,12 +161,6 @@ Conduct.  This includes the following academic expectations:
           that does not detract from the learning experience; and
 - make and keep appointments when necessary to meet with the instructor. 
 
-## Classroom Etiquette
-
-Except for note taking and group work requiring a computer, please keep electronic devices off during
-class, as they can be distractions to other students. Disruptions to the class will
-result in being asked to leave the lecture, and one half-point will be deducted
-from the attendance grade.
 
 ## MSU Drug and Alcohol Policies
 
@@ -151,7 +170,6 @@ and productive campus and community.`  See [Alcohol and Drug Policies
 Website](http://www.montana.edu/deanofstudents/alcoholanddrugs.html) for more
 information.  In particular, note:
 
-```
 As a federally-funded institution, we must adhere to all federal laws when it
 comes to alcohol and drug use or distribution. This holds true for marijuana as
 well. Using or distributing marijuana on or off campus is a violation of our
@@ -164,20 +182,6 @@ fashion- either via odor, noise, destruction, etc- can lead to residence life
 policy and alcohol or drug policy violations. Remember, not everyone wants to
 hear or smell you.
 ```
-
-## Withdrawing
-
-After 20 October 2018, I will only support requests to withdraw from this course
-with a ``W" grade if extraordinary personal circumstances exist.
-If you are considering withdrawing from this class, discussing this with me as 
-early as possible is advised.  Since this class involves a project, the 
-decision to withdraw must be discussed with me, and with your group.
-
-## Special Needs Information
-
-If you have a documented disability for which you are or may be requesting an
-accommodation(s), please contact me and Disabled
-Student Services within the first two weeks of class.
 
 ## Resources
 
@@ -193,7 +197,7 @@ Student Services within the first two weeks of class.
 - [Ott's 10 Tips](http://www.ms.uky.edu/~kott/proof_help.pdf)
 - [Big-O, Intuitive Explanation](https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/)
 
-### Main References
+### Course Textbook(s) 
 
 - TODO 
 

@@ -1,18 +1,46 @@
-# TODO-Number: TODO-Name, TODO-semester #
+# CSCI 432: Advanced Algorithm Topicss, Fall 2019 #
 
-This repository is for class materials for TODO-courseinfo, taught by Prof. Fasy.
+This repository is for class materials for CSCI 432 in Fall 2019, taught by Prof. Fasy.
 
-Course Catalog Description: TODO.
+MSU Course Catalog Description: 
+A rigorous examination of advanced
+algorithms and data structures. Topics include average case analysis,
+probabilistic algorithms, advanced graph problems and theory, distributed and
+parallel programming.
+
+From the Instructor: This course is NOT a programming class, and is not
+structured like the 132 and 232 courses the precede it.  In this course, we will
+do many proofs (especially using induction), and will be writing pseudo-code, not
+code.
+
+Prerequisites:
+CSCI 246 (Discrete) and CSCI 232 (Data Structures and
+Algorithms) are a prerequisite for this course.  
+In particular, a student enrolled in CSCI 432
+should be familiar with sorting algorithms, big-Oh notation, 
+proof by induction and by contradiction, and discrete probability.
 
 ## Course Outcomes and Objectives
-By the end of this course, a student will:
 
-- TODO- add outcomes
+This course introduces students to the analysis and design of computer
+algorithms. In this course, students will:
+
+* Analyze asymptotic time and space complexity of algorithms.
+* Describe algorithmic design paradigms (including dynamic programming,
+  greedy algorithms, divide and conquer) and explain when an algorithmic design
+  situation calls for it.
+* Apply methods of analysis (prove
+  correctness, time/space complexity, termination) to new
+  problems.
+* Use and analyze major graph algorithms and data structures.
+* Design NP completeness reductions.
+* Analyze algorithms from recent research publications.
+
 
 ## When and Where?
 
-When? TODO  
-Where? TODO 
+When? MWF TODO  
+Where? Roberts TODO 
 
 ## How do I contact you?
 
@@ -199,8 +227,10 @@ hear or smell you.
 
 ### Course Textbook(s) 
 
-- TODO 
-
+* Introduction to Algorithms, Third Edition} by Cormen, Leiserson, Rivest, and
+  Stein (CLRS). 
+* _Elements of Programming Interviews_ (EPI) by Azis, Lee, and~Prakash.  Please
+  bring this book to class on Fridays.
 
 ## Schedule
 

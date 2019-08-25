@@ -17,7 +17,10 @@ Prerequisites:
 CSCI 246 (Discrete) and CSCI 232 (Data Structures and
 Algorithms) are a prerequisite for this course.  
 In particular, a student enrolled in CSCI 432
-should be familiar with sorting algorithms, big-Oh notation, 
+should be familiar with 
+sorting and searching algorithms, big-Oh notation, 
+basic recurrence relations,
+heaps, queues, lists, hash tables,
 proof by induction and by contradiction, and discrete probability.
 
 ## Course Outcomes and Objectives
@@ -39,8 +42,8 @@ algorithms. In this course, students will:
 
 ## When and Where?
 
-When? MWF TODO  
-Where? Roberts TODO 
+When? MWF 15:10-16:00
+Where? Roberts 218 
 
 ## How do I contact you?
 
@@ -54,15 +57,16 @@ use: brittany.fasy@montana.edu.
 
 Office hours: 
 
-* Prof. Fasy: TODO, and by appointment.
-* TA: TODO 
+* Prof. Fasy: TBA, and by appointment.
+* TA: TBA
 
 ## What is in this repository?
 
 The folders in this repository contain all materials for this class.
 
-- lec_notes: Copies of lecture notes and board photos.
-- hw: homework assignments, as well as a LaTex template for your submissions. 
+- lec_notes: Copies of lecture notes and board photos. ***Volunteer needed.***
+- hw: homework assignments, as well as a LaTex template for your submissions.   
+- README.md: the course syllabus
 
 The schedule is at the bottom of this Markdown file.  If you want to learn more
 about Markdown, check out [this tutorial](https://www.markdowntutorial.com/).
@@ -75,7 +79,7 @@ materials for this class.  See the resources section below for forking direction
 
 To clone this repo:
 ```
-$ git clone https://bitbucket.org/msu-cs/csci-246-fall2018.git
+$ git clone https://bitbucket.org/msu-cs/csci-432-fa19.git
 ```
 
 ## Other Course Tools 
@@ -221,7 +225,7 @@ hear or smell you.
 - [Markdown](http://daringfireball.net/projects/markdown/)
 - [More Markdown](https://www.markdowntutorial.com/)
 - [Inkscape Can Tutorial](http://tavmjong.free.fr/INKSCAPE/MANUAL/html/SoupCan.html)
-- [Plagiarism Tutorial](http://www.lib.usm.edu/legacy/plag/pretest_new.php)]
+- [Plagiarism Tutorial](http://www.lib.usm.edu/legacy/plag/pretest_new.php)
 - [Ott's 10 Tips](http://www.ms.uky.edu/~kott/proof_help.pdf)
 - [Big-O, Intuitive Explanation](https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/)
 
@@ -234,16 +238,88 @@ hear or smell you.
 
 ## Schedule
 
-### Week 1 (TODO: dates)
-- Topics: TODO 
-- Reading: TODO 
-- Online Quiz: TODO 
+Each week, we assign:
+- CLRS reading: should be skimmed before class, read after class
+- EPI reading: read introductions of chapters and select problems
+- Additional readings: skim before class, read after class
+
+### Week 1 (26 August)
+- Topics: Intro to Analysis of Algorithms; Induction
+- Reading: CLRS, Chapter 2; EPI, Chapter 13
+- Additional Reading: [Induction Review](https://www.cs.montana.edu/brittany/teaching/algorithms/15_fall/docs/induction.pdf)
+
+### Week 2 (2 September)
+- **MONDAY, 2 September, is Labor Day Holiday!**
+- Topics: Divide and Conquer, Recurrence Relations, Asymptotics
+- Reading: CLRS, Chapter 4; EPI, Chapter 15
+- Additional Reading: [Pseudocode 1](https://onlinelibrary.wiley.com/doi/pdf/10.1002/0470029757.app1) and [Pseudocode 2](https://www.cs.oberlin.edu/~asharp/cs383/2007fa/handouts/pseudocode.pdf)
+
+### Week 3 (9 September)
+- Topics: Randomized Algorithms
+- Reading: CLRS, Chapters 5 & 7; EPI, 5.12 & 5.13
+
+### Week 4 (16 September)
+- Topics: Models of Computation & Order Statistics
+- Reading: CLRS, Chapter 8 & 9  
+- Additiona Reading: [Savage, Ch. 1, Section 4](http://cs.brown.edu/people/jsavage/book/pdfs/ModelsOfComputation_Chapter1_v2.pdf)
+
+### Week 5 (23 September)  
+- Topics: Dyamic Programming 
+- Reading: CLRS, Chapter 15; EPI, Chapter 16  
+- Additional Reading: TBD  
+
+### Week 6 (30 September)  
+- **EXAM I: 30 September 2019 (Monday)**
+- Topics: Greedy Algorithms
+- Reading: CLRS, Chapter 16; EPI, Chapter 17
+
+### Week 7 (7 October)
+- Topics: Amortized Analysis
+- Reading: CLRS, Chapter 17; EPI, Chapter 12
+
+### Week 8 (14 October)
+- Topics: Union-Find Data Structure and Connected Components
+- Reading: CLRS, Chapters 21 and 22; EPI, 18.1--3
+
+### Week 9 (21 October)
+- **EXAM II: 25 October 2019 (Friday)**
+- Topics: More Graph Algorithms
+- Reading: CLRS, Chapters  24 & 25; EPI, 18.3--6
+
+### Week 10 (28 October)
+- Topics: Max Flow / Min Cut and Matching
+- Reading: CLRS, Chapter 26; EPI, 18.7--9
+
+### Week 11 (4 November)
+- Topics: Linear Programming
+- Reading: CLRS, Chapter 29
+
+### Week 12 (11 November)  
+- **MONDAY, 11 November, is Veteran's Day Holiday!**
+- Topics: Distributed & Parallel Programming
+- Reading: EPI, Chapter 19  
+- Additional Reading: [Blelloch & Maggs](https://www.cs.cmu.edu/~guyb/papers/BM04.pdf)
+
+### Week 13 (18 November)  
+- **EXAM III: 22 November 2019 (Friday)**
+- Topics: Computational Geometry and Topology
+- Reading: TBA
+
+### Week 14 (25 November)  
+- **27--29 November is Thanksgiving Break!**
+- Topics: TBA
+- Reading: TBA
+
+### Week 15 (2 December)
+- **Video Presentation Week**
 
 ### Finals Week
-- TODO: give finals information
+- Peer Feedback and Self-Assessment (Required Attendance)
+
+# Discussion Items:  
+- Day of week for HW due date?
+- Dates for Project deliverables?
 
 --- 
 
-This syllabus was created, using wording from previous courses that I have
-taught, as well as David Millman's Spring 2018 Graphics course.  Thanks, Dr.
-Millman!
+This syllabus was created, using wording from previous courses taught by myself, as well as my colleagues.  Thanks all!

@@ -32,6 +32,7 @@ Event Reflection:
 
 * Event: Special Math Seminar
 * Speaker: Karen Ulenbeck
+* Title: Glimpses into the Calculus of Variations
 * Date: 3 September 2019, 16:30-17:30 (refreshments before!)
 * Points: 5 points toward H-01.
 

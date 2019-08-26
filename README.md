@@ -57,7 +57,7 @@ use: brittany.fasy@montana.edu.
 
 Office hours: 
 
-* Prof. Fasy: TBA, and by appointment.
+* Prof. Fasy: TW 16:30-17:30, and by appointment.
 * TA: TBA
 
 ## What is in this repository?
@@ -84,79 +84,93 @@ $ git clone https://bitbucket.org/msu-cs/csci-432-fa19.git
 
 ## Other Course Tools 
 
-- Group discussions, questions, and announcements will be through [Piazza](TODO).
-- Homework will be graded on Gradescope TODO
+- Group discussions, questions, and announcements will be through the discussion
+  board on D2L.
+- Homework will be graded on Gradescope
  
 
 ## Grading
 Your grade for this class will be determined by:
 
-- 5% Attendance 
-- 30% Homework
-- 10% Online Quizzes 
-- 20% Midterm I
-- 20% Midterm II
-- 15% Final 
+- 30% Homework (individual and group)
+- 30% Project 
+- 35% Exams
+- 5% In-class Exercises
 
-A grade above an 90 will earn at least an A-, above a 80 will earn at least a 
-B-, above 70 will earn at leat a C-, and above 60 will earn at least D-.
+A grade above an 85 will earn at least an A-, above a 70 will earn at least a 
+B-, and above 60 will earn at leat a C-.
+
+* Homework: All assignments must be submitted by 23:59 on the due date. Late
+  assignments will not be accepted.  The lowest two homework grades will be
+  dropped.  The submission should be typeset in LaTex, and submitted as a PDF
+  both in D2L and Gradescope. Each problem should be started on a fresh page.
+* Project: Groups will be assigned.  You will be creating a video presentation
+  of a "modern" algorithm.
+* Exams: We will have three exams in this course.
+* In-class Exercises: At least 10 need to be submitted.
+* Opportunities to earn extra credit by attending colloquia and other events
+  will be announced in class and posted on the course website.  To earn the
+  extra credit (typically five points towards a HW), you must attend
+  the entire presentation and write a one-to-two page summary and reflection on
+  the presentation(s).  For a list of EC assignments, see
+  [extra-credit.md](extra-credit.md)
 
 ## Class Policies
 
 ### Policy on Class Attendance
 
-Class attendance and participation is required.  Attendance will be randomly
-taken throughout the semester.
-
-### Policy on Homework 
-
-All assignments must be submitted by 23:59 on the due date. Late
-assignments will not be accepted.
-
-Throughout this semester, we will have 12 homework assignments.  The best 10 grades
-will count towards the homework grade.
-
-For descriptive assignments and reports, the submission should be typeset
-(preferably in LaTex), and
-submitted as a PDF both in D2L and Gradescope. Each problem should be started on a fresh page.
-
-For code assignments,
-well organized source code with clear comments should be submitted.
+Class attendance and participation is required, but attendance will not be taken. However, to submit in-class exercises, you must be in class on the day of the exercise.
 
 ### Policy on Collaboration
 Collaboration is encouraged on all aspects of the class, except where explicitly 
 forbidden. Note:
 
-- All collaboration (who and what) must be clearly indicated in writing on 
-anything turned in.  
-- Homework may be solved collaboratively except as explicitly forbidden, 
-but solutions must be written up **independently**. 
-This is best done by writing your solutions when not in a group setting.
-Groups should be small 
-enough that each member plays a significant role.
+- All collaboration (who and what) must be clearly indicated in writing on
+  anything turned in.  
+- Homework may be solved collaboratively except as explicitly forbidden, but
+  solutions must be written up **independently**.  This is best done by writing
+  your solutions when not in a group setting.  Groups should be small enough
+  that each member plays a significant role.
 
 ### Classroom Etiquette
 
-Except for note taking and group work requiring a computer, please keep electronic devices off during
-class, as they can be distractions to other students. Disruptions to the class will
-result in being asked to leave the lecture, and one half-point will be deducted
-from the attendance grade.
+Except for note taking and group work requiring a computer, please keep
+electronic devices off during class, as they can be distractions to other
+students. Disruptions to the class will result in being asked to leave the
+lecture, and one half-point will be deducted from the attendance grade.
 
 ### Withdrawing
 
-After 20 October 2018, I will only support requests to withdraw from this course
-with a ``W" grade if extraordinary personal circumstances exist.
-If you are considering withdrawing from this class, discussing this with me as 
-early as possible is advised.  Since this class involves a project, the 
-decision to withdraw must be discussed with me, and with your group.
+After 31 October 2019, I will only support requests to withdraw from this course
+with a ``W" grade if extraordinary personal circumstances exist.  If you are
+considering withdrawing from this class, discussing this with me as early as
+possible is advised.  Since this class involves a project, the decision to
+withdraw must also be discussed with your group.
 
 ### Special Needs Information
 
 If you have a documented disability for which you are or may be requesting an
-accommodation(s), please contact me and Disabled
-Student Services within the first two weeks of class.
+accommodation(s), please contact both me and the office of Disabled Student
+Services within the first two weeks of class.
 
+### Diversity Statement
 
+Montana State University considers the diversity of its students, faculty, and
+staff to be a strength and critical to its educational mission. MSU expects
+every member of the university community to contribute to an inclusive and
+respectful culture for all in its classrooms, work environments, and at campus
+events.  Dimensions of diversity can include sex, race, age, national origin,
+ethnicity, gender identity and expression, intellectual and physical ability,
+sexual orientation, income, faith and non-faith perspectives, socio-economic
+status, political ideology, education, primary language, family status, military
+experience, cognitive style, and communication style. The individual
+intersection of these experiences and characteristics must be valued in our
+community.
+
+If there are aspects of the design, instruction, and/or experiences within this
+course that result in barriers to your inclusion or accurate assessment of
+achievement, please notify the instructor as soon as possible and/or contact
+Disability Services or the Office of Institutional Equity.
 
 ## MSU Policies
 
@@ -177,10 +191,9 @@ without giving credit to that person.'  Proper credit means describing all
 outside resources (conversations, websites, etc.), and explaining the extent to
 which the resource was used.  Penalties for plagiarism at MSU include (but are
 not limited to) failing the assignment, failing the class, or having your degree
-revoked.  This is serious, so do not plagiarize.
-Even inadvertent or unintentional misuse or appropriation of another's work
-(such as relying heavily on source material that is not expressly acknowledged)
-is considered plagiarism. 
+revoked.  This is serious, so do not plagiarize.  Even inadvertent or
+unintentional misuse or appropriation of another's work (such as relying heavily
+on source material that is not expressly acknowledged) is considered plagiarism. 
 
 By participating in this class, you agree to abide by the Student Code of
 Conduct.  This includes the following academic expectations:
@@ -189,15 +202,15 @@ Conduct.  This includes the following academic expectations:
 - be well-prepared for classes;
 - submit required assignments in a timely manner;
 - take exams when scheduled, unless rescheduled under 310.01;
-- act in a respectful manner toward other students and the instructor and in a way
-          that does not detract from the learning experience; and
+- act in a respectful manner toward other students and the instructor and in a
+  way that does not detract from the learning experience; and
 - make and keep appointments when necessary to meet with the instructor. 
 
 
 ## MSU Drug and Alcohol Policies
 
 Per the Code of Conduct for students, no student may come to class under the
-influence of drugs or alcohol, as that would not be `Fostering a healthy, safe
+influence of drugs or alcohol, as that would not be`Fostering a healthy, safe
 and productive campus and community.`  See [Alcohol and Drug Policies
 Website](http://www.montana.edu/deanofstudents/alcoholanddrugs.html) for more
 information.  In particular, note:
@@ -319,6 +332,20 @@ Each week, we assign:
 # Discussion Items:  
 - Day of week for HW due date?
 - Dates for Project deliverables?
+
+
+# A Note on the Year of Undergraduate Research:
+
+In March 2019, NCUR 2020 will be hosted by Montana State University.  You are
+encouraged to attend this conference (for free!).  The deadline for submitting
+abstracts for oral and poster presentations is 6 December 2019.  In order to
+gain the most out of this conference experience, please submit an abstract so
+that you can be an active participant.  The course material we cover in this
+class lays the groundwork for research in algorithms, and some of our
+assignments and project components will provide steps towards developing your
+own research.  If you are interested in submitting to NCUR 2020, I am willing to
+guide you with the research and abstract writing.  If you are interested, please
+let me know as soon as possible, either in writing or in person.
 
 --- 
 

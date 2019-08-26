@@ -48,12 +48,7 @@ Where? Roberts 218
 ## How do I contact you?
 
 The preferred method to ask questions relating to this class is a public post on
-Piazza.  Please use [this link](TODO) to sign up
-for the course in Piazza.
-
-* [Link to Piazza course page](TODO) - use this link once you are signed up for the class.
-* You can direct message Prof. Fasy and the TAs in Piazza, but if you would prefer to email Prof. Fasy, please
-use: brittany.fasy@montana.edu.  
+the group discussion board.
 
 Office hours: 
 
@@ -63,10 +58,12 @@ Office hours:
 ## What is in this repository?
 
 The folders in this repository contain all materials for this class.
-
+  
+- hw: homework assignments, as well as a LaTex template for your submissions. 
 - lec_notes: Copies of lecture notes and board photos. ***Volunteer needed.***
-- hw: homework assignments, as well as a LaTex template for your submissions.   
+- slides: Source for my Beamer slides (which only happens occasionally).
 - README.md: the course syllabus
+- extra-credid.md: List of Extra Credit assignments
 
 The schedule is at the bottom of this Markdown file.  If you want to learn more
 about Markdown, check out [this tutorial](https://www.markdowntutorial.com/).
@@ -86,7 +83,7 @@ $ git clone https://bitbucket.org/msu-cs/csci-432-fa19.git
 
 - Group discussions, questions, and announcements will be through the discussion
   board on D2L.
-- Homework will be graded on Gradescope
+- Homework and exams will be graded on Gradescope.
  
 
 ## Grading
@@ -106,7 +103,7 @@ B-, and above 60 will earn at leat a C-.
   both in D2L and Gradescope. Each problem should be started on a fresh page.
 * Project: Groups will be assigned.  You will be creating a video presentation
   of a "modern" algorithm.
-* Exams: We will have three exams in this course.
+* Exams: We will have three exams in this course. Each exam will be 10% of the grade, with the best exam counting an additional 5%.
 * In-class Exercises: At least 10 need to be submitted.
 * Opportunities to earn extra credit by attending colloquia and other events
   will be announced in class and posted on the course website.  To earn the

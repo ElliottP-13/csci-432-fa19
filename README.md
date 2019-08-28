@@ -48,7 +48,10 @@ Where? Roberts 218
 ## How do I contact you?
 
 The preferred method to ask questions relating to this class is a public post on
-the group discussion board.
+the group discussion board, or in my office hours.
+
+Office Location: 363 Barnard Hall
+Office Phone: x4804
 
 Office hours: 
 

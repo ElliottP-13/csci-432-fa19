@@ -1,2 +1,6 @@
-hw/01/H-01.pdf
+hw/*/H*.pdf
+
+in_class/*/*.pdf
+
 slides/horses/26aug2019.pdf
+

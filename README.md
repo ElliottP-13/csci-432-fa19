@@ -63,7 +63,7 @@ Office hours:
 The folders in this repository contain all materials for this class.
   
 - hw: homework assignments, as well as a LaTex template for your submissions. 
-- lec_notes: Copies of lecture notes and board photos. ***Volunteer needed.***
+- lec_notes: Copies of lecture notes and board photos. 
 - slides: Source for my Beamer slides (which only happens occasionally).
 - README.md: the course syllabus
 - extra-credid.md: List of Extra Credit assignments
@@ -328,10 +328,6 @@ Each week, we assign:
 
 ### Finals Week
 - Peer Feedback and Self-Assessment (Required Attendance)
-
-# Discussion Items:  
-- Day of week for HW due date?
-- Dates for Project deliverables?
 
 
 # A Note on the Year of Undergraduate Research:

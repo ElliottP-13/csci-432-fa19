@@ -54,4 +54,22 @@ specific formatting requirements:
   / collaborator in the future?
 * What is your take-away message from this event?
 
+## EC-4
 
+Event Reflection:
+
+* Event: CLS Distinguished Lecture 
+* Speaker: Andrew Bernoff
+* Title: Why are Raindrops Round?
+* Date: 13 September 2019, 14:10-15:00
+* Location: Procrastinator
+* Points: 5 points toward H-02.
+
+If you can't make that event, there is another event that you can go to as well.
+You are welcome to go to both, or to one of them, and to write one reflection.
+
+* Event: CLS Distinguished Lecture 
+* Speaker: Deborah G. Johnson
+* Title: The Safety of Autonomous Vehicles and the Ethical Responsibilities of Engineers 
+* Date:  1 October 2019, 17:30
+* Location: Museum of the Rockies

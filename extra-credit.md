@@ -63,7 +63,7 @@ Event Reflection:
 * Title: Why are Raindrops Round?
 * Date: 13 September 2019, 14:10-15:00
 * Location: Procrastinator
-* Points: 5 points toward H-01.
+* Points: 5 points toward H-02.
 
 If you can't make that event, there is another event that you can go to as well.
 You are welcome to go to both, or to one of them, and to write one reflection.

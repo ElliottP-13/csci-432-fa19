@@ -55,8 +55,8 @@ Office Phone: x4804
 
 Office hours: 
 
-* Prof. Fasy: TW 16:30-17:30, and by appointment.
-* TA: TBA
+* Prof. Fasy: TW 16:30-17:30, and by appointment. In Barnard 259.
+* TA: Brad McCoy: F 10:00-11:00.  In Barnard 259.
 
 ## What is in this repository?
 

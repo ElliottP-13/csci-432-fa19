@@ -272,7 +272,7 @@ Each week, we assign:
 - Reading: CLRS, Chapters 5 & 7; EPI, 5.12 & 5.13
 
 ### Week 4 (16 September)
-- Topics: Models of Computation & Order Statistics
+- Topics: Models of Computation & Order Statistics & Loop Invariants
 - Reading: CLRS, Chapter 8 & 9  
 - Additiona Reading: [Savage, Ch. 1, Section 4](http://cs.brown.edu/people/jsavage/book/pdfs/ModelsOfComputation_Chapter1_v2.pdf)
 

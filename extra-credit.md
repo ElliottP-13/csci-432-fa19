@@ -1,5 +1,7 @@
 # Extra Credit
 
+EC needs to only be submitted to D2L.
+
 ## EC-1
 
 To neatly type (in LaTex) the lecture notes from one class. If you are

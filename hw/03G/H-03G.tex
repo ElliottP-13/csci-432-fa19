@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{../fasy-hw}
+\usepackage{ wasysym }
+
+%% UPDATE these variables:
+\renewcommand{\hwnum}{3}
+\author{TODO-Your Group Number and Names Here}
+\collab{TODO-list your collaborators here}
+\date{due: 18 October 2019}
+
+\begin{document}
+
+\nextprob
+If 23 people are in a room, then the probability that at least two of them have
+the same birthday is at least one half.  This is known as the birthday paradox,
+since the number 23 is probably much lower than you would expect.  How many
+people do we need in order to have 50% probability that there are three people
+with the same birthday?
+As a reminder, when giving an algorithm as an answer, you
+are expected to give:
+\begin{itemize}
+    \item A prose explanation of the problem and algorithm.
+    \item Psuedocode.
+    \item The decrementing function for any loop or recursion, or a runtime
+        justification.
+    \item Justification of why the runtime is linear.
+    \item The loop invariant for any loops, with full justification.
+\end{itemize}
+
+\nextprob
+Suppose we have a graph $G=(V,E)$ and three colors, and randomly assign a color
+each node (where each color is equally likely).
+\begin{enumerate}
+    \item What is the probability that every edge has two different colors on
+        assigned to its two nodes?
+    \item What is the expected number of edges that have different colors
+        assigned to its two nodes?
+\end{enumerate}
+
+\nextprob
+CLRS, Question 15-6.
+
+\nextprob
+For the Greedy make change algorithm described in class on 10/02, describe the
+problem and solution in your own words, including the use of pseudocode (with
+more details than what was written in class).  Note: you do not need to give a
+loop invariant and the proof of termination/runtime complexity.
+
+\nextprob
+Suppose we have $n$ items hat we want to put in a knapsack of capacity $W$.  The i-th item has
+weight $w_i$ and value $v_i$.  The knapsack can hold a total weight of $W$ and
+we want to maximize the value of the items in the knapsack.
+The \emph{0-1 knapsack problem} will assign each item one of two states: in the
+knapsack, or not in the knapsack.  The \emph{fractional knapsack problem} allows
+you to take a percentage of each item.
+\begin{enumerate}
+    \item Give an $O(n\log n)$ greedy algorithm for the fractional knapsack problem.
+    \item Give an $O(nW)$ time algorithm that uses dynamic programming to solve
+        the 0-1 knapsack problem.
+\end{enumerate}
+
+\end{document}

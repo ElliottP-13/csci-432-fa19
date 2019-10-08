@@ -75,3 +75,10 @@ You are welcome to go to both, or to one of them, and to write one reflection.
 * Title: The Safety of Autonomous Vehicles and the Ethical Responsibilities of Engineers 
 * Date:  1 October 2019, 17:30
 * Location: Museum of the Rockies
+
+## EC-5
+
+Answer Question 5 from exam 1 to earn up to 10 additional points on your Exam 1
+grade.
+
+Due: Tuesday, 15 October 2019

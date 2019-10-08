@@ -79,6 +79,6 @@ You are welcome to go to both, or to one of them, and to write one reflection.
 ## EC-5
 
 Answer Question 5 from exam 1 to earn up to 10 additional points on your Exam 1
-grade.
+grade.  Submit your solution both to D2L and to Gradescope.
 
 Due: Tuesday, 15 October 2019

@@ -1,0 +1,65 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+
+\usepackage{amsfonts}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+
+\title{In-Class Exercise 07}
+\author{CSCI 432}
+\date{09-12 October 2019}
+
+\begin{document}
+\maketitle
+
+\noindent
+Group Number:\\
+Group members present today:
+
+\section*{Amortized Analysis}
+
+Reminder about readings: CLRS Chapter 17 and EPI Chapter 12
+
+So far, we have talked about the following time complexity anyalysis techniques:
+\begin{enumerate}
+    \item \emph{Worst-case analysis}: At worst, how much time will this algorithm take?
+        Line-by-line, we consider the worst-case behavior.  If the line is in a
+        loop, we multiply by the worst-case number of times that loop~iterates.
+    \item \emph{Average case analysis for randomized algorithms}: On average, how long
+        will this algorithm take to run?  Note: sometimes it may have bad
+        worst-case runtime.
+\end{enumerate}
+This week, we focus on:
+\begin{enumerate}
+    \item[3.] \emph{Amortized analysis}: Rather than look at the worst-case per
+        line, consider the average-case per line.  This is similar to, but
+        distinct from, average case analysis.
+\end{enumerate}
+
+\begin{enumerate}[(1)]
+    \item Consider the following example: we have an stack $A$.  It
+        begins empty, then we call \texttt{A.push()} to add elements to it.
+        Suppose that we implement this with an array.  The naive approach would
+        be to create a new array each time \texttt{A.push()} is called that is
+        one unit longer than the previous array.  If the
+        cost of creating a new array is equal to the size of the new array, then the total cost after
+        $2$ step is $3$ ($1$ for the first push to create a new array of size
+        $1$ + $2$ for the second push to create a new array of size $2$).
+        What is the total cost after $4$ steps?  $5$ steps? $7$ steps? $n$ steps?
+        \vspace{1in}
+    \item Instead, suppose that we double the size of $A$ each time.  So, the
+        first push will create an array of size $1$ containing the single pushed
+        element.  The total cost so far is $1$.  When we push the second
+        element, we double the size of $A$ from $1$ to $2$.
+        The total cost so far is $3$ ($1$ for the first push + $2$ for the second
+        push).  What is the total cost after $4$ steps? $5$ steps? $7$ steps?
+        $n$ steps?
+        \vspace{1in}
+    \item For each of the implementations described above, what is the
+        \emph{average} cost per push?
+    \item
+\end{enumerate}
+
+\end{document}

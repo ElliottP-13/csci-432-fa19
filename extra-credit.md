@@ -75,3 +75,19 @@ You are welcome to go to both, or to one of them, and to write one reflection.
 * Title: The Safety of Autonomous Vehicles and the Ethical Responsibilities of Engineers 
 * Date:  1 October 2019, 17:30
 * Location: Museum of the Rockies
+
+## EC-5
+
+Answer Question 5 from exam 1 to earn up to 10 additional points on your Exam 1
+grade.  Submit your solution both to D2L and to Gradescope.
+
+Due: Tuesday, 15 October 2019
+
+## EC-6
+
+[ASA Fall Data Challenge](https://thisisstatistics.org/falldatachallenge/)  
+  
+  The Fall Data Challenge is an annual data challenge sponsored by the ASA.  I encourage you to take a look at the challenge and consider applying.    
+  
+* deadline: 28 October for Competition, 29 October for EC submission  
+* Points: Counts as an additional HW assignment

@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{../fasy-hw}
+\usepackage{fasy-hw}
 \usepackage{ wasysym }
 
 %% UPDATE these variables:
@@ -31,18 +31,44 @@ each node (where each color is equally likely).
 \nextprob
 CLRS, Question 15-6.
 
-As a reminder, when giving an algorithm as an answer, you
-are expected to give:
-\begin{itemize}
-    \item A prose explanation of the problem and algorithm.
-    \item Psuedocode.
-    \item The decrementing function for any loop or recursion, or a runtime
-        justification.
-    \item Justification of runtime.
-    \item The loop invariant for any loops, with full justification.
-\end{itemize}
 
+\begin{algorithm}
+    \caption{Guest List}\label{guests}
+    \begin{algorithmic}[1]
+    \Function{Guests}{$G$}
+        \State guests\{\{\}\}
+        \State vivality\{\}
+        \For{$i$ in $[1, n]$}
+			\State node = find next lowest node in graph
+			\If{node doesn't have any children}
+				\State guests[node] = \{node\}
+				\State vivality[node] = node.vivality
+			\Else
+				\State $c = \sum_{child} vivality[child]$
+				\State $g = node.vivality + \sum_{grandChild} vivality[grandChild]$
+				
+				\If{c > g}
+					\State $guests[node] = \sum_{child} guests[child]$
+					\State $vivality[node] = c$
+				\Else
+					\State $guests[node] = \{node\} + \sum_{grandChild} vivality[grandChild]$
+					\State $vivality[node] = g$
+				\EndIf
+			\EndIf
+		\EndFor
+       \State \textbf{return} guests
+    \EndFunction
+    \end{algorithmic}
+\end{algorithm}
 
+This algorithm creates two lists that are indexed by the verticies of the graph. It then locates the node that is furthest down the tree that has not yet been explored. The if statement checks if the node is a leaf node. Otherwise, the optimal solution at that node is either one of two choices. The first one is if we choose the node and thus cannot choose the children, but we can choose the grandchildren. The second choice is if we do not choose the node so that we can choose the children. The second if statement takes care of these cases. This algorithm builds the optimal solution starting at the bottom nodes and builds up to the final solution.
+
+The decrimenting function for the for loop would be $n - i$ this approaches zero as $i$
+ approaches $n$. This maps to a well ordered set and decreases each itteration, and the algororithm therefore terminates.
+ 
+ The runtime for this algorithm is $O(n^2)$. The loop repeats $n$ times. Inside the loop, the "find next lowest node in graph", as well as the summations all take $O(n)$ time. Thus, inside the loop is a summation of $O(n)$ processes, which is therefore also $O(n)$. So, an $O(n)$ process is repeated n times, and the overall runtime is $O(n^2)$.
+ 
+ %TODO Loop invariant
 
 \nextprob
 For the Greedy make change algorithm described in class on 10/02, describe the
@@ -59,8 +85,18 @@ knapsack, or not in the knapsack.  The \emph{fractional knapsack problem} allows
 you to take a percentage of each item.
 \begin{enumerate}
     \item Give an $O(n\log n)$ greedy algorithm for the fractional knapsack problem.
+    
+%Sort by value/weight
+%Add the items with highest value/weight ratio. 
+%if out of space, add fraction of last item st. W is full    
+    
     \item Give an $O(nW)$ time algorithm that uses dynamic programming to solve
         the 0-1 knapsack problem.
+        
+%I don't really know
+%Start with weight of zero. --> optimal solution is no items
+%increment weight
+%then I get stuck
 \end{enumerate}
 
 \end{document}

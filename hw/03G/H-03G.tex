@@ -27,7 +27,7 @@ with the same birthday?
 
 The ways of choosing three people is $n\choose{3}$.
 
-Therefore the people we need for 0.5 chance to get three people on the same birthday is 
+Therefore the people we need for 50\% chance to get three people on the same birthday is $n$ where $n$ satisfies
 
 $\frac{1}{2}$ = $n \choose 3$ $(\frac{1}{365})^2 $, $n = 75$
 
@@ -46,22 +46,18 @@ each node (where each color is equally likely).
         Total number of options of color choice is $3\choose 1$ $n$, and total number of options of different color choices is $3\choose 1$ $+ (n-1) $ $2\choose 1$
         
         Therefore the probability of two different colors is $P = \frac{3+2(n-1)}{3n} = \frac{2n+1}{3n}$.
-                
-    \item What is the expected number of edges that have different colors assigned to its two nodes?
-
-        Therefore the probability of two different colors is $P = \frac{9-3}{9} = \frac{2}{3}$.
-        
+               
     \item What is the expected number of edges that have different colors
         assigned to its two nodes?
         
-        As $n$ approaches infinity, $P$ becomes $\frac{2}{3}$. We could argue that for a large graph/tree with $n$ nodes,  $\frac{2}{3}$ of the tree will have edges with different colors.
-        %TODO Solve this part of the problem
+        \textbf{Answer:} As $n$ approaches infinity, $P=\frac{2}{3}$. We could argue that for a large graph/tree with $n$ nodes,  $\frac{2}{3}$ of the tree will have edges with different colors. 
+        
+        Assuming the tree has $n$ nodes, then there will be $\frac{2n+1}{3n} (n-1)$ edges have different colors assigned to its two nodes.
         
 \end{enumerate}
 
 \nextprob
 CLRS, Question 15-6.
-
 
 \begin{algorithm}
     \caption{Guest List}\label{guests}

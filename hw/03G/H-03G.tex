@@ -23,13 +23,13 @@ with the same birthday?
 
 
 % TODO: temp answer
-\textbf{Answer: }  The probability of three people having the same birthday is $\frac{365}{365} \cdot \frac{1}{365} \cdot \frac{1}{365}$
+\textbf{Answer: }  Using the Byron Schmuland's answer to estimate,
 
-The ways of choosing three people is $n\choose{3}$.
+P(exactly 3 people have the same birthday with n people) = $1 - e^{-{n\choose 3}/365^2}$
 
-Therefore the people we need for 50\% chance to get three people on the same birthday is $n$ where $n$ satisfies
+We want the probability to be 50\%, therefore $0.5 = 1 - e^{-{n\choose 3}/365^2}$, $n = 83$.
 
-$\frac{1}{2}$ = $n \choose 3$ $(\frac{1}{365})^2 $, $n = 75$
+Thus we will need at least 83 people for 3 people to have 50\% probability with the same birthday.
 
 
 \nextprob
@@ -39,20 +39,20 @@ each node (where each color is equally likely).
    \item What is the probability that every edge has two different colors on
         assigned to its two nodes?
         
-        \textbf{Answer:} For every edge, there are two nodes and three colors, say color a, b, and c.
-        
-        The total number of possible color combinations is 9. And 3 of them are same color combinations.
+        \textbf{Answer:} Let $G$ be a graph (assuming it to be a tree). And assume there are $n$ nodes and $n-1$ edges since $G$ is a tree.
         
         Total number of options of color choice is $3\choose 1$ $n$, and total number of options of different color choices is $3\choose 1$ $+ (n-1) $ $2\choose 1$
         
         Therefore the probability of two different colors is $P = \frac{3+2(n-1)}{3n} = \frac{2n+1}{3n}$.
+        
+        $P$ goes to $\frac{2}{3}$ as $n$ approaches infinity.
                
     \item What is the expected number of edges that have different colors
         assigned to its two nodes?
         
-        \textbf{Answer:} As $n$ approaches infinity, $P=\frac{2}{3}$. We could argue that for a large graph/tree with $n$ nodes,  $\frac{2}{3}$ of the tree will have edges with different colors. 
+        \textbf{Answer:} As $n$ approaches infinity, $P=\frac{2}{3}$. We could argue that for a large graph/tree with $n$ nodes,  $\frac{2}{3}$ of the tree will have edges with different colored nodes. 
         
-        Assuming the tree has $n$ nodes, then there will be $\frac{2n+1}{3n} (n-1)$ edges have different colors assigned to its two nodes.
+        Assuming the tree has $n$ nodes, then there will be $\frac{2}{3} (n-1)$ edges have different colors assigned to its two nodes.
         
 \end{enumerate}
 
@@ -129,12 +129,12 @@ loop invariant and the proof of termination/runtime complexity.
             \begin{algorithmic}
             \State $val$: the total value we want to make change from
             \State $d = [d_1, d_2, d_3, ......, d_k]$: a list of the changes we can make into (1 cent, 5 cents, 10 cents, etc.)
-                \Function{GMC}{val: Integer, d: array}
+                \Function{GMC}{val: Integer, d: Array}
                     \State $S$: empty set to store the solution
                     \State sort $d$ from largest to smallest
                     \For{i = 1...k}
-                        \State $amount = val // d_i$
-                        \State add $amount$ of $d_i$ to $S$  \Comment{add as many $d_i$ as possible to $S$}
+                        \State $count = val // d_i$
+                        \State add $count$ of $d_i$ to $S$  \Comment{add as many $d_i$ as possible to $S$}
                     \EndFor
                     \newline
                     \Return $S$

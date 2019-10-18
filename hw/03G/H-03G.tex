@@ -38,7 +38,7 @@ each node (where each color is equally likely).
     \item What is the expected number of edges that have different colors
         assigned to its two nodes?
         
-        % TODO: Solve this part of the problem
+        %TODO Solve this part of the problem
         
 \end{enumerate}
 
@@ -152,10 +152,7 @@ are expected to give:
 
 \begin{enumerate}
     \item Give an $O(n\log n)$ greedy algorithm for the fractional knapsack problem.
-    
-%Sort by value/weight
-%Add the items with highest value/weight ratio. 
-%if out of space, add fraction of last item st. W is full   
+      
 This algorithm first sorts the items by the highest value:weight ratio. Then, if we can add the entire item we do (the if statement). Otherwise, we add a fraction of the item (the else statement). This fraction is the weight we have available over the item weight. 
 
 \begin{algorithm}
@@ -212,11 +209,6 @@ The running time of this algorithm is O(nW). Inside of the inner loop the algori
 
 %TODO Loop invariance
         
-%I don't really know
-%Solve this like the rod problem
-%Start with weight of zero. --> optimal solution is no items
-%increment weight
-%then I get stuck
 \end{enumerate}
 
 \end{document}

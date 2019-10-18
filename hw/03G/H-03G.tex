@@ -39,11 +39,13 @@ each node (where each color is equally likely).
    \item What is the probability that every edge has two different colors on
         assigned to its two nodes?
         
-        \textbf{Answer:} For every edge, there are two nodes and three colors, say color a, b, and c.
+        \textbf{Answer:} Let $G$ be a graph (assume it to be a tree) and there are $n$ vertices and $n-1$ edges (since $G$ is a tree).
         
-        The total number of possible color combinations is 9. And 3 of them are same color combinations.
+        For each node/vertex, there are $3 \choose 1$ options of color choice. In order to have different colors on every edge, for the root node of the tree, there are $3 \choose 1$ options of color choice, and for the rest of the nodes, each has $2\choose 1$ options.
         
-        Therefore the probability of two different colors is $P = \frac{9-3}{9} = \frac{2}{3}$.
+        Total number of options of color choice is $3\choose 1$ $n$, and total number of options of different color choices is $3\choose 1$ $+ (n-1) $ $2\choose 1$
+        
+        Therefore the probability of two different colors is $P = \frac{3+2(n-1)}{3n} = \frac{2n-1}{3n}$
         
     \item What is the expected number of edges that have different colors
         assigned to its two nodes?

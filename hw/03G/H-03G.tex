@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{fasy-hw}
+\usepackage{../fasy-hw}
 \usepackage{ wasysym }
 
 %% UPDATE these variables:
@@ -22,8 +22,15 @@ with the same birthday?
 Suppose we have a graph $G=(V,E)$ and three colors, and randomly assign a color
 each node (where each color is equally likely).
 \begin{enumerate}
-    \item What is the probability that every edge has two different colors on
+   \item What is the probability that every edge has two different colors on
         assigned to its two nodes?
+        
+        \textbf{Answer:} For every edge, there are two nodes and three colors, say color a, b, and c.
+        
+        The total number of possible color combinations is 9. And 3 of them are same color combinations.
+        
+        Therefore the probability of two different colors is $P = \frac{9-3}{9} = \frac{2}{3}$.
+        
     \item What is the expected number of edges that have different colors
         assigned to its two nodes?
 \end{enumerate}
@@ -75,6 +82,26 @@ For the Greedy make change algorithm described in class on 10/02, describe the
 problem and solution in your own words, including the use of pseudocode (with
 more details than what was written in class).  Note: you do not need to give a
 loop invariant and the proof of termination/runtime complexity.
+
+\textbf{Answer:} The Greedy Make Change algorithm is used to solve an optimization problem. It has many solutions, but we wish to min/max some function defined over those solutions. The solutions are the different ways to make change. To optimize the solution means to minimize the number of coins used. And the solution might not be unique.
+
+\textbf{Pseudocode:}
+\begin{algorithm}
+            \begin{algorithmic}
+            \State $val$: the total value we want to make change from
+            \State $d = [d_1, d_2, d_3, ......, d_k]$: a list of the changes we can make into (1 cent, 5 cents, 10 cents, etc.)
+                \Function{GMC}{val: Integer, d: array}
+                    \State $S$: empty set to store the solution
+                    \State sort $d$ from largest to smallest
+                    \For{i = 1...k}
+                        \State $amount = val // d_i$
+                        \State add $amount$ of $d_i$ to $S$  \Comment{add as many $d_i$ as possible to $S$}
+                    \EndFor
+                    \newline
+                    \Return $S$
+                \EndFunction
+            \end{algorithmic}
+            \end{algorithm}
 
 \nextprob
 Suppose we have $n$ items hat we want to put in a knapsack of capacity $W$.  The i-th item has

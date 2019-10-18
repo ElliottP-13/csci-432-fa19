@@ -1,11 +1,15 @@
 \documentclass{article}
+
 \usepackage{../fasy-hw}
+
 \usepackage{ wasysym }
 
 %% UPDATE these variables:
 \renewcommand{\hwnum}{3}
+
 \author{Group 13: Elliott Pryor, Ben Bushnell, }
 \collab{None}
+
 \date{due: 18 October 2019}
 
 \begin{document}
@@ -22,10 +26,20 @@ with the same birthday?
 Suppose we have a graph $G=(V,E)$ and three colors, and randomly assign a color
 each node (where each color is equally likely).
 \begin{enumerate}
-    \item What is the probability that every edge has two different colors on
+   \item What is the probability that every edge has two different colors on
         assigned to its two nodes?
+        
+        \textbf{Answer:} For every edge, there are two nodes and three colors, say color a, b, and c.
+        
+        The total number of possible color combinations is 9. And 3 of them are same color combinations.
+        
+        Therefore the probability of two different colors is $P = \frac{9-3}{9} = \frac{2}{3}$.
+        
     \item What is the expected number of edges that have different colors
         assigned to its two nodes?
+        
+        % TODO: Solve this part of the problem
+        
 \end{enumerate}
 
 \nextprob
@@ -46,8 +60,8 @@ CLRS, Question 15-6.
 			\Else
 				\State $c = \sum_{child} vivality[child]$
 				\State $g = node.vivality + \sum_{grandChild} vivality[grandChild]$
-				
 				\If{$c > g$}
+
 					\State $guests[node] = \sum_{child} guests[child]$
 					\State $vivality[node] = c$
 				\Else
@@ -56,7 +70,9 @@ CLRS, Question 15-6.
 				\EndIf
 			\EndIf
 		\EndFor
+
        \State \textbf{return} guests[root of tree]
+
     \EndFunction
     \end{algorithmic}
 \end{algorithm}
@@ -69,6 +85,7 @@ The decrimenting function for the for loop would be $n - i$ this approaches zero
  The runtime for this algorithm is $O(n^2)$. The loop repeats $n$ times. Inside the loop, the "find next lowest node in graph", as well as the summations all take $O(n)$ time. Thus, inside the loop is a summation of $O(n)$ processes, which is therefore also $O(n)$. So, an $O(n)$ process is repeated n times, and the overall runtime is $O(n^2)$.
  
  %TODO Loop invariant
+
  $L_i$ = guests[$v$] is the optimal solution with the head at $v$ $\forall v \in guests$ and vivality[$v$] is maximized and is the vivality produced from guests[$v$].
  
  Initiialization: guests = $\emptyset$ and thus $L_i$ is vacuously true
@@ -85,11 +102,33 @@ The decrimenting function for the for loop would be $n - i$ this approaches zero
  Termination: The decrimenting function is $n - i$. This approaches zero as $i$
  approaches $n$. This maps to a well ordered set and decreases each itteration, and the algorithm therefore terminates.
 
+
 \nextprob
 For the Greedy make change algorithm described in class on 10/02, describe the
 problem and solution in your own words, including the use of pseudocode (with
 more details than what was written in class).  Note: you do not need to give a
 loop invariant and the proof of termination/runtime complexity.
+
+\textbf{Answer:} The Greedy Make Change algorithm is used to solve an optimization problem. It has many solutions, but we wish to min/max some function defined over those solutions. The solutions are the different ways to make change. To optimize the solution means to minimize the number of coins used. And the solution might not be unique.
+
+\textbf{Pseudocode:}
+\begin{algorithm}
+            \begin{algorithmic}
+            \State $val$: the total value we want to make change from
+            \State $d = [d_1, d_2, d_3, ......, d_k]$: a list of the changes we can make into (1 cent, 5 cents, 10 cents, etc.)
+                \Function{GMC}{val: Integer, d: array}
+                    \State $S$: empty set to store the solution
+                    \State sort $d$ from largest to smallest
+                    \For{i = 1...k}
+                        \State $amount = val // d_i$
+                        \State add $amount$ of $d_i$ to $S$  \Comment{add as many $d_i$ as possible to $S$}
+                    \EndFor
+                    \newline
+                    \Return $S$
+                \EndFunction
+            \end{algorithmic}
+            \end{algorithm}
+
 
 \nextprob
 Suppose we have $n$ items hat we want to put in a knapsack of capacity $W$.  The i-th item has
@@ -110,6 +149,7 @@ you to take a percentage of each item.
         
 %I don't really know
 %Solve this like the rod problem
+
 %Start with weight of zero. --> optimal solution is no items
 %increment weight
 %then I get stuck

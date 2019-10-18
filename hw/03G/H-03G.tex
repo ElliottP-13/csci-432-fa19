@@ -39,15 +39,20 @@ each node (where each color is equally likely).
    \item What is the probability that every edge has two different colors on
         assigned to its two nodes?
         
-        \textbf{Answer:} Let $G$ be a graph (assume it to be a tree) and there are $n$ vertices and $n-1$ edges (since $G$ is a tree).
+        \textbf{Answer:} For every edge, there are two nodes and three colors, say color a, b, and c.
         
-        For each node/vertex, there are $3 \choose 1$ options of color choice. In order to have different colors on every edge, for the root node of the tree, there are $3 \choose 1$ options of color choice, and for the rest of the nodes, each has $2\choose 1$ options.
+        The total number of possible color combinations is 9. And 3 of them are same color combinations.
         
         Total number of options of color choice is $3\choose 1$ $n$, and total number of options of different color choices is $3\choose 1$ $+ (n-1) $ $2\choose 1$
         
         Therefore the probability of two different colors is $P = \frac{3+2(n-1)}{3n} = \frac{2n+1}{3n}$.
                 
     \item What is the expected number of edges that have different colors assigned to its two nodes?
+
+        Therefore the probability of two different colors is $P = \frac{9-3}{9} = \frac{2}{3}$.
+        
+    \item What is the expected number of edges that have different colors
+        assigned to its two nodes?
         
         As $n$ approaches infinity, $P$ becomes $\frac{2}{3}$. We could argue that for a large graph/tree with $n$ nodes,  $\frac{2}{3}$ of the tree will have edges with different colors.
         %TODO Solve this part of the problem
@@ -191,10 +196,10 @@ This algorithm runs in O(nlogn) time. The sorting takes O(nlogn) time. The for l
 
 $P$ = the knapsack is empty, $Li$ = knapsack holds the i most valued items for the ith iteration, $Q$ = The knapsack holds $W$ of the most valued items, $G$ = items remain in the list, or the knapsack isn't full
     \begin{enumerate}
-        \item Ititialization: P => L the knapsack is empty, therefore our optimal solution has not been reached.
-        \item Maintenance: Li AND G => Li+1, The knapsack holds the i most valued items, is not full, and there are still items to choose from implies that we loop through again and choose another item.
-        \item End: Li AND not G => Q, The knapsack holds the i most valued items, and is full, or we have no other items to put into it implies our goal is accomplished.
-        \item Termination: D\{space\} = $N \cap(1..length(n))$, is well ordered so the algorithm will terminate
+        \item Ititialization: $P \implies L$, the knapsack is empty, therefore our optimal solution has not been reached.
+        \item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack holds the i most valued items, is not full, and there are still items to choose from implies that we loop through again and choose another item.
+        \item End: $L_{i} \land \neg G \implies Q$, The knapsack holds the i most valued items, and is full, or we have no other items to put into it implies our goal is accomplished.
+        \item Termination: D\{space\} = $(1..length(n))$, is well ordered so the algorithm will terminate
     \end{enumerate}
     
     \item Give an $O(nW)$ time algorithm that uses dynamic programming to solve
@@ -228,6 +233,13 @@ This algorithm solves the 0-1 knapsack problem. It uses an approach very similar
 The running time of this algorithm is O(nW). Inside of the inner loop the algorithm has a time complexity of O(1). This is repeated n times giving the inner loop a complexity of O(n). The inner loop repeats W times which results in the time complexity being O(Wn).
 
 %TODO Loop invariance
+$P$ = , $Li$ = , $Q$ = , $G$ = 
+    \begin{enumerate}
+        \item Ititialization: $P \implies L$, 
+        \item Maintenance: $L_{i} \land G \implies L_{i+1}$, 
+        \item End: $L_{i} \land \neg G \implies Q$, 
+        \item Termination: D\{space\} =  
+    \end{enumerate}
         
 \end{enumerate}
 

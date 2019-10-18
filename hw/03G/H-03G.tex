@@ -129,6 +129,7 @@ loop invariant and the proof of termination/runtime complexity.
             \end{algorithmic}
             \end{algorithm}
 
+%TODO Decrementing Function, Runtime, Loop invariant
 
 \nextprob
 Suppose we have $n$ items hat we want to put in a knapsack of capacity $W$.  The i-th item has
@@ -137,19 +138,82 @@ we want to maximize the value of the items in the knapsack.
 The \emph{0-1 knapsack problem} will assign each item one of two states: in the
 knapsack, or not in the knapsack.  The \emph{fractional knapsack problem} allows
 you to take a percentage of each item.
+
+As a reminder, when giving an algorithm as an answer, you
+are expected to give:
+\begin{itemize}
+    \item A prose explanation of the problem and algorithm.
+    \item Psuedocode.
+    \item The decrementing function for any loop or recursion, or a runtime
+        justification.
+    \item Justification of runtime.
+    \item The loop invariant for any loops, with full justification.
+\end{itemize}
+
 \begin{enumerate}
     \item Give an $O(n\log n)$ greedy algorithm for the fractional knapsack problem.
     
 %Sort by value/weight
 %Add the items with highest value/weight ratio. 
-%if out of space, add fraction of last item st. W is full    
+%if out of space, add fraction of last item st. W is full   
+This algorithm first sorts the items by the highest value:weight ratio. Then, if we can add the entire item we do (the if statement). Otherwise, we add a fraction of the item (the else statement). This fraction is the weight we have available over the item weight. 
+
+\begin{algorithm}
+    \caption{Fractional Knapsack Problem}\label{fracKnap}
+    \begin{algorithmic}[1]
+    \Function{fractionalKnapsack}{$n,W$}
+      \State list = sort (n by $v_i/w_i$)
+      \State knapsack = \{\}
+      \For {item in list}
+      	\If{item.w < W}
+      		\State knapsack.add(item)
+      		\State W -= item.w
+      	\Else
+      		\State knapsack.add(item * $\frac{W}{item.w}$
+      		\State \textbf{break out of loop}
+      	\EndIf
+      \EndFor
+      \State \textbf{return} knapsack
+    \EndFunction
+    \end{algorithmic}
+\end{algorithm} 
+
+This algorithm runs in O(nlogn) time. The sorting takes O(nlogn) time. The for loop runs n times, and has an inner complexity of O(1). Therefore the complexity of th for loop is O(n). The runtime of this algorithm is O(nlogn + n) which, assymtotically, is O(nlogn).
     
     \item Give an $O(nW)$ time algorithm that uses dynamic programming to solve
         the 0-1 knapsack problem.
         
+This algorithm solves the 0-1 knapsack problem. It uses an approach very similar to that used in the rod cutting algorithm. It keeps track of the items in the knapsack as well as their values in two lists. Then it itterates over each weight and finds the optimal solution. It initializes the knapsack and values to be the optimal solution of the previous example in the case that adding items would make the knapsack worse (ie. we already found the optimal solution for this weight). Then it goes through each item and tests if we can add it (doesn't exceede the weight) and if it would increase the value of the knapsack. If it meets both of these conditions we add it to the knapsack; otherwise, we do nothing.
+
+%TODO Loop invariance
+        
+\begin{algorithm}
+    \caption{0-1 Knapsack Problem}\label{knap}
+    \begin{algorithmic}[1]
+    \Function{knapsack}{$n,W$}
+      \State knapsack = \{\}
+      \State values = \{\}
+      \For {i in [1, W]}
+      	values[i] = values[i-1]
+      	knapsack[i] = knapsack[i-1]
+      	\For{j in [1, n]}
+      		\If{values[i] < values[i-j] + j.v values[i] \textbf{and} W $\geq$ knapsack[i-j].w + j.w}
+      			\State values[i] $\gets$ values[i-j] + j.v values[i]
+      			\State knapsack[i] $\gets$ knapsack[i-j] + j
+      		\EndIf
+      	\EndFor
+      \EndFor
+      \State \textbf{return} knapsack
+    \EndFunction
+    \end{algorithmic}
+\end{algorithm} 
+
+The running time of this algorithm is O(nW). Inside of the inner loop the algorithm has a time complexity of O(1). This is repeated n times giving the inner loop a complexity of O(n). The inner loop repeats W times which results in the time complexity being O(Wn).
+
+%TODO Loop invariance
+        
 %I don't really know
 %Solve this like the rod problem
-
 %Start with weight of zero. --> optimal solution is no items
 %increment weight
 %then I get stuck

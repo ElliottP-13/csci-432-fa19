@@ -172,7 +172,7 @@ This algorithm first sorts the items by the highest value:weight ratio. Then, if
       \State list = sort (n by $v_i/w_i$)
       \State knapsack = \{\}
       \For {item in list}
-      	\If{item.w < W}
+      	\If{$item.w < W$}
       		\State knapsack.add(item)
       		\State W -= item.w
       	\Else
@@ -186,6 +186,14 @@ This algorithm first sorts the items by the highest value:weight ratio. Then, if
 \end{algorithm} 
 
 This algorithm runs in O(nlogn) time. The sorting takes O(nlogn) time. The for loop runs n times, and has an inner complexity of O(1). Therefore the complexity of th for loop is O(n). The runtime of this algorithm is O(nlogn + n) which, assymtotically, is O(nlogn).
+
+$P$ = the knapsack is empty, $Li$ = knapsack holds the i most valued items for the ith iteration, $Q$ = The knapsack holds $W$ of the most valued items, $G$ = items remain in the list, or the knapsack isn't full
+    \begin{enumerate}
+        \item Ititialization: P => L the knapsack is empty, therefore our optimal solution has not been reached.
+        \item Maintenance: Li AND G => Li+1, The knapsack holds the i most valued items, is not full, and there are still items to choose from implies that we loop through again and choose another item.
+        \item End: Li AND not G => Q, The knapsack holds the i most valued items, and is full, or we have no other items to put into it implies our goal is accomplished.
+        \item Termination: D\{space\} = $N \cap(1..length(n))$, is well ordered so the algorithm will terminate
+    \end{enumerate}
     
     \item Give an $O(nW)$ time algorithm that uses dynamic programming to solve
         the 0-1 knapsack problem.

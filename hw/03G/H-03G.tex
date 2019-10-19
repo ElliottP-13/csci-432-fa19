@@ -98,9 +98,6 @@ CLRS, Question 15-6.
 \end{algorithm}
 
 This algorithm creates two lists that are indexed by the verticies of the graph. It then locates the node that is furthest down the tree that has not yet been explored. The if statement checks if the node is a leaf node. Otherwise, the optimal solution at that node is either one of two choices. The first one is if we choose the node and thus cannot choose the children, but we can choose the grandchildren. The second choice is if we do not choose the node so that we can choose the children. The second if statement takes care of these cases. This algorithm builds the optimal solution starting at the bottom nodes and builds up to the final solution.
-
-The decrimenting function for the for loop would be $n - i$ this approaches zero as $i$
- approaches $n$. This maps to a well ordered set and decreases each itteration, and the algororithm therefore terminates.
  
  The runtime for this algorithm is $O(n^2)$. The loop repeats $n$ times. Inside the loop, the "find next lowest node in graph", as well as the summations all take $O(n)$ time. Thus, inside the loop is a summation of $O(n)$ processes, which is therefore also $O(n)$. So, an $O(n)$ process is repeated n times, and the overall runtime is $O(n^2)$.
  
@@ -128,7 +125,9 @@ problem and solution in your own words, including the use of pseudocode (with
 more details than what was written in class).  Note: you do not need to give a
 loop invariant and the proof of termination/runtime complexity.
 
-\textbf{Answer:} The Greedy Make Change algorithm is used to solve an optimization problem. It has many solutions, but we wish to min/max some function defined over those solutions. The solutions are the different ways to make change. To optimize the solution means to minimize the number of coins used. And the solution might not be unique.
+\textbf{Answer:} The make change problem asks for the fewest number of coins required to make a certain amount of change. The Greedy Make Change algorithm is used to solve an optimization problem. It has many solutions, but we wish to min/max some function defined over those solutions. The solutions are the different ways to make change. To optimize the solution to the make change problem means to minimize the number of coins used. And the solution might not be unique. The greedy approach works well for US (and most currencies) however it does not provide an optimal solution for all currencies. 
+
+The solution works by giving the 'customer' the largest coins first. Coins are given until adding another coin of the denomination would go over the change amount. Then the process is repeated with smaller and smaller coins giving the customer the maximum number of coins without going over the target amount before proceeding to the next smallest denomination.
 
 \textbf{Pseudocode:}
 \begin{algorithm}
@@ -148,7 +147,6 @@ loop invariant and the proof of termination/runtime complexity.
             \end{algorithmic}
             \end{algorithm}
 
-%TODO Decrementing Function, Runtime, Loop invariant
 
 \nextprob
 Suppose we have $n$ items hat we want to put in a knapsack of capacity $W$.  The i-th item has
@@ -194,20 +192,20 @@ This algorithm first sorts the items by the highest value:weight ratio. Then, if
     \end{algorithmic}
 \end{algorithm} 
 
-This algorithm runs in O(nlogn) time. The sorting takes O(nlogn) time. The for loop runs n times, and has an inner complexity of O(1). Therefore the complexity of th for loop is O(n). The runtime of this algorithm is O(nlogn + n) which, asymptotically, is O(nlogn).
+This algorithm runs in O(nlogn) time. The sorting takes O(nlogn) time. The for loop runs n times, and has an inner complexity of O(1). Therefore the complexity of th for loop is O(n). The runtime of this algorithm is O(nlogn + n) which, asymptotically, is O(nlogn). 
 
 $P$ = the knapsack is empty, $Li$ = the knapsack holds the $i$ most valuable items and the weight does not exceed W, $Q$ = the knapsack holds the most valuable set of items possible for weight W, $G$ = items remain in the list, or the knapsack isn't full
     \begin{enumerate}
-        \item Initialization: $P \implies L$, the knapsack is empty, therefore is vacuously.
+        \item Initialization: $P \implies L$, the knapsack is empty, therefore is vacuously true.
         \item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack holds the i most valued items, is not full, and there are still items to choose from which implies that we loop through again and choose another item.
-        \item End: $L_{i} \land \neg G \implies Q$, The knapsack holds the i most valued items, and is full, or we have no other items to put into it which implies our goal is accomplished.
+        \item End: $L_{i} \land \neg G \implies Q$, The knapsack holds the i most valuable items, and is full, or we have no other items to put into it which implies our goal is accomplished.
         \item Termination: $D\{space\} \rightarrow \naturals)$, where $D$ is the number of items not yet considered. Since a new item is considered each iteration, D is strictly decreasing, and the natural numbers are a well ordered set, so the algorithm must terminate.
     \end{enumerate}
     
     \item Give an $O(nW)$ time algorithm that uses dynamic programming to solve
         the 0-1 knapsack problem.
         
-This algorithm solves the 0-1 knapsack problem. It uses an approach very similar to that used in the rod cutting algorithm. It keeps track of the items in the knapsack as well as their values in two lists. Then it iterates over each weight and finds the optimal solution. It initializes the knapsack and values to be the optimal solution of the previous example in the case that adding items would make the knapsack worse (ie. we already found the optimal solution for this weight). Then it goes through each item and tests if we can add it (doesn't exceede the weight) and if it would increase the value of the knapsack. If it meets both of these conditions we add it to the knapsack; otherwise, we do nothing.
+This algorithm solves the 0-1 knapsack problem. It uses an approach very similar to that used in the rod cutting algorithm. It keeps track of the items in the knapsack as well as their values in two lists. Then it iterates over each weight and finds the optimal solution. It initializes the knapsack and values to be the optimal solution of the previous example in the case that adding items would make the knapsack worse (ie. we already found the optimal solution for this weight). Then it goes through each item and tests if we can add it (doesn't exceed the weight) and if it would increase the value of the knapsack. If it meets both of these conditions we add it to the knapsack; otherwise, we do nothing.
         
 \begin{algorithm}
     \caption{0-1 Knapsack Problem}\label{knap}
@@ -232,12 +230,12 @@ This algorithm solves the 0-1 knapsack problem. It uses an approach very similar
 
 The running time of this algorithm is O(nW). Inside of the inner loop the algorithm has a time complexity of O(1). This is repeated n times giving the inner loop a complexity of O(n). The inner loop repeats W times which results in the time complexity being O(Wn).
 
-$P$ = The knapsack is empty, $Li$ = The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized as a subset of the optimal solution, $Q$ = The knapsack is filled with items such that their combined weight $w \leq W$ and their combined value is maximized as an optimal solution, $G$ = there are still weights $i \leq W$ to evaluate.
+$P$ = The knapsack is empty, $Li$ = The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized, and the knapsack is a subset of an optimal solution, $Q$ = The knapsack is filled with items such that their combined weight $w \leq W$ and their combined value is maximized and is therefore an optimal solution, $G$ = $i < W$ when $i = W$ the loop ends. The loop guard implies that for $i < W$ there are still weight values left to evaluate.
     \begin{enumerate}
-        \item Initialization: $P \implies L$, the knapsack is empty, and is therefore a subset of the optimal solution.
-        \item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized as a subset of the optimal solution; and there are still weights $i \leq W$ left to evaluate.
-        \item End: $L_{i} \land \neg G \implies Q$, The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized as a subset of the optimal solution; and there are no more weights in $W$ left to evaluate.
-        \item Termination: D\{space\} =  
+        \item Initialization: $P \implies L$, the knapsack is empty, and is therefore vacuously true and a subset of an optimal solution.
+        \item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized so it is a subset of an optimal solution; and there are still weights $i \leq W$ left to evaluate.
+        \item End: $L_{i} \land \neg G \implies Q$, The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized as a subset of the optimal solution; and there are no more weights in $W$ left to evaluate. 
+        \item Termination: $D\{space\} = \naturals$ where $D$ is $i - W$. $D$ is strictly decreasing because $i$ is strictly increasing. The naturals are a well ordered set. Therefore, the loop must terminate. 
     \end{enumerate}
         
 \end{enumerate}

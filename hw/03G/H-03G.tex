@@ -225,11 +225,11 @@ This algorithm solves the 0-1 knapsack problem. It uses an approach very similar
 
 The running time of this algorithm is O(nW). Inside of the inner loop the algorithm has a time complexity of O(1). This is repeated n times giving the inner loop a complexity of O(n). The inner loop repeats W times which results in the time complexity being O(Wn).
 
-$P$ = The knapsack is empty, $Li$ = The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized as a subset of the optimal solution, $Q$ = The knapsack is filled with items such that their combined weight $w \leq W$ and their combined value is maximized as an optimal solution, $G$ = there are still weights $i \leq W$ whose optimal solutions haven't been considered.
+$P$ = The knapsack is empty, $Li$ = The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized as a subset of the optimal solution, $Q$ = The knapsack is filled with items such that their combined weight $w \leq W$ and their combined value is maximized as an optimal solution, $G$ = there are still weights $i \leq W$ to evaluate.
     \begin{enumerate}
-        \item Initialization: $P \implies L$, 
-        \item Maintenance: $L_{i} \land G \implies L_{i+1}$, 
-        \item End: $L_{i} \land \neg G \implies Q$, 
+        \item Initialization: $P \implies L$, the knapsack is empty, and is therefore a subset of the optimal solution.
+        \item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized as a subset of the optimal solution; and there are still weights $i \leq W$ left to evaluate.
+        \item End: $L_{i} \land \neg G \implies Q$, The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized as a subset of the optimal solution; and there are no more weights in $W$ left to evaluate.
         \item Termination: D\{space\} =  
     \end{enumerate}
         

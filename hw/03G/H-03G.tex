@@ -192,7 +192,7 @@ This algorithm runs in O(nlogn) time. The sorting takes O(nlogn) time. The for l
 
 $P$ = the knapsack is empty, $Li$ = knapsack holds the i most valued items for the ith iteration, $Q$ = The knapsack holds $W$ of the most valued items, $G$ = items remain in the list, or the knapsack isn't full
     \begin{enumerate}
-        \item Ititialization: $P \implies L$, the knapsack is empty, therefore our optimal solution has not been reached.
+        \item Initialization: $P \implies L$, the knapsack is empty, therefore our optimal solution has not been reached.
         \item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack holds the i most valued items, is not full, and there are still items to choose from implies that we loop through again and choose another item.
         \item End: $L_{i} \land \neg G \implies Q$, The knapsack holds the i most valued items, and is full, or we have no other items to put into it implies our goal is accomplished.
         \item Termination: D\{space\} = $(1..length(n))$, is well ordered so the algorithm will terminate
@@ -202,8 +202,6 @@ $P$ = the knapsack is empty, $Li$ = knapsack holds the i most valued items for t
         the 0-1 knapsack problem.
         
 This algorithm solves the 0-1 knapsack problem. It uses an approach very similar to that used in the rod cutting algorithm. It keeps track of the items in the knapsack as well as their values in two lists. Then it itterates over each weight and finds the optimal solution. It initializes the knapsack and values to be the optimal solution of the previous example in the case that adding items would make the knapsack worse (ie. we already found the optimal solution for this weight). Then it goes through each item and tests if we can add it (doesn't exceede the weight) and if it would increase the value of the knapsack. If it meets both of these conditions we add it to the knapsack; otherwise, we do nothing.
-
-%TODO Loop invariance
         
 \begin{algorithm}
     \caption{0-1 Knapsack Problem}\label{knap}
@@ -212,10 +210,10 @@ This algorithm solves the 0-1 knapsack problem. It uses an approach very similar
       \State knapsack = \{\}
       \State values = \{\}
       \For {i in [1, W]}
-      	values[i] = values[i-1]
-      	knapsack[i] = knapsack[i-1]
+      	\State values[i] = values[i-1]
+      	\State knapsack[i] = knapsack[i-1]
       	\For{j in [1, n]}
-      		\If{values[i] < values[i-j] + j.v values[i] \textbf{and} W $\geq$ knapsack[i-j].w + j.w}
+      		\If{values[i] $<$ values[i-j.w] + j.v values[i] \textbf{and} W $\geq$ knapsack[i-j].w + j.w}
       			\State values[i] $\gets$ values[i-j] + j.v values[i]
       			\State knapsack[i] $\gets$ knapsack[i-j] + j
       		\EndIf
@@ -228,10 +226,9 @@ This algorithm solves the 0-1 knapsack problem. It uses an approach very similar
 
 The running time of this algorithm is O(nW). Inside of the inner loop the algorithm has a time complexity of O(1). This is repeated n times giving the inner loop a complexity of O(n). The inner loop repeats W times which results in the time complexity being O(Wn).
 
-%TODO Loop invariance
-$P$ = , $Li$ = , $Q$ = , $G$ = 
+$P$ = The knapsack is empty, $Li$ = The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized as a subset of the optimal solution, $Q$ = The knapsack is filled with items such that their combined weight $w \leq W$ and their combined value is maximized as an optimal solution, $G$ = there are still weights $i \leq W$ whose optimal solutions haven't been considered.
     \begin{enumerate}
-        \item Ititialization: $P \implies L$, 
+        \item Initialization: $P \implies L$, 
         \item Maintenance: $L_{i} \land G \implies L_{i+1}$, 
         \item End: $L_{i} \land \neg G \implies Q$, 
         \item Termination: D\{space\} =  

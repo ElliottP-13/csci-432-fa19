@@ -23,13 +23,23 @@ with the same birthday?
 
 
 % TODO: temp answer
-\textbf{Answer: }  Using the Byron Schmuland's answer to estimate,
+\textbf{Answer: } We could not derive any closed-form solution to this equation. 
+
+The closed form solution is shown in a paper by Anirban DasGupta titled The matching, birthday and the strong birthday problem: a contemporary review (https://doi.org/10.1016/j.jspi.2003.11.015). $P(W \geq 1) = 1 - \sum_{i=0}^{\left \lfloor{n/2}\right \rfloor } \frac{365!n!}{i!(n-2i)!(m-n+i)!2^i365^n}$. Solving for P(W) = 0.5 results in n = 88. Therefore, it requires at 88 people to have a 50\% chance that three will share a birthday. 
+
+This could also be approximated by the Poisson approximation. 
 
 P(exactly 3 people have the same birthday with n people) = $1 - e^{-{n\choose 3}/365^2}$
 
-We want the probability to be 50\%, therefore $0.5 = 1 - e^{-{n\choose 3}/365^2}$, $n = 83$.
+We want the probability to be 50\%, therefore $0.5 = 1 - e^{-{n\choose 3}/365^2}$, $n = 88$.
 
-Thus we will need at least 83 people for 3 people to have 50\% probability with the same birthday.
+We extensively analyzed this problem; however, we lack the math and probability knowledge required to find a closed form solution. 
+
+Our preliminary work consisted of a Monty Carlo approach. We ran the trial 1 million times and averaged the number of people required to produce a triplet that shared a birthday. The number of people required to produce a 50\% chance of a triplet is the average of the Monty Carlo solutions. 
+
+Next, we attempted to approach the problem in a similar fashion as the two person problem is solved. Let A be the event that three people share a birthday. Then $P(A) = 1 - P(\not A)$. It is easy to find the probability that everyone has a different birthday, however it is very difficult to find a closed form of the probability that only 2 people share a birthday. The lack of a closed form showing that only pairs share a birthday prevented us from further pursuing this solution.
+
+
 
 
 \nextprob

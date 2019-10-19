@@ -28,9 +28,7 @@ with the same birthday?
 The closed form solution is shown in a paper by Anirban DasGupta titled The matching, birthday and the strong birthday problem: a contemporary review (https://doi.org/10.1016/j.jspi.2003.11.015). $P(W \geq 1) = 1 - \sum_{i=0}^{\left \lfloor{n/2}\right \rfloor } \frac{365!n!}{i!(n-2i)!(m-n+i)!2^i365^n}$. Solving for P(W) = 0.5 results in n = 88. Therefore, it requires at 88 people to have a 50\% chance that three will share a birthday. 
 
 This could also be approximated by the Poisson approximation. 
-
 P(exactly 3 people have the same birthday with n people) = $1 - e^{-{n\choose 3}/365^2}$
-
 We want the probability to be 50\%, therefore $0.5 = 1 - e^{-{n\choose 3}/365^2}$, $n = 88$.
 
 We extensively analyzed this problem; however, we lack the math and probability knowledge required to find a closed form solution. 
@@ -39,7 +37,12 @@ Our preliminary work consisted of a Monty Carlo approach. We ran the trial 1 mil
 
 Next, we attempted to approach the problem in a similar fashion as the two person problem is solved. Let A be the event that three people share a birthday. Then $P(A) = 1 - P(\not A)$. It is easy to find the probability that everyone has a different birthday, however it is very difficult to find a closed form of the probability that only 2 people share a birthday. The lack of a closed form showing that only pairs share a birthday prevented us from further pursuing this solution.
 
+Our next work consisted of trying to build a closed form from the probabilities. Let P(n) be the probability that at least 3 out of n people share a birthday, and let P(n, b) be the probability that exactly b out of n people share a birthday. 
+$P(3) = 1/365^2$
+$P(4) = P(4,3) + P(4,4) = 1/365^2 * 364/365 + 1/365^3$
+We created a closed form of $P(n) = \sum_{j=0}^{n-3} \frac{1}{k^{2+j}} \prod_{i=0}^{n-3-j}$ However, this solution did not work and produced probabilities on the order of $10^{-12}$ due to the product.
 
+We came very close to a functioning solution with combinatorics. We started with $P(n) = 1/365^2 * {n choose 3}$ This multiplies the probability that three people will share a birthday by the number of ways we can pick groups of three. This solution produced n = 75. Which we know is too low. This is due to it counting multiple times if more than 3 people share a birthday. However, we could not find a way to account for the double counting. The closest we could come to determining the solution is by assuming that everyone else had a birthday different from the one shared by the triplet. This produced a closed form of $P(n) = 1/365^2 * {n choose 3} - (364/365)^n$ and yielded an upper bound of 102 people. This approach also ignores the possibility of multiple sets of triplets. 
 
 
 \nextprob
@@ -51,18 +54,12 @@ each node (where each color is equally likely).
         
         \textbf{Answer:} Let $G$ be a graph (assuming it to be a tree). And assume there are $n$ nodes and $n-1$ edges since $G$ is a tree.
         
-        Total number of options of color choice is $3\choose 1$ $n$, and total number of options of different color choices is $3\choose 1$ $+ (n-1) $ $2\choose 1$
-        
-        Therefore the probability of two different colors is $P = \frac{3+2(n-1)}{3n} = \frac{2n+1}{3n}$.
-        
-        $P$ goes to $\frac{2}{3}$ as $n$ approaches infinity.
+        Total number of options for the first node is 3, because there are 3 different colours. Then the second node must choose a different colour so it has 2 different choices. Thus the probability that a single node has two different colours is $P = \frac{3*2}{3*3} = \frac{6}{9} = \frac{2}{3}$. Then the probability that every node has different colours on it is $(\frac{2}{3})^e$ where $e$ is the number of edges.
                
     \item What is the expected number of edges that have different colors
         assigned to its two nodes?
         
-        \textbf{Answer:} As $n$ approaches infinity, $P=\frac{2}{3}$. We could argue that for a large graph/tree with $n$ nodes,  $\frac{2}{3}$ of the tree will have edges with different colored nodes. 
-        
-        Assuming the tree has $n$ nodes, then there will be $\frac{2}{3} (n-1)$ edges have different colors assigned to its two nodes.
+        \textbf{Answer:} As $n$ approaches infinity, The expected number of edges with different colours is $\frac{2}{3} e$. As stated in the first part of the problem, the probability of a given node having two different colours is $\frac{2}{3}$. Then the expected number of edges that have different colours on them is the product of the probability of one edge and the total number of edges, because the events are independent. Therefore the expected number of edges with different colours is $\frac{2}{3} e$.
         
 \end{enumerate}
 

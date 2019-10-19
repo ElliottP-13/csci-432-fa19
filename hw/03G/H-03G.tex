@@ -101,8 +101,8 @@ The decrimenting function for the for loop would be $n - i$ this approaches zero
 
  $L_i$ = guests[$v$] is the optimal solution with the head at $v$ $\forall v \in guests$ and vivality[$v$] is maximized and is the vivality produced from guests[$v$].
  
- Initiialization: guests = $\emptyset$ and thus $L_i$ is vacuously true
- Maintanance: There are three cases
+ Initialization: guests = $\emptyset$ and thus $L_i$ is vacuously true
+ Maintenance: There are three cases
  \begin{enumerate}[1.]
  \item The node is a leaf node. Then the optimal solution would consist of just the node.
  \item It is best to add this node. Then we add this node to the optimal solution, and can add the optimal solution of the grandchildren. This skips the child generation.
@@ -112,8 +112,7 @@ The decrimenting function for the for loop would be $n - i$ this approaches zero
  
  End: The loop ends when all nodes have been explored. Therefore, the last node explored (the root of the tree) contains the optimal solution and $L_i \rightarrow Q$.
  
- Termination: The decrimenting function is $n - i$. This approaches zero as $i$
- approaches $n$. This maps to a well ordered set and decreases each itteration, and the algorithm therefore terminates.
+ Termination: The decrementing function is $D\{space\} \rightarrow \naturals)$ where D maps $n - i$. This approaches zero as $i$ approaches $n$. This maps to a well ordered set and decreases each iteration, and the algorithm therefore terminates.
 
 
 \nextprob
@@ -188,20 +187,20 @@ This algorithm first sorts the items by the highest value:weight ratio. Then, if
     \end{algorithmic}
 \end{algorithm} 
 
-This algorithm runs in O(nlogn) time. The sorting takes O(nlogn) time. The for loop runs n times, and has an inner complexity of O(1). Therefore the complexity of th for loop is O(n). The runtime of this algorithm is O(nlogn + n) which, assymtotically, is O(nlogn).
+This algorithm runs in O(nlogn) time. The sorting takes O(nlogn) time. The for loop runs n times, and has an inner complexity of O(1). Therefore the complexity of th for loop is O(n). The runtime of this algorithm is O(nlogn + n) which, asymptotically, is O(nlogn).
 
-$P$ = the knapsack is empty, $Li$ = knapsack holds the i most valued items for the ith iteration, $Q$ = The knapsack holds $W$ of the most valued items, $G$ = items remain in the list, or the knapsack isn't full
+$P$ = the knapsack is empty, $Li$ = the knapsack holds the $i$ most valuable items and the weight does not exceed W, $Q$ = the knapsack holds the most valuable set of items possible for weight W, $G$ = items remain in the list, or the knapsack isn't full
     \begin{enumerate}
-        \item Initialization: $P \implies L$, the knapsack is empty, therefore our optimal solution has not been reached.
-        \item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack holds the i most valued items, is not full, and there are still items to choose from implies that we loop through again and choose another item.
-        \item End: $L_{i} \land \neg G \implies Q$, The knapsack holds the i most valued items, and is full, or we have no other items to put into it implies our goal is accomplished.
-        \item Termination: D\{space\} = $(1..length(n))$, is well ordered so the algorithm will terminate
+        \item Initialization: $P \implies L$, the knapsack is empty, therefore is vacuously.
+        \item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack holds the i most valued items, is not full, and there are still items to choose from which implies that we loop through again and choose another item.
+        \item End: $L_{i} \land \neg G \implies Q$, The knapsack holds the i most valued items, and is full, or we have no other items to put into it which implies our goal is accomplished.
+        \item Termination: $D\{space\} \rightarrow \naturals)$, where $D$ is the number of items not yet considered. Since a new item is considered each iteration, D is strictly decreasing, and the natural numbers are a well ordered set, so the algorithm must terminate.
     \end{enumerate}
     
     \item Give an $O(nW)$ time algorithm that uses dynamic programming to solve
         the 0-1 knapsack problem.
         
-This algorithm solves the 0-1 knapsack problem. It uses an approach very similar to that used in the rod cutting algorithm. It keeps track of the items in the knapsack as well as their values in two lists. Then it itterates over each weight and finds the optimal solution. It initializes the knapsack and values to be the optimal solution of the previous example in the case that adding items would make the knapsack worse (ie. we already found the optimal solution for this weight). Then it goes through each item and tests if we can add it (doesn't exceede the weight) and if it would increase the value of the knapsack. If it meets both of these conditions we add it to the knapsack; otherwise, we do nothing.
+This algorithm solves the 0-1 knapsack problem. It uses an approach very similar to that used in the rod cutting algorithm. It keeps track of the items in the knapsack as well as their values in two lists. Then it iterates over each weight and finds the optimal solution. It initializes the knapsack and values to be the optimal solution of the previous example in the case that adding items would make the knapsack worse (ie. we already found the optimal solution for this weight). Then it goes through each item and tests if we can add it (doesn't exceede the weight) and if it would increase the value of the knapsack. If it meets both of these conditions we add it to the knapsack; otherwise, we do nothing.
         
 \begin{algorithm}
     \caption{0-1 Knapsack Problem}\label{knap}

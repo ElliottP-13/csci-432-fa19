@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{../fasy-hw}
+\usepackage{ wasysym }
+
+%% UPDATE these variables:
+\renewcommand{\hwnum}{4}
+\author{Your Name Goes Here}
+\collab{TODO-list your collaborators here}
+\date{due: 18 November 2019}
+\title{Homework 4 - Individual}
+
+\begin{document}
+
+\maketitle
+
+This fourth homework assignment is due on 18 November 2019, and should be
+submitted to BOTH Gradescope and D2L.  If you want feedback on the HW before the
+final exam, please submit a draft of the hw to the H-04-FEEDBACK folder in
+Gradescope.  Early submissions will be given feedback, but will not be graded.
+
+If you are asked to come up with an algorithm, you are expected to give an
+algorithm that beats the brute force (and, if possible, of optimal time
+complexity).
+With your algorithm, please provide the following:
+\begin{itemize}
+    \item A prose explanation of the problem and the algorithm.
+    \item Psuedocode.
+    \item The decrementing function for any loop or recursion, or a runtime
+        justification.
+    \item The loop invariant for any loops, with full justification.  Note: if
+        loops are nested, you just need to explicitly give the loop invariant
+        proof of the outer loop.
+\end{itemize}
+
+\nextprob
+Find (or design) an example of a graph arising in data
+with $4--10$ vertices, and at least five
+edges.  Use the union-find data structure, using the fast-union with both
+improvements (union by rank and path compression), to find the number of
+connected components of the graph.
+
+Note: this problem is asking you to walk through the example.  Providing
+psuedocode will likely help improve your exposition, and is highly encouraged.
+
+\nextprob
+Let $n \in R$ and let $M$ be an $n \times n$ binary matrix.  Consider a
+submatrix $S \subset M$; that is a rectangle-shaped contiguous set of
+elements of $M$.  Let $|S|$ denote the number of elements in $S$.  We call a
+submatrix \emph{fair} if it has an equal number of $1$'s and $0$'s.  Give an
+algorithm to find a submatrix $S$ that maximizes $|S|$.
+
+\nextprob
+Let $f$ be a flow in $G=(V,E,c)$.  Prove that if $f$ is a max flow, then there
+exists a cut $(S,T)$ such that $|f| = c(S,T)$.  (Note: this is the proof of $(1)
+\implies (3)$ in the max-flow/min-cut theorem.  Do not prove this by proving
+$(1) \implies (2) \implies (3)$.  Do the proof directly).
+
+\nextprob
+Given a weighted graph $G=(V,E,\omega)$, and two vertices $v,w \in V$, we wish
+to find the \emph{shortest path} from $v$ to $w$.
+
+\begin{enumerate}
+    \item Give an algorithm to compute the shortest path.
+    \item Formulate the shortest path problem as a linear program.
+\end{enumerate}
+
+\nextprob
+An \emph{integer linear program} is a linear program in which the unknowns
+($x_i$ from class) must be \emph{integers} instead of \emph{real numbers}.
+
+\begin{enumerate}
+    \item Is solving a linear problem or an integer linear program harder?  Why?
+        (Note: you will need to consult resources to answer this question, so
+        please cite your sources).
+    \item Give an example of a problem that can be formulated as an integer
+        linear program.  Explain why we need the integer solutions, as opposed
+        to the real-valued ones.
+    \item Give an example of a problem that can be formulated as a linear
+        program.  Explain why the solution needs to be real numbers, not integers.
+\end{enumerate}
+
+\end{document}

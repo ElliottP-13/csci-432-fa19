@@ -1,0 +1,60 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath,amsthm,amsfonts} % packages for math
+\usepackage{graphicx,tikz,pgfplots,setspace} % packages for graphics
+\usepackage[margin=1in]{geometry}
+\usepackage{subcaption}
+\doublespacing
+\usepackage[colorlinks=true]{hyperref} % creates hyper links for references
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{lipsum}%% a garbage package you don't need except to create examples.
+\usepackage{fancyhdr}
+\usepackage{gensymb}
+\usepackage{array}
+
+\pgfplotsset{compat=1.14}
+
+\pagestyle{fancy}
+\rhead{Page \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\usepackage{pgfplotstable}
+\usepackage{placeins}
+
+% ========================================================================
+% Put your lab title, names, and a brief abstract here.
+\title{Shor's Algorithm}
+\lhead{Elliott Pryor, Benjamin Bushnell, REID HELP}
+\author{Elliott Pryor, Benjamin Bushnell, REID HELP}
+\date{13 November, 2019}
+% ========================================================================
+\usepackage{multicol}
+\setlength{\columnsep}{0cm}
+\begin{document}
+
+
+\maketitle % This line creates the title (DO NOT CHANGE)
+\section{The Problem}
+The problem of factoring large numbers has existed for centuries. Euclid's algorithm provides a very efficient way to determine the greatest common divisor of two numbers (GCD). Say we look for $GCD(a,b)$ then $a$ is a factor of $b$ if the $GCD(a, b) > 1$. If we have one of the factors, it is very easy to find the other factor as we can just divide the number by its factor. However, factoring very large numbers using Euclid's algorithm is very time consuming as we have to try every single number less than the value we are factoring. We can make a few improvements to our guesses; however, classically this problem cannot be solved in polynomial time.
+
+This is very important to modern security. We use RSA encryption as a way to encrypt our data. 
+%TODO talk about RSA (how it works at very high level? and why its hard to break)
+%TODO Impact on society
+%TODO How shor's algorithm makes things faster so we can break RSA really fast
+
+For sections \ref{classicalSec} and \ref{quantumSec} assume we are trying to find: 
+$$ab = n$$
+where $a$ and $b$ are factors of $n$ and $a,b,c \in \mathbb{N}$.
+
+\section{Classical Computation}
+\label{classicalSec}
+The classical part of this algorithm is really simple. We just have to guess a random number as our factor. Then we use Eucild's algorithm to verify that we didn't get extremely lucky and guess a factor. If we guess a factor, then we don't need to use the quantum part of the algorithm. Then we feed our guess (which we know does NOT share factors with the number in question) into the quantum algorithm. 
+
+
+\section{The Quantum Algorithm}
+\label{quantumSec}
+
+
+
+\end{document}

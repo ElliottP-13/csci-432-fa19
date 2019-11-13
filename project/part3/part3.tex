@@ -23,10 +23,11 @@ The RSA encryption algorithm takes advantage of this fact. First, some backgroun
 So, how does RSA leverage the np time complexity of factorization in this assymetrical encryption model? MORE STUFF HERE (NOTE: discuss $\phi$ trap door?)
 
 % Impact on society (done, but modify as you wish)
-Though it isn't impossible to break, the time required to crack RSA encryption is an effective deterrent for malicious individuals who wish to steal data. Because of it's efficacy, RSA encryption is widely used for encrypting sensitive data which is to be sent between two parties. For example, it is used for things like emails, chat messages and web browsers. Clearly, it is very important that RSA encryption remains uncracked so that the security of sensitive data sent using these services remains intact.
+% just added a little more, feel free to modify
+Though it isn't impossible to break, the time required to crack RSA encryption is an effective deterrent for malicious individuals who wish to steal data. Because of it's efficacy, RSA encryption is widely used for encrypting sensitive data which is to be sent between two parties. For example, it is used for things like emails, chat messages and web browsers. Clearly, it is very important that RSA encryption remains uncracked so that the security of sensitive data sent using these services remains intact. On the other hand, quantum computing can make things easier and faster, but even so, quantum computing can only decrypt small numbers. It would still take years to break some standard RSA encryptions at current state. Until then, we are safe.
 
-%TODO (Needs more stuff) How shor's algorithm makes things faster so we can break RSA really fast
-This brings us to Shor's algorithm. Shor's algorithm was invented in 1994, and it cleverly uses properties of quantum computing to quickly solve prime factorization of even large numbers. This is exactly what RSA assumes is not possible.
+%TODO just added some, feel free to add or modify
+This brings us to Shor's algorithm. Shor's algorithm was invented in 1994, and it cleverly uses properties of quantum computing to quickly solve prime factorization of even large numbers. This is exactly what RSA assumes is not possible. The short description of Shor's algorithm is that we can take any random guess $g$, run the guess through Shor's algorithm, and get back a better guess $g^{p/2} \pm 1$. For any large number $N$, when we take a random guess $g$, $mN = g^p +1$ for some $p$ and $m$. Break this down, we get $(g^{p/2}+1)(g^{p/2}-1) = mN$. Once we have the two better guesses, we can use Euclid's algorithm to find the shared factors, thus breaks the encryption. However, the most important part of this algorithm is to find $p$, and it takes very very long time without quantum computing. Quantum computing can take in multiple values as superpositions, and find $p$ fast.
 
 For sections \ref{classicalSec} and \ref{quantumSec} assume we are trying to find: 
 $$ab = C$$
@@ -45,7 +46,7 @@ The quantum part of this algorithm is what turns the random number that we guess
 First, we must define a few relations. 
 
 %TODO Change from theorem env. to something more appropriate. Would just equation work? Ideas???
-\begin{theorem} %I'm not proving the theorem, but i'm refrencing it. How should this be done mathematically?
+\begin{theorem} %I'm not proving the theorem, but i'm referencing it. How should this be done mathematically?
 %TODO find name of this theorem
 
 Given $a,b \in \integers$ and $a,b$ share no common factors. Then 
@@ -56,7 +57,7 @@ for some $m,p \in \integers$.
 
 %TODO Change from theorem env. to something more appropriate. Would just equation work? Ideas???
 
-\begin{theorem} %I'm not proving the theorem, but i'm refrencing it. How should this be done mathematically?
+\begin{theorem} %I'm not proving the theorem, but i'm referencing it. How should this be done mathematically?
 %TODO find name of this theorem
 
 Given $a^x = mN + r$ for $a,x,m,N,r \in \integers$. Then

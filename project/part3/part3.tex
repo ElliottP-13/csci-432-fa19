@@ -45,9 +45,8 @@ The quantum part of this algorithm is what turns the random number that we guess
 
 First, we must define a few relations. 
 
-%TODO Change from theorem env. to something more appropriate. Would just equation work? Ideas???
-\begin{theorem} %I'm not proving the theorem, but i'm referencing it. How should this be done mathematically?
-%TODO find name of this theorem
+
+\begin{theorem}
 
 Given $a,b \in \integers$ and $a,b$ share no common factors. Then 
 $$a^p = mb + 1$$
@@ -55,16 +54,17 @@ for some $m,p \in \integers$.
 \label{nonCommonPower}
 \end{theorem}
 
-%TODO Change from theorem env. to something more appropriate. Would just equation work? Ideas???
-
-\begin{theorem} %I'm not proving the theorem, but i'm referencing it. How should this be done mathematically?
-%TODO find name of this theorem
+\begin{theorem} 
 
 Given $a^x = mN + r$ for $a,x,m,N,r \in \integers$. Then
 $$a^{x + yp} = kN + r$$
 for some $y,p,k \in \integers$.
 \label{repeatingPower}
 \end{theorem}
+
+The above two theorems reference from General number field sieve and rational sieve.
+%https://en.wikipedia.org/wiki/Generalnumberfieldsieve
+%https://en.wikipedia.org/wiki/Rational_sieve
 
 We know that the guess given to the quantum portion of this algorithm, $g$, does not share any factors with the number we are trying to factor, $C$. Then by theorem \ref{nonCommonPower} we can express this as $r^p = mC + 1$. We can rearrange this to $(r^{p/2} + 1)(r^{p/2} - 1) = mC$. Then we know that our factors of $C$ are related to $(r^{p/2} + 1)$ and $(r^{p/2} - 1)$. Once we find these numbers, we can use Euler's formula to calculate the factors. 
 

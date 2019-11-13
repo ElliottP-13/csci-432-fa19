@@ -9,11 +9,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{project}
 
-\usepackage{enumerate}
 \usepackage{url}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{fancyhdr}
 \usepackage{xcolor}
 \usepackage{hyperref}
 
@@ -23,8 +19,30 @@
 
 % Missing ones from Sam
 \usepackage{latexsym}
-\usepackage{amsthm}
 
+%From Physics in highschool
+\usepackage{amsmath,amsthm,amsfonts} % packages for math
+\usepackage{graphicx,tikz,pgfplots,setspace} % packages for graphics
+\usepackage[margin=1in]{geometry}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{lipsum}%% a garbage package you don't need except to create examples.
+\usepackage{fancyhdr}
+\usepackage{gensymb}
+\usepackage{array}
+
+\pgfplotsset{compat=1.14}
+
+\pagestyle{fancy}
+\rhead{Page \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\usepackage{pgfplotstable}
+\usepackage{placeins}
+
+\newtheorem{theorem}{Theorem}
 
 % ... for page formatting
 \setlength{\oddsidemargin}{0pt}
@@ -50,31 +68,6 @@
     \clearpage
     \problem{\hwnum-\arabic{probnum}}
     \header}
-
-% ... Command to make the header box.
-\newcommand{\header}{
-  \begin{center}
-    \hspace*{-0.25in}\framebox[7in]{
-      \vbox{
-        \hbox to 6.25in { \@author \hfill \@date}
-        \vspace{1mm}
-        \hbox to 6.25in {\bf \hfill CSCI 432 Problem \@problem\ \hfill}
-        \vspace{1mm}
-        \hbox to 6.25in { Collaborators: {\it \@collab} \hfill}
-      }
-    }
-  \end{center}
-}
-
-% ... checks at the beginning of document
-\AtBeginDocument{
-  \ifx \@author \@empty
-    \@latexerr{You must use \noexpand\author{name} for 535 homework}
-  \fi
-  \ifx \@collab \@empty
-    \@latexerr{You must use \noexpand\collab{names or none} for 535 homework}
-  \fi
-}
 
 %% ... References
 

@@ -2,30 +2,7 @@
 
 \usepackage{../project}
 
-\usepackage{amsmath,amsthm,amsfonts} % packages for math
-\usepackage{graphicx,tikz,pgfplots,setspace} % packages for graphics
-\usepackage[margin=1in]{geometry}
-\usepackage{subcaption}
-\doublespacing
-\usepackage{float}
-\usepackage{multirow}
-\usepackage{enumerate}
-\usepackage{lipsum}%% a garbage package you don't need except to create examples.
-\usepackage{fancyhdr}
-\usepackage{gensymb}
-\usepackage{array}
-
-\pgfplotsset{compat=1.14}
-
-\pagestyle{fancy}
-\rhead{Page \thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-\usepackage{pgfplotstable}
-\usepackage{placeins}
-
 % ========================================================================
-% Put your lab title, names, and a brief abstract here.
 \title{Shor's Algorithm}
 \lhead{Elliott Pryor, Benjamin Bushnell, REID HELP}
 \author{Elliott Pryor, Benjamin Bushnell, REID HELP}
@@ -61,6 +38,7 @@ The quantum part of this algorithm is what turns the random number that we guess
 
 First, we must define a few relations. 
 
+%TODO Change from theorem env. to something more appropriate. Would just equation work? Ideas???
 \begin{theorem} %I'm not proving the theorem, but i'm refrencing it. How should this be done mathematically?
 %TODO find name of this theorem
 
@@ -69,6 +47,8 @@ $$a^p = mb + 1$$
 for some $m,p \in \integers$.
 \label{nonCommonPower}
 \end{theorem}
+
+%TODO Change from theorem env. to something more appropriate. Would just equation work? Ideas???
 
 \begin{theorem} %I'm not proving the theorem, but i'm refrencing it. How should this be done mathematically?
 %TODO find name of this theorem

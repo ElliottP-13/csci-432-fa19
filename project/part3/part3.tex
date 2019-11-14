@@ -1,6 +1,7 @@
 \documentclass[a4paper]{article}
 
 \usepackage{../project}
+\usepackage{cite}
 
 % ========================================================================
 \title{Shor's Algorithm}
@@ -43,32 +44,28 @@ The classical part of this algorithm is really simple. We just have to guess a r
 
 The quantum part of this algorithm is what turns the random number that we guessed into the actual factor. In short, it does this by finding the period of some function that we can relate to the factors. Given that that is a gross oversimplification of what happens, we will cover some of the math supporting Shor's Algorithm. 
 
-First, we must define a few relations. 
+First, we must state a few known relations. 
 
 
-\begin{theorem}
+\textbf{Euler's Theorem}, as seen in Equation \ref{eulerTheorem}, provides a relation given two co-prime integers, $a, n$. In Equation \ref{eulerTheorem}, $r$ represents the order of $a$ in the multiplicative group. $r$ is the Euler-Totient function, but for our case we can consider it some integer. 
+\begin{equation}
+a ^ r \equiv 1 \textrm{(mod n)}
+\label{eulerTheorem}
+\end{equation}
 
-Given $a,b \in \integers$ and $a,b$ share no common factors. Then 
-$$a^p = mb + 1$$
-for some $m,p \in \integers$.
-\label{nonCommonPower}
-\end{theorem}
 
-\begin{theorem} 
-
-Given $a^x = mN + r$ for $a,x,m,N,r \in \integers$. Then
-$$a^{x + yp} = kN + r$$
-for some $y,p,k \in \integers$.
+Given $a^x = mN + r$ for $a,x,m,N,r \in \integers$. Then equation \ref{repeatingPower} holds for some $y, p, k \in \integers$.
+\begin{equation}
+a^{x + yp} = kN + r
 \label{repeatingPower}
-\end{theorem}
+\end{equation}
 
-The above two theorems reference from General number field sieve and rational sieve.
-%TODO: reference format
-%https://en.wikipedia.org/wiki/Generalnumberfieldsieve
-%https://en.wikipedia.org/wiki/Rational_sieve
+We know that the guess given to the quantum portion of this algorithm, $g$, does not share any factors with the number we are trying to factor, $C$. Then by Euler's theorem (Theorem \ref{eulerTheorem}) we can express this as $r^p = mC + 1$. We can rearrange this to $(r^{p/2} + 1)(r^{p/2} - 1) = mC$. Then we know that our factors of $C$ are related to $(r^{p/2} + 1)$ and $(r^{p/2} - 1)$. Once we find these numbers, we can use Euler's formula to calculate the factors. 
 
-We know that the guess given to the quantum portion of this algorithm, $g$, does not share any factors with the number we are trying to factor, $C$. Then by theorem \ref{nonCommonPower} we can express this as $r^p = mC + 1$. We can rearrange this to $(r^{p/2} + 1)(r^{p/2} - 1) = mC$. Then we know that our factors of $C$ are related to $(r^{p/2} + 1)$ and $(r^{p/2} - 1)$. Once we find these numbers, we can use Euler's formula to calculate the factors. 
+In order to find $p$ we use theorem \ref{repeatingPower} and some properties of quantum computers. By theorem \ref{repeatingPower}, we know that $g^{x + yp} = kC + r$ mod(C) = $r$ $\forall y \in \integers$. So we can raise our guess to integer powers and search for when the remainder repeats. Classically, we cannot do this efficiently. However, with quantum computers we have a superposition of states that we can exploit to efficiently compute this. If we poll a random remainder value from our modulus calculation we get a superposition of the states that result in this value: $g^{x}$, $g^{x + p}$, $g^{x+2p}$... This has a period of $p$ which we can by taking the Fourier transform of this superposition. The Fourier transform returns the period of the function \cite{shor}. Assuming that $p$ is even, then we are done! We have now found the factors of $C$. If $p$ is odd, then $r^{p/2}$ is not an integer, and we have to restart the process with a new guess. 
 
-In order to find $p$ we use theorem \ref{repeatingPower} and some properties of quantum computers. By theorem \ref{repeatingPower}, we know that $g^{x + yp} = kC + r$ mod(C) = $r$ $\forall y \in \integers$. So we can raise our guess to integer powers and search for when the remainder repeats. Classically, we cannot do this efficiently. However, with quantum computers we have a superposition of states that we can exploit to efficiently compute this. If we poll a random remainder value from our modulus calculation we get a superposition of the states that result in this value: $g^{x}$, $g^{x + p}$, $g^{x+2p}$... This has a period of $p$ which we can by taking the Fourier transform of this superposition. The Fourier transform returns the period of the function. Assuming that $p$ is even, then we are done! We have now found the factors of $C$. If $p$ is odd, then $r^{p/2}$ is not an integer, and we have to restart the process with a new guess. 
+\newpage
+\bibliographystyle{abbrvnat}
+\bibliography{citations}
 
 \end{document}

@@ -30,13 +30,27 @@ Group members present today:
         free to use the internet if you are unsure).
         \vspace{1in}
 
-    \item Give an short example of a \emph{race condition},
+
+    \item What are the possible return values of the following algorithm:
+        \begin{algorithm}\caption{\textsc{MED}}\label{alg:seb}
+                {\bf Input:} $\emptyset$\\
+                {\bf Output:} $x$, an integer
+            \begin{algorithmic}[1]
+                \State $x=0$
+                \For{PARALEL $i=1$ to $3$}
+                \State $x=x+1$
+                \EndFor\\
+                \Return $x$
+            \end{algorithmic}
+        \end{algorithm}
+
+    \item Above is an  example of a \emph{race condition},
         where running concurrent
-        threads could result in multiple outputs.  Explain all of the possible
-        outputs of your example, and label each as \emph{desirable} or \emph{not
-        desirable}.
+        threads could result in multiple outputs.  Explain an example
+        application where this could be problematic.
         \vspace{3in}
 
+    \pagebreak
     \item Consider the two problems on the Collatz conjecture (sections 12.13
         and 19.9).  Test the Collatz conjecture for $n=5$.
         \vspace{1in}

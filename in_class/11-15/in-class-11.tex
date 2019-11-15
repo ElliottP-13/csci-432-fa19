@@ -23,45 +23,32 @@
 Group Number:\\
 Group members present today:
 
-\section*{Linear Programming}
-
-\begin{multicols}{2}
+\section*{Concurrent Programming}
 
 \begin{enumerate}
-    \item On this graph paper, draw the following lines:
-        \begin{align}
-            4x_1 - x_2 &= 8\\
-            2x_1 + x_2 &= 10\\
-            5x_1 -2x_2 &= -2 \\
-            x_1 &= 0\\
-            x_2 &= 0
-        \end{align}
-        HINT: use the bottom
-        left corner as the point~$(0,0)$
-    \item Shade in the feasible space of points $(x_1,x_2)\in \R^2)$ that
-        satisfy the following~inequalities:
-        \begin{align}
-            4x_1 - x_2 &\leq 8\\
-            2x_1 + x_2 &\leq 10\\
-            5x_1 -2x_2 &\geq -2 \\
-            x_1 &\geq 0\\
-            x_2 &\geq 0
-        \end{align}
-    \item As dotted lines, draw the lines where $x_1+x_2=0$, $x_1+x_2=2$, and
-        $x_1+x_2=2$.  What do you notice about these lines?
-        \vspace{.75in}
-    \item Suppose we want to maximize $x_1+x_2$ subject to the constraints
-        above.  It turns out that the answer always lies on a vertex of the
-        space you just shaded!  Compute $f(x_1,x_2)=x_1+x_2$ for each of the
-        vertices. Which point attains the maximum value?
-        \vspace{.75in}
-    \item Write this linear program in standard form.\\
-        \vspace{2in}
-    \item What happens if I change the last constraint to~$x_1 \leq 0$?
+    \item What is the difference between concurrency and parallelism? (Feel
+        free to use the internet if you are unsure).
+        \vspace{1in}
+
+    \item Give an short example of a \emph{race condition},
+        where running concurrent
+        threads could result in multiple outputs.  Explain all of the possible
+        outputs of your example, and label each as \emph{desirable} or \emph{not
+        desirable}.
+        \vspace{3in}
+
+    \item Consider the two problems on the Collatz conjecture (sections 12.13
+        and 19.9).  Test the Collatz conjecture for $n=5$.
+        \vspace{1in}
+
+    \item Give pseudocode for the parallel version of the Collatz check.
+        \vspace{3in}
+
+    \item The EPI book discusses the trade-off between the cost of starting
+        threads and the benefit for having things run concurrently (and
+        hopefully in parallel).  What do you conjecture to be the difference for
+        the optimal number of threads to be running in different programming
+        languages (for the same algorithm)?
 \end{enumerate}
-
-\end{multicols}
-
-\includegraphics[width=\textwidth]{graph-paper}
 
 \end{document}

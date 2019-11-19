@@ -15,27 +15,27 @@ def findFirst(s, start):
 
     return min(one, two, three)
 
-rootdir_glob = 'C:/Users/sid/Desktop/test/**/*' # Note the added asterisks
+
 # This will return absolute paths
 file_list = [f for f in iglob('**/*', recursive=True) if os.path.isfile(f)]
 
-test = "Hello, world..., ohelp; ,.; word"
+fileTest = open('project\part3\part3.tex', 'r')
+for line in fileTest:
+    print(line)
 
 for path in file_list:
     if path.endswith(".tex"):
-        file = open(path, 'r')
-        writeString = ""
-        for line in file:
-            indx = 0
-            for i in range(int(len(line)/80)):
-                indx = findFirst(line, indx)
-
-                if indx == -1:
-                    break
-
-                line = line[:indx] + '\n' + line[:indx]
-            writeString += line + '\n'
-
-        writeFile = open(path, 'w')
-        writeFile.write(writeString)
-
+        print()
+        print(path)
+        path.strip()
+        infile = open(path, 'r')
+        outfile = open(path, 'w')
+        writeME = ""
+        for line in infile:
+            print(line)
+            if len(line) > 80:
+                writeME = writeME + ('\n'.join(line[i:i + 80] for i in range(0, len(line), 80)))
+                print(writeME)
+            else:
+                writeME = writeME + line
+        outfile.write(writeME)

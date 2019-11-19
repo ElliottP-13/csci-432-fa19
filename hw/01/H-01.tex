@@ -1,56 +1,116 @@
 \documentclass{article}
+
 \usepackage{../fasy-hw}
+
 \usepackage{ wasysym }
 
+
+
 %% UPDATE these variables:
+
 \renewcommand{\hwnum}{1}
+
 \author{Elliott Pryor}
+
 \collab{Thomas Herndon}
+
 \date{due: 6 September 2019}
+
+
 
 \begin{document}
 
-\nextprob
-Consider the third function defined in EPI, Section 13.1 (Compute the
-Intersection of Two Sorted Arrays).
-\begin{enumerate}
-    \item This algorithm determines if two lists have any duplicates, and stores the values that are duplicated.
-    \item 
-\begin{proof}
-Let $a$ represent the difference between $i$ and $len(A)$ (ie. $len(A) - i$) and $b$ represents the difference between $j$ and $len(B)$. The loop terminates when either $a$ or $b$ reach the value of zero. Both $a$ and $b$ are in the $\naturals \cup 0$ which is a well ordered set. During each iteration of the loop $a$ and/or $b$ decrease. Therefore the loop will terminate. 
-\end{proof}    
-    
-\end{enumerate}
+
 
 \nextprob
+
+Consider the third function defined in EPI, Section 13.1 (Compute the
+
+Intersection of Two Sorted Arrays).
+
+\begin{enumerate}
+
+    \item This algorithm determines if two lists have any duplicates, and stores the values that are duplicated
+    \item 
+
+\begin{proof}
+
+Let $a$ represent the difference between $i$ and $len(A)$ (ie. $len(A) - i$) and $b$ represents the difference between $j$ and $len(B)$
+ The loop terminates when either $a$ or $b$ reach the value of zero. Both $a$ and $b$ are in the $\naturals \cup 0$ which is a well ordered set
+ During each iteration of the loop $a$ and/or $b$ decrease. Therefore the loop will terminate
+\end{proof}    
+
+    
+
+\end{enumerate}
+
+
+
+\nextprob
+
 Prove the following statement: Every tree with one or more nodes/vertices has
+
 exactly $n-1$ edges.
 
+
+
 \begin{proof} By Strong Induction\\
+
 Given a tree, T, with $n$ nodes we show that it must have $n-1$ edges. 
 
-\textbf{Base cases: } $n = 1$ is a tree with only one node. Therefore it has no edges and thus the total number of edges, e, is $e = 1 - 1 = 0$.\\
-$n = 2$ has one edge connecting both nodes. Therefore the total number of edges is $e = 2 - 1 = 1$ and the assumption holds.\\
 
-\textbf{Inductive Step: } Assume that a tree with $m$ nodes $1 \leq m \leq k$ has $m - 1$ edges for some $k \in \integers$ and $k \geq 2$. Then suppose we remove one edge from a graph with $m + 1$ nodes. Therefore two creating graphs, $G_1$ and $G_2$, with sizes $a$, $b$ respectively, where $1 \leq a,b \leq m$. Then by the inductive assumption, $G_1$ has $a-1$ edges and $G_2$ had $b-1$ edges. Then, the total number of edges is\\
+
+\textbf{Base cases: } $n = 1$ is a tree with only one node. Therefore it has no edges and thus the total number of edges
+ e, is $e = 1 - 1 = 0$.\\
+
+$n = 2$ has one edge connecting both nodes. Therefore the total number of edges is $e = 2 - 1 = 1$ and the assumption holds
+
+
+\textbf{Inductive Step: } Assume that a tree with $m$ nodes $1 \leq m \leq k$ has $m - 1$ edges for some $k \in \integers$ and $k \geq 2$
+ Then suppose we remove one edge from a graph with $m + 1$ nodes. Therefore two creating graphs
+ $G_1$ and $G_2$, with sizes $a$, $b$ respectively, where $1 \leq a,b \leq m$. Then by the inductive assumption
+ $G_1$ has $a-1$ edges and $G_2$ had $b-1$ edges. Then, the total number of edges is\\
+
 $(a-1) + (b-1) + 1 = (a + b) - 1 = (m + 1) - 1 = m$\\
-Therefore, a tree with $m + 1$ nodes has $m + 1 - 1 = m$ edges and the inductive step holds, and the claim is proven true by strong mathematical induction. 
+
+Therefore, a tree with $m + 1$ nodes has $m + 1 - 1 = m$ edges and the inductive step holds
+ and the claim is proven true by strong mathematical induction. 
+
 \end{proof}
 
+
+
 \nextprob
+
 Consider the following statement: If $a$ and $b$ are both odd numbers, then $ab$ is
+
 an odd number.
+
 \begin{enumerate}
+
     \item An odd number, n, is any number that can be expressed as $2a + 1$ st. $a \in \integers$
+
     \item An even number, n, is any number that can be expressed as $2a$ st. $a \in \integers$
+
     \item If $ab$ is an even number, then $a$ and $b$ are not both odd.
+
     \item Show that if $ab$ is an even number, then a and b are not both odd.
+
     	
+
     	\begin{proof} By Contradiction. \\
-Assume not, assume that the product $ab$ is an even number and both $a$ and $b$ are odd. Then, by the definition of an even number, $a$ can be expressed as $2*n$ for $n \in \integers$ and $b$ can be expressed as $2*m + 1$ for $m \in \integers$. Then by substitution $ab = (2*m + 1) * (2*n + 1) = 4mn + 2m + 2n + 1 = 2 *(2mn + m + n) + 1 = 2k + 1$ where $k = 2mn + m + n$, $k \in \integers$ because addition and multiplication are closed under the integers. \\
-Therefore, $ab$ is odd by the definition of an odd number, a contradiction, and the claim is proven true by contradiction.
+
+Assume not, assume that the product $ab$ is an even number and both $a$ and $b$ are odd
+ Then, by the definition of an even number, $a$ can be expressed as $2*n$ for $n \in \integers$ and $b$ can be expressed as $2*m + 1$ for $m \in \integers$
+ Then by substitution $ab = (2*m + 1) * (2*n + 1) = 4mn + 2m + 2n + 1 = 2 *(2mn + m + n) + 1 = 2k + 1$ where $k = 2mn + m + n$
+ $k \in \integers$ because addition and multiplication are closed under the integers
+Therefore, $ab$ is odd by the definition of an odd number, a contradiction, and the claim is proven true by contradiction
     	\end{proof}
+
     	
+
 \end{enumerate}
+
+
 
 \end{document}

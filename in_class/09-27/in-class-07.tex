@@ -1,43 +1,84 @@
 \documentclass{article}
 
+
+
 \usepackage[margin=1in]{geometry}
 
+
+
 \usepackage{amsfonts}
+
 \def\R{{\mathbb R}}
+
 \def\N{{\mathbb N}}
 
+
+
 \title{In-Class Exercise 07}
+
 \author{CSCI 432}
+
 \date{27 September 2019}
 
+
+
 \begin{document}
+
 \maketitle
 
+
+
 \noindent
+
 Group Number:\\
+
 Group members present today:
 
+
+
 \section*{More Dynamic Programs}
+
 Look at Section 16.2 (Compute the Levenshtein Distance).
 
+
+
 \begin{enumerate}
+
     \item Suppose that our alphabet is $A=\{a,b,c\}$.  Let $W(A)$ be the set of all
+
         words using that alphabet, that is, all strings that can be constructed
+
         using only letters in $A$.  List all words that are distance one from
+
         the word $ba$.
+
         \vspace{1in}
+
     \item Let $w \in W(A)$.  If the length of $w$ is $n$, how many words are unit
+
         distance from $w$? (note: you
+
         can count duplicate words arrived through different sequences of edits
+
         as different words here, in order to get an upper bound).  What about $w
+
         \in W(\mathcal{A})$, where $\mathcal{A}$ is the latin alphabet?
+
         \vspace{1in}
+
     \item Walk through the computation of computing $E(baa,cab)$.  You should
+
         create the table, just as they do in the EPI book.
+
         \vspace{2in}
-    \item On the back of this page, give an algorithm for one of the variants described in the textbook.
+
+    \item On the back of this page, give an algorithm for one of the variants described in the textbook
         (My favorite is the second one, that asks for the longest common
+
         subsequence).
+
 \end{enumerate}
+
+
 
 \end{document}

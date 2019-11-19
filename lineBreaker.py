@@ -44,7 +44,7 @@ for path in file_list:
                 indx = findFirst(line, lastIndx + 80)
                 print(str(indx-lastIndx))
                 arr.append(line[lastIndx:indx])
-                lastIndx = indx
+                lastIndx = indx + 1
 
                 run = indx < len(line) - 5
 

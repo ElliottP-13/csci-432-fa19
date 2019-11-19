@@ -1,71 +1,141 @@
 \documentclass{article}
 
+
+
 \usepackage[margin=1in]{geometry}
 
+
+
 \usepackage{amsfonts}
+
 \def\R{{\mathbb R}}
+
 \def\N{{\mathbb N}}
 
+
+
 \title{In-Class Exercise 04}
+
 \author{CSCI 432}
 
+
+
 \begin{document}
+
 \maketitle
 
+
+
 \noindent
+
 Group Number:\\
+
 Group members present today:
+
+
 
 \section*{Minimum Enclosing Disc (MED)}
 
+
+
 \paragraph{Definitions:}
 
+
+
 \begin{enumerate}
+
     \item Given $c \in \R^2$ and $r \in \R$ such that $r \geq 0$, we define the
+
         disc $D(c,r) := \{ x \in \R^2 ~|~ ||x-c|| \leq r \}$.
+
         \begin{itemize}
+
             \item Draw $D(0,1)$ and $D(0,2)$. Note: $0\in \R^2$ is the origin
+
                 $(0,0)$.
+
                 \vspace{3ex}
+
             \item Let $d>1$.  The generalization of a two-dimensional disc is a
+
                 the \emph{Euclidean metric ball}.  Give a general definition of
+
                 a ball in $\R^d$.  Denote this ball by $\mathbb{B}_d(c,r)$.
+
                 \vspace{3ex}
+
             \item Draw $\mathbb{B}_1(0,1)$.
+
                 \vspace{3ex}
+
         \end{itemize}
+
     \item A \emph{circle} is the boundary of the disc.  What is an equation that
+
         defines the circle $C(c,r)$?
+
                 \vspace{3ex}
+
 \end{enumerate}
+
+
 
 \paragraph{Problem Statement:}
 
+
+
 Let $P \subset \R^2$, with $|P|=n \in \N$.  We wish to find the smallest radius
+
 $r$ such that there exists a $c \in \R^2$, where $P \subset D(c,r)$.
 
+
+
 \begin{enumerate}
+
     \item If $n=1$, what is the minimum enclosing disc?  Is it unique?
+
         \vspace{3ex}
+
     \item If $n=2$, what is the minimum enclosing disc?  Is it unique?
+
         \vspace{3ex}
+
     \item If $n=3$, what is the minimum enclosing disc?  Is it unique?
+
         \vspace{3ex}
+
     \item If $n=4$, what are the possible cases that could arise?  How do we
+
         decide what the MED is?
+
         \vspace{3ex}
+
     \item Use the following to consider the general case:
+
         consider the following: choose a point $p$ at random.  Remove $p$ from $P$
+
         to obtain $P'$
+
         and compute SEB of $P'$.  What are the two cases that can happen when we
+
         add $p$ back in?  What is the probability of each?
+
         \vspace{3ex}
+
     \item For the expected time analysis, what is the recursion that we have?
+
         What is the closed form?
+
         \vspace{3ex}
+
     \item Challenge: In $\R^d$, how many points are needed in order to uniquely define a
+
         ball whose boundary contains those points?
+
         \vspace{3ex}
+
 \end{enumerate}
+
+
 
 \end{document}

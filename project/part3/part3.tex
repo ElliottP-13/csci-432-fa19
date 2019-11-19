@@ -1,73 +1,190 @@
 \documentclass[a4paper]{article}
 
+
+
 \usepackage{../project}
+
 \usepackage{cite}
 
+
+
 % ========================================================================
+
 \title{Shor's Algorithm}
+
 \lhead{Elliott Pryor, Benjamin Bushnell, Shengnan Zhou}
+
 \author{Elliott Pryor, Benjamin Bushnell, Shengnan Zhou}
+
 \date{13 November, 2019}
+
 % ========================================================================
+
 \usepackage{multicol}
+
 \setlength{\columnsep}{0cm}
+
 \begin{document}
 
 
-\maketitle % This line creates the title (DO NOT CHANGE)
-\section{The Problem}
-The problem of factoring large numbers has existed for centuries. Euclid's algorithm provides a very efficient way to determine the greatest common divisor of two numbers (GCD). Say we look for $GCD(a,b)$ then $a$ is a factor of $b$ if the $GCD(a, b) > 1$. If we have one of the factors, it is very easy to find the other factor as we can just divide the number by its factor. However, factoring very large numbers using Euclid's algorithm is very time consuming as we have to try every single number less than the value we are factoring. We can make a few improvements to our guesses; however, classically this problem cannot be solved in polynomial time.
 
-The RSA encryption algorithm takes advantage of this fact. First, some background information on RSA encryption. RSA is what's called an asymmetrical encryption algorithm. To best illustrate what asymmetrical encryption is, here's an example: Client $A$ and Server $B$ both have public encryption keys and private decryption keys. Each entity's keys are related such that their private and public keys are linked, and data encrypted with an entity's public key can only be easily decrypted by their own decryption key. So let's say $B$ wants to send an encrypted message to $A$, that no one else is allowed to see. $B$ uses $A$'s public key to encrypt the message, then sends $A$ the encrypted message. Because $A$ kept their decryption key private, they will be the only party able to use it to decrypt the message that $B$ sent. If a nefarious party had intercepted the message, all they would have is the public encryption key, and the encrypted message. However, without the decryption key they would have no way to decrypt and read the message. This is how RSA works as an asymmetrical encryption algorithm. \cite{ytRSA}
+
+
+\maketitle % This line creates the title (DO NOT CHANGE)
+
+\section{The Problem}
+
+The problem of factoring large numbers has existed for centuries. Euclid's algorithm provides a very efficient way to determine the greatest common divisor of two numbers (GCD)
+ Say we look for $GCD(a,b)$ then $a$ is a factor of $b$ if the $GCD(a, b) > 1$. If we have one of the factors
+ it is very easy to find the other factor as we can just divide the number by its factor
+ However, factoring very large numbers using Euclid's algorithm is very time consuming as we have to try every single number less than the value we are factoring
+ We can make a few improvements to our guesses; however, classically this problem cannot be solved in polynomial time
+
+
+The RSA encryption algorithm takes advantage of this fact. First, some background information on RSA encryption
+ RSA is what's called an asymmetrical encryption algorithm. To best illustrate what asymmetrical encryption is
+ here's an example: Client $A$ and Server $B$ both have public encryption keys and private decryption keys
+ Each entity's keys are related such that their private and public keys are linked
+ and data encrypted with an entity's public key can only be easily decrypted by their own decryption key
+ So let's say $B$ wants to send an encrypted message to $A$, that no one else is allowed to see
+ $B$ uses $A$'s public key to encrypt the message, then sends $A$ the encrypted message
+ Because $A$ kept their decryption key private, they will be the only party able to use it to decrypt the message that $B$ sent
+ If a nefarious party had intercepted the message, all they would have is the public encryption key
+ and the encrypted message. However, without the decryption key they would have no way to decrypt and read the message
+ This is how RSA works as an asymmetrical encryption algorithm. \cite{ytRSA}
+
+
 
 % TODO: Talk more about HOW RSA leverages the factorization problem, and not just asymmetrical encryption
-So, how does RSA leverage the np time complexity of factorization in this assymetrical encryption model? Well, to put it very simply, when data is encrypted with a public encryption key, it is converted to a numerical value (say $d$) and then added to a very large number (let's call this large number $N$). $N+d$ would be very difficult to factor. However, the private key of the entity, whose public key was used to encrypt the data, has a shortcut to factoring $N+d$. The decryption key works in such a way that when it is run on $N + d$, it is easy to determine $d$. \cite{ytRSA}
+
+So, how does RSA leverage the np time complexity of factorization in this assymetrical encryption model? Well
+ to put it very simply, when data is encrypted with a public encryption key, it is converted to a numerical value (say $d$) and then added to a very large number (let's call this large number $N$)
+ $N+d$ would be very difficult to factor. However, the private key of the entity
+ whose public key was used to encrypt the data, has a shortcut to factoring $N+d$
+ The decryption key works in such a way that when it is run on $N + d$, it is easy to determine $d$
+ \cite{ytRSA}
+
+
 
 % Impact on society (done, but modify as you wish)
+
 % just added a little more, feel free to modify
-Though it isn't impossible to break, the time required to crack RSA encryption is an effective deterrent for malicious individuals who wish to steal data. Because of it's efficacy, RSA encryption is widely used for encrypting sensitive data which is to be sent between two parties. For example, it is used for things like emails, chat messages and web browsers. Clearly, it is very important that RSA encryption remains uncracked so that the security of sensitive data sent using these services remains intact. On the other hand, quantum computing can make things easier and faster, but even so, quantum computing can only decrypt small numbers. It would still take years to break some standard RSA encryptions at the current state. Until then, we are safe.
+
+Though it isn't impossible to break, the time required to crack RSA encryption is an effective deterrent for malicious individuals who wish to steal data
+ Because of it's efficacy, RSA encryption is widely used for encrypting sensitive data which is to be sent between two parties
+ For example, it is used for things like emails, chat messages and web browsers. Clearly
+ it is very important that RSA encryption remains uncracked so that the security of sensitive data sent using these services remains intact
+ On the other hand, quantum computing can make things easier and faster, but even so
+ quantum computing can only decrypt small numbers. It would still take years to break some standard RSA encryptions at the current state
+ Until then, we are safe.
+
+
 
 %TODO just added some, feel free to add or modify
-This brings us to Shor's algorithm. Shor's algorithm was invented in 1994, and it cleverly uses properties of quantum computing to quickly solve prime factorization of even large numbers. This is exactly what RSA assumes is not possible. The short description of Shor's algorithm is that we can take any random guess $g$, run the guess through Shor's algorithm, and get back a better guess $g^{p/2} \pm 1$. For any large number $N$, when we take a random guess $g$, $mN = g^p +1$ for some $p$ and $m$. Break this down, we get $(g^{p/2}+1)(g^{p/2}-1) = mN$. Once we have the two better guesses, we can use Euclid's algorithm to find the shared factors, thus breaks the encryption. However, the most important part of this algorithm is to find $p$, and it takes very very long time without quantum computing. Quantum computing can take in multiple values as superpositions, and find $p$ fast.
+
+This brings us to Shor's algorithm. Shor's algorithm was invented in 1994, and it cleverly uses properties of quantum computing to quickly solve prime factorization of even large numbers
+ This is exactly what RSA assumes is not possible. The short description of Shor's algorithm is that we can take any random guess $g$
+ run the guess through Shor's algorithm, and get back a better guess $g^{p/2} \pm 1$
+ For any large number $N$, when we take a random guess $g$, $mN = g^p +1$ for some $p$ and $m$
+ Break this down, we get $(g^{p/2}+1)(g^{p/2}-1) = mN$. Once we have the two better guesses
+ we can use Euclid's algorithm to find the shared factors, thus breaks the encryption
+ However, the most important part of this algorithm is to find $p$, and it takes very very long time without quantum computing
+ Quantum computing can take in multiple values as superpositions, and find $p$ fast
+
 
 For sections \ref{classicalSec} and \ref{quantumSec} assume we are trying to find: 
+
 $$ab = C$$
+
 where $a$ and $b$ are factors of $n$ and $a,b,C \in \naturals$.
 
+
+
 \section{Classical Computation}
+
 \label{classicalSec}
-The classical part of this algorithm is really simple. We just have to guess a random number as our factor. Then we use Eucild's algorithm to verify that we didn't get extremely lucky and guess a factor. If we guess a factor, then we don't need to use the quantum part of the algorithm. Then we feed our guess (which we know does NOT share factors with the number in question) into the quantum algorithm. 
+
+The classical part of this algorithm is really simple. We just have to guess a random number as our factor
+ Then we use Eucild's algorithm to verify that we didn't get extremely lucky and guess a factor
+ If we guess a factor, then we don't need to use the quantum part of the algorithm
+ Then we feed our guess (which we know does NOT share factors with the number in question) into the quantum algorithm
+
+
 
 
 \section{The Quantum Algorithm}
+
 \label{quantumSec}
 
-The quantum part of this algorithm is what turns the random number that we guessed into the actual factor. In short, it does this by finding the period of some function that we can relate to the factors. Given that that is a gross oversimplification of what happens, we will cover some of the math supporting Shor's Algorithm. 
+
+
+The quantum part of this algorithm is what turns the random number that we guessed into the actual factor
+ In short, it does this by finding the period of some function that we can relate to the factors
+ Given that that is a gross oversimplification of what happens, we will cover some of the math supporting Shor's Algorithm
+
 
 First, we must state a few known relations. 
 
 
-\textbf{Euler's Theorem}, as seen in Equation \ref{eulerTheorem}, provides a relation given two co-prime integers, $a, n$. In Equation \ref{eulerTheorem}, $r$ represents the order of $a$ in the multiplicative group. $r$ is the Euler-Totient function, but for our case we can consider it some integer. 
+
+
+
+\textbf{Euler's Theorem}, as seen in Equation \ref{eulerTheorem}, provides a relation given two co-prime integers
+ $a, n$. In Equation \ref{eulerTheorem}, $r$ represents the order of $a$ in the multiplicative group
+ $r$ is the Euler-Totient function, but for our case we can consider it some integer
 \begin{equation}
+
 a ^ r \equiv 1 \textrm{(mod n)}
+
 \label{eulerTheorem}
+
 \end{equation}
 
 
-Given $a^x = mN + r$ for $a,x,m,N,r \in \integers$. Then equation \ref{repeatingPower} holds for some $y, p, k \in \integers$.
+
+
+
+Given $a^x = mN + r$ for $a,x,m,N,r \in \integers$. Then equation \ref{repeatingPower} holds for some $y
+ p, k \in \integers$.
+
 \begin{equation}
+
 a^{x + yp} = kN + r
+
 \label{repeatingPower}
+
 \end{equation}
 
-We know that the guess given to the quantum portion of this algorithm, $g$, does not share any factors with the number we are trying to factor, $C$. Then by Euler's theorem (Theorem \ref{eulerTheorem}) we can express this as $r^p = mC + 1$. We can rearrange this to $(r^{p/2} + 1)(r^{p/2} - 1) = mC$. Then we know that our factors of $C$ are related to $(r^{p/2} + 1)$ and $(r^{p/2} - 1)$. Once we find these numbers, we can use Euler's formula to calculate the factors. 
 
-In order to find $p$ we use theorem \ref{repeatingPower} and some properties of quantum computers. By theorem \ref{repeatingPower}, we know that $g^{x + yp} = kC + r$ mod(C) = $r$ $\forall y \in \integers$. So we can raise our guess to integer powers and search for when the remainder repeats. Classically, we cannot do this efficiently. However, with quantum computers we have a superposition of states that we can exploit to efficiently compute this. If we poll a random remainder value from our modulus calculation we get a superposition of the states that result in this value: $g^{x}$, $g^{x + p}$, $g^{x+2p}$... This has a period of $p$ which we can by taking the Fourier transform of this superposition. The Fourier transform returns the period of the function \cite{shor}. Assuming that $p$ is even, then we are done! We have now found the factors of $C$. If $p$ is odd, then $r^{p/2}$ is not an integer, and we have to restart the process with a new guess. 
+
+We know that the guess given to the quantum portion of this algorithm, $g$, does not share any factors with the number we are trying to factor
+ $C$. Then by Euler's theorem (Theorem \ref{eulerTheorem}) we can express this as $r^p = mC + 1$
+ We can rearrange this to $(r^{p/2} + 1)(r^{p/2} - 1) = mC$. Then we know that our factors of $C$ are related to $(r^{p/2} + 1)$ and $(r^{p/2} - 1)$
+ Once we find these numbers, we can use Euler's formula to calculate the factors
+
+
+In order to find $p$ we use theorem \ref{repeatingPower} and some properties of quantum computers
+ By theorem \ref{repeatingPower}, we know that $g^{x + yp} = kC + r$ mod(C) = $r$ $\forall y \in \integers$
+ So we can raise our guess to integer powers and search for when the remainder repeats
+ Classically, we cannot do this efficiently. However, with quantum computers we have a superposition of states that we can exploit to efficiently compute this
+ If we poll a random remainder value from our modulus calculation we get a superposition of the states that result in this value: $g^{x}$
+ $g^{x + p}$, $g^{x+2p}$... This has a period of $p$ which we can by taking the Fourier transform of this superposition
+ The Fourier transform returns the period of the function \cite{shor}. Assuming that $p$ is even
+ then we are done! We have now found the factors of $C$. If $p$ is odd, then $r^{p/2}$ is not an integer
+ and we have to restart the process with a new guess. 
+
+
 
 \newpage
+
 \nocite{*}
+
 \bibliographystyle{abbrvnat}
+
 \bibliography{citations}
+
+
+
 
 
 \end{document}

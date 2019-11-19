@@ -1,5 +1,6 @@
 import os
 from glob import iglob
+import math
 
 
 def findFirst(s, start):
@@ -19,7 +20,10 @@ def findFirst(s, start):
 # This will return absolute paths
 file_list = [f for f in iglob('**/*', recursive=True) if os.path.isfile(f)]
 
-
+x = "ab,cdef.ghij,klmnopqrst,uwxyz"
+print(findFirst(x, 0))
+print(findFirst(x, 5))
+print(findFirst(x, 14))
 
 fileTest = open('demo.tex', 'r')
 arr = []
@@ -34,8 +38,16 @@ for path in file_list:
         fileTest = open(path, 'r')
         arr = []
         for line in fileTest:
-            for i in range(0, len(line), 80):
-                arr.append(line[i: i + 80].strip())
+            run = True
+            lastIndx = 0
+            while run:
+                indx = findFirst(line, lastIndx + 80)
+                print(str(indx-lastIndx))
+                arr.append(line[lastIndx:indx])
+                lastIndx = indx
+
+                run = indx < len(line) - 5
+
         fileTest.close()
 
         fileWrite = open(path, 'w')

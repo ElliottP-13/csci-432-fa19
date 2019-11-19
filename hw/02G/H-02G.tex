@@ -1,207 +1,104 @@
 \documentclass{article}
-
 \usepackage{../fasy-hw}
-
 \usepackage{ wasysym }
 
-
-
 %% UPDATE these variables:
-
 \renewcommand{\hwnum}{2}
-
 \author{TODO-Your Group Number and Names Here}
-
 \collab{TODO-list your collaborators here}
-
 \date{due: 20 September 2019}
-
-
 
 \begin{document}
 
-
-
 \nextprob
-
 Give a linear-time algorithm that takes two sorted arrays of real numbers as
-
 input, and returns a merged list of sorted numbers.  You should give your answer
-
 in pseudocode.    Your answer should contain:
-
 \begin{itemize}
-
-    \item A prose explanation of the algorithm.
-
-    \item Psuedocode. (Be sure to review the two resources on pseudocode that were
-
-        posted as readings for Week 2!  I also suggest the algorithm /
-
-        algorithmx package in LaTex.)
-
-    \item The decrementing function for any loop or recursion.
-
-    \item Justification of why the runtime is linear.
-
+\item A prose explanation of the algorithm.
+\item Psuedocode. (Be sure to review the two resources on pseudocode that were
+posted as readings for Week 2!  I also suggest the algorithm /
+algorithmx package in LaTex.)
+\item The decrementing function for any loop or recursion.
+\item Justification of why the runtime is linear.
 \end{itemize}
 
-
-
 \nextprob
-
 EPI-C++ 15.4 / EIP-Java 15.5 (Generate the Power Set) gives code to compute the power set of a set
-
 (without duplicates).  Present this problem and solution in your own words using
-
 pseudocode.
 
-
-
 \nextprob
-
 In EPI 15.1 (The Towers of Hanoi Problem), prove that the algorithm as presented
-
 terminates.  In particular, you should give the decrementing function for the
-
 recursion.
 
-
-
 \nextprob
-
 For the stock market problem discussed in class on September 6th (and in CLRS
-
 4.1), walk through
-
 the algorithm for the following input:
-
 $$\mathtt{price} = \{ 3, 6, 8, 2, 1, 10, 5, 7 \}. $$
 
-
-
 \nextprob
-
 Prove using induction that the closed form of:
-
 $$T(n) = \begin{cases}
-
-            1        & n=1\\
-
-            T(n-1)+n & n>1
-
-         \end{cases}
-
+1        & n=1\\
+T(n-1)+n & n>1
+\end{cases}
 $$
-
 is $O(n^2)$.
 
-
-
 \nextprob
-
 What is the closed form of the following recurrence relations?  Use Master's
-
 theorem to justify your answers:
-
 \begin{enumerate}
-
-    \item $T(n) = 16 T(n/4) + \Theta(n)$
-
-    \item $T(n) = 2 T(n/2) + n \log{n}$
-
-    \item $T(n) = 6 T(n/3) + n^2 \log{n}$
-
-    \item $T(n) = 4 T(n/2) + n^2$
-
-    \item $T(n) = 9 T(n/3) + n$
-
+\item $T(n) = 16 T(n/4) + \Theta(n)$
+\item $T(n) = 2 T(n/2) + n \log{n}$
+\item $T(n) = 6 T(n/3) + n^2 \log{n}$
+\item $T(n) = 4 T(n/2) + n^2$
+\item $T(n) = 9 T(n/3) + n$
 \end{enumerate}
-
 Note: we assume that $T(1)=\Theta(1)$ whenever it is not explicitly given.
 
-
-
 \nextprob
-
 \emph{The skyline problem:} You are waiting for the ferry across the river to
-
 get into a big city, and notice
-
 $n$ buildings in front of you.  You take a photo, and notice that each building
-
 has the silhouette of a rectangle.  Suppose you  represent each building as a
-
 triple $(x_1,x_2,y)$, where the building can be seen from $x_1$ to $x_2$
-
 horizontally and has a height of $y$.  Let $\mathtt{rect(b)}$ be the set of
-
 points inside this rectangle (including the boundary).  Let $\mathtt{building}$ be the set of $n$
-
 triples. Design an algorithm that takes $\mathtt{buildings}$ as input, and
-
 returns the skyline, where the skyline is a sequence of $(x,y)$ coordinates
-
 defining $\cup_{b \in \mathtt{buildings}} \mathtt{rect}(b)$.
 
-
-
 \nextprob
-
 The \texttt{rand()} function in the standard C library returns a
-
 uniformly random number in \texttt{[0,RANDMAX-1]}. Does \texttt{rand}()$\mod n$
-
 generate a number uniformly distributed in $[0,n-1]$?
-
-
 
 Note I: This is the second variant in EPI 5.12.
 
-
-
 Note II: When asked questions of this form, you are expected to justify your
-
 answer.
-
-
 
 \nextprob
 
-
-
 Algorithms where we use randomization to find a deterministic answer are known
-
 as Las Vegas algorithms.  Monte Carlo algorithms also use randomization, but
-
 might not always give the right answer; however, they either have a high
-
 probability of being correct or close to correct.
 
-
-
 \begin{enumerate}[(a)]
-
-    \item Give a Monte Carol algorithm to estimate~$\pi$.
-
-    \item Let $n$ be the number of random numbers used by your algorithm.
-
-        Explain why as $n \to \infty$, the expectation of the output for your
-
-        algorithm is~$\pi$.
-
-    \item Implement this algorithm and plot a line graph of
-
-        the values returned for at least $10$ values of~$n$.
-
+\item Give a Monte Carol algorithm to estimate~$\pi$.
+\item Let $n$ be the number of random numbers used by your algorithm.
+Explain why as $n \to \infty$, the expectation of the output for your
+algorithm is~$\pi$.
+\item Implement this algorithm and plot a line graph of
+the values returned for at least $10$ values of~$n$.
 \end{enumerate}
 
-
-
 Note: We can use the function \texttt{randReal}$(a,b)$ that returns a random
-
 real number between $a$ and $b$ inclusive.
-
-
 
 \end{document}

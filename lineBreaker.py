@@ -4,14 +4,14 @@ import math
 
 
 def findFirst(s, start):
-    one = s.find(',', start)
-    two = s.find('.', start)
-    three = s.find(';', start)
-    if one == -1:
+    one = s.find(',', start) + 1
+    two = s.find('.', start) + 1
+    three = s.find(';', start) + 1
+    if one == 0:
         one = len(s)
-    if two == -1:
+    if two == 0:
         two = len(s)
-    if three == -1:
+    if three == 0:
         three = len(s)
 
     return min(one, two, three)
@@ -30,8 +30,8 @@ for path in file_list:
             lastIndx = 0
             while run:
                 indx = findFirst(line, lastIndx + 80)
-                arr.append(line[lastIndx:indx])
-                lastIndx = indx + 1
+                arr.append(line[lastIndx:indx].strip())
+                lastIndx = indx
 
                 run = indx < len(line) - 5
 

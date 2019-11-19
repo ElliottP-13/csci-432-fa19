@@ -1,139 +1,70 @@
 \documentclass{article}
 
-
-
 \usepackage{algorithm,algpseudocode}
-
 \usepackage[margin=1in]{geometry}
-
 \usepackage{enumerate}
-
 \usepackage{multicol}
-
 \usepackage{graphicx}
-
 \DeclareGraphicsExtensions{.pdf,.PDF,.png,.PNG}
-
 \graphicspath{{figs/}}
 
-
-
 \usepackage{amsfonts,amsmath}
-
 \def\R{{\mathbb R}}
-
 \def\N{{\mathbb N}}
 
-
-
 \title{In-Class Exercise 10}
-
 \author{CSCI 432}
-
 \date{28 October 2019}
 
-
-
 \begin{document}
-
 \maketitle
 
-
-
 \noindent
-
 Group Number:\\
-
 Group members present today:
-
-
 
 \section*{Concurrent Programming}
 
-
-
 \begin{enumerate}
-
-    \item What is the difference between concurrency and parallelism? (Feel
-
-        free to use the internet if you are unsure).
-
-        \vspace{1in}
+\item What is the difference between concurrency and parallelism? (Feel
+free to use the internet if you are unsure).
+\vspace{1in}
 
 
+\item What are the possible return values of the following algorithm?  What
+is the expected return value?
+\begin{algorithm}\caption{\textsc{ComputeX}}
+{\bf Input:} $\emptyset$\\
+{\bf Output:} $x$, an integer
+\begin{algorithmic}[1]
+\State $x=0$
+\For{PARALEL $i=1$ to $3$}
+\State $x=x+1$
+\EndFor\\
+\Return $x$
+\end{algorithmic}
+\end{algorithm}
+\vspace{1in}
 
+\item Above is an  example of a \emph{race condition},
+where running concurrent
+threads could result in multiple outputs.  Explain an example
+application where this could be problematic.
+\vspace{3in}
 
+\pagebreak
+\item Consider the two problems on the Collatz conjecture (sections 12.13
+and 19.9).  Test the Collatz conjecture for $n=5$.
+\vspace{1in}
 
-    \item What are the possible return values of the following algorithm?  What
+\item Give pseudocode for the parallel version of the Collatz check.
+\vspace{3in}
 
-        is the expected return value?
-
-        \begin{algorithm}\caption{\textsc{ComputeX}}
-
-                {\bf Input:} $\emptyset$\\
-
-                {\bf Output:} $x$, an integer
-
-            \begin{algorithmic}[1]
-
-                \State $x=0$
-
-                \For{PARALEL $i=1$ to $3$}
-
-                \State $x=x+1$
-
-                \EndFor\\
-
-                \Return $x$
-
-            \end{algorithmic}
-
-        \end{algorithm}
-
-        \vspace{1in}
-
-
-
-    \item Above is an  example of a \emph{race condition},
-
-        where running concurrent
-
-        threads could result in multiple outputs.  Explain an example
-
-        application where this could be problematic.
-
-        \vspace{3in}
-
-
-
-    \pagebreak
-
-    \item Consider the two problems on the Collatz conjecture (sections 12.13
-
-        and 19.9).  Test the Collatz conjecture for $n=5$.
-
-        \vspace{1in}
-
-
-
-    \item Give pseudocode for the parallel version of the Collatz check.
-
-        \vspace{3in}
-
-
-
-    \item The EPI book discusses the trade-off between the cost of starting
-
-        threads and the benefit for having things run concurrently (and
-
-        hopefully in parallel).  What do you conjecture to be the difference for
-
-        the optimal number of threads to be running in different programming
-
-        languages (for the same algorithm)?
-
+\item The EPI book discusses the trade-off between the cost of starting
+threads and the benefit for having things run concurrently (and
+hopefully in parallel).  What do you conjecture to be the difference for
+the optimal number of threads to be running in different programming
+languages (for the same algorithm)?
 \end{enumerate}
-
-
 
 \end{document}

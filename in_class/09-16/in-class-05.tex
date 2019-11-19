@@ -1,139 +1,70 @@
 \documentclass{article}
 
-
-
 \usepackage[margin=1in]{geometry}
 
-
-
 \usepackage{amsfonts}
-
 \def\R{{\mathbb R}}
-
 \def\N{{\mathbb N}}
 
-
-
 \title{In-Class Exercise 05}
-
 \author{CSCI 432}
 
-
-
 \begin{document}
-
 \maketitle
 
-
-
 \noindent
-
 Group Number:\\
-
 Group members present today:
 
-
-
 \section*{Sample Offline Data}
-
 Randomized algorithms can take various forms:
-
 \begin{itemize}
-
-    \item Uses randomization in order to have expected runtime better than
-
-        worst-case runtime.
-
-    \item Uses randomization to produce the correct answer or an approximation
-
-        of it, with high
-
-        probability.
-
-    \item Takes a random number generator (often built into the programming
-
-        language) and produces a random subset or random
-
-        perturbation of the data.  These types of algorithms are often used to
-
-        introduce randomness in the first two types of algorithms.
-
+\item Uses randomization in order to have expected runtime better than
+worst-case runtime.
+\item Uses randomization to produce the correct answer or an approximation
+of it, with high
+probability.
+\item Takes a random number generator (often built into the programming
+language) and produces a random subset or random
+perturbation of the data.  These types of algorithms are often used to
+introduce randomness in the first two types of algorithms.
 \end{itemize}
-
 EPI 5.12 (Sample Offline Data) gives an algorithm to compute a random
-
 subset of an array data.  Use the back of this page or another sheet of paper
-
 for your answers.
 
-
-
 \begin{enumerate}
-
-    \item Write pseudocode for this algorithm using a while loop instead of a
-
-        for loop.
-
-    \item What is the decrementing function for the while loop?
-
-    \item For the following questions, suppose the input array is
-
-        $A=[1,2,\ldots,n]$, an let $S$ be the set
-
-        returned. If $k=1$, what is the probability that $S=\{1\}$?  If $t$ is
-
-        an integer between one and $n$ (inclusive), what is the
-
-        probability that $S=\{t\}$?  Justify your answer.
-
-    \item If $k=2$, what is the probability that $S=\{i,j\}$ for $i \neq j$
-
-        integers between one and $n$ (inclusive)? Be careful, as
-
-        $\{i,j\}$ should be considered as a set, not an ordered list.
-
-    \item What is the decrementing function of your while loop?
-
-    \item What is the total space complexity of this algorithm? Justify.
-
+\item Write pseudocode for this algorithm using a while loop instead of a
+for loop.
+\item What is the decrementing function for the while loop?
+\item For the following questions, suppose the input array is
+$A=[1,2,\ldots,n]$, an let $S$ be the set
+returned. If $k=1$, what is the probability that $S=\{1\}$?  If $t$ is
+an integer between one and $n$ (inclusive), what is the
+probability that $S=\{t\}$?  Justify your answer.
+\item If $k=2$, what is the probability that $S=\{i,j\}$ for $i \neq j$
+integers between one and $n$ (inclusive)? Be careful, as
+$\{i,j\}$ should be considered as a set, not an ordered list.
+\item What is the decrementing function of your while loop?
+\item What is the total space complexity of this algorithm? Justify.
 \end{enumerate}
-
-
 
 \section*{Additional Probability Review}
-
 If you finish the above, work on the following questions:
-
 \begin{enumerate}
-
-    \item In the algorithm above, if we set $k=n$ and return an array instead of
-
-        a set, is our
-
-        array a random permutation of the input?
-
-    \item You might recall that the pigenhole principle is that if we have $n$
-
-        boxes that contain $n+1$ objects, then one box must have at least two
-
-        objects.  What is the expected number of objects per box?  Now, suppose
-
-        we have $n$ boxes and $n$ objects.  What is the
-
-        expected number of boxes with exactly one object?
-
-    \item Shake-a-day is a gambling game, where you pay $\$0.50$ and roll five
-
-        dice.  If all dice are the same number, then you win the pot (often, a
-
-        portion stays behind to seed the next pot, but we will ignore that in
-
-        our calculations).  What is the amount of money in the pot needed for
-
-        your expected roll to have a positive value?
-
+\item In the algorithm above, if we set $k=n$ and return an array instead of
+a set, is our
+array a random permutation of the input?
+\item You might recall that the pigenhole principle is that if we have $n$
+boxes that contain $n+1$ objects, then one box must have at least two
+objects.  What is the expected number of objects per box?  Now, suppose
+we have $n$ boxes and $n$ objects.  What is the
+expected number of boxes with exactly one object?
+\item Shake-a-day is a gambling game, where you pay $\$0.50$ and roll five
+dice.  If all dice are the same number, then you win the pot (often, a
+portion stays behind to seed the next pot, but we will ignore that in
+our calculations).  What is the amount of money in the pot needed for
+your expected roll to have a positive value?
 \end{enumerate}
-
-
 
 \end{document}

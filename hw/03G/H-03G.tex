@@ -1,514 +1,300 @@
 \documentclass{article}
 
-
-
 \usepackage{../fasy-hw}
-
-
 
 \usepackage{ wasysym }
 
-
-
 %% UPDATE these variables:
-
 \renewcommand{\hwnum}{3}
 
-
-
 \author{Group 13: Elliott Pryor, Ben Bushnell, Shengnan Zhou}
-
 \collab{None}
-
-
 
 \date{due: 18 October 2019}
 
-
-
 \begin{document}
 
-
-
 \nextprob
-
 If 23 people are in a room, then the probability that at least two of them have
-
 the same birthday is at least one half.  This is known as the birthday paradox,
-
 since the number 23 is probably much lower than you would expect.  How many
-
 people do we need in order to have 50\% probability that there are three people
-
 with the same birthday?
 
 
-
-
-
 % TODO: temp answer
+\textbf{Answer: } We could not derive any closed-form solution to this equation.
 
-\textbf{Answer: } We could not derive any closed-form solution to this equation. 
+The closed form solution is shown in a paper by Anirban DasGupta titled The matching,
+birthday and the strong birthday problem: a contemporary review (https://doi.org/10.
+1016/j.jspi.2003.11.015). $P(W \geq 1) = 1 - \sum_{i=0}^{\left \lfloor{n/2}\right \rfloor } \frac{365!n!}{i!(n-2i)!(m-n+i)!2^i365^n}$.
+Solving for P(W) = 0.5 results in n = 88. Therefore, it requires at 88 people to have a 50\% chance that three will share a birthday.
 
-
-
-The closed form solution is shown in a paper by Anirban DasGupta titled The matching
- birthday and the strong birthday problem: a contemporary review (https://doi.org/10
-1016/j.jspi.2003.11.015). $P(W \geq 1) = 1 - \sum_{i=0}^{\left \lfloor{n/2}\right \rfloor } \frac{365!n!}{i!(n-2i)!(m-n+i)!2^i365^n}$
- Solving for P(W) = 0.5 results in n = 88. Therefore, it requires at 88 people to have a 50\% chance that three will share a birthday
-
-
-This could also be approximated by the Poisson approximation. 
-
+This could also be approximated by the Poisson approximation.
 P(exactly 3 people have the same birthday with n people) = $1 - e^{-{n\choose 3}/365^2}$
+We want the probability to be 50\%, therefore $0.5 = 1 - e^{-{n\choose 3}/365^2}$,
+$n = 88$.
 
-We want the probability to be 50\%, therefore $0.5 = 1 - e^{-{n\choose 3}/365^2}$
- $n = 88$.
+We extensively analyzed this problem; however, we lack the math and probability knowledge required to find a closed form solution.
 
+Our preliminary work consisted of a Monty Carlo approach. We ran the trial 1 million times and averaged the number of people required to produce a triplet that shared a birthday.
+The number of people required to produce a 50\% chance of a triplet is the average of the Monty Carlo solutions.
 
+Next, we attempted to approach the problem in a similar fashion as the two person problem is solved.
+Let A be the event that three people share a birthday. Then $P(A) = 1 - P(\not A)$.
+It is easy to find the probability that everyone has a different birthday, however it is very difficult to find a closed form of the probability that only 2 people share a birthday.
+The lack of a closed form showing that only pairs share a birthday prevented us from further pursuing this solution.
 
-We extensively analyzed this problem; however, we lack the math and probability knowledge required to find a closed form solution
-
-
-Our preliminary work consisted of a Monty Carlo approach. We ran the trial 1 million times and averaged the number of people required to produce a triplet that shared a birthday
- The number of people required to produce a 50\% chance of a triplet is the average of the Monty Carlo solutions
-
-
-Next, we attempted to approach the problem in a similar fashion as the two person problem is solved
- Let A be the event that three people share a birthday. Then $P(A) = 1 - P(\not A)$
- It is easy to find the probability that everyone has a different birthday, however it is very difficult to find a closed form of the probability that only 2 people share a birthday
- The lack of a closed form showing that only pairs share a birthday prevented us from further pursuing this solution
-
-
-Our next work consisted of trying to build a closed form from the probabilities. Let P(n) be the probability that at least 3 out of n people share a birthday
- and let P(n, b) be the probability that exactly b out of n people share a birthday
+Our next work consisted of trying to build a closed form from the probabilities. Let P(n) be the probability that at least 3 out of n people share a birthday,
+and let P(n, b) be the probability that exactly b out of n people share a birthday.
 $P(3) = 1/365^2$
-
 $P(4) = P(4,3) + P(4,4) = 1/365^2 * 364/365 + 1/365^3$
+We created a closed form of $P(n) = \sum_{j=0}^{n-3} \frac{1}{k^{2+j}} \prod_{i=0}^{n-3-j}$ However,
+this solution did not work and produced probabilities on the order of $10^{-12}$ due to the product.
 
-We created a closed form of $P(n) = \sum_{j=0}^{n-3} \frac{1}{k^{2+j}} \prod_{i=0}^{n-3-j}$ However
- this solution did not work and produced probabilities on the order of $10^{-12}$ due to the product
-
-
-We came very close to a functioning solution with combinatorics. We started with $P(n) = 1/365^2 *  {n \choose 3}$ This multiplies the probability that three people will share a birthday by the number of ways we can pick groups of three
- This solution produced n = 75. Which we know is too low. This is due to it counting multiple times if more than 3 people share a birthday
- However, we could not find a way to account for the double counting. The closest we could come to determining the solution is by assuming that everyone else had a birthday different from the one shared by the triplet
- This produced a closed form of $P(n) = 1/365^2 * {n \choose 3}- (364/365)^n$ and yielded an upper bound of 102 people
- This approach also ignores the possibility of multiple sets of triplets. 
-
-
-
+We came very close to a functioning solution with combinatorics. We started with $P(n) = 1/365^2 *  {n \choose 3}$ This multiplies the probability that three people will share a birthday by the number of ways we can pick groups of three.
+This solution produced n = 75. Which we know is too low. This is due to it counting multiple times if more than 3 people share a birthday.
+However, we could not find a way to account for the double counting. The closest we could come to determining the solution is by assuming that everyone else had a birthday different from the one shared by the triplet.
+This produced a closed form of $P(n) = 1/365^2 * {n \choose 3}- (364/365)^n$ and yielded an upper bound of 102 people.
+This approach also ignores the possibility of multiple sets of triplets.
 
 
 \nextprob
-
 Suppose we have a graph $G=(V,E)$ and three colors, and randomly assign a color
-
 each node (where each color is equally likely).
-
 \begin{enumerate}
+\item What is the probability that every edge has two different colors on
+assigned to its two nodes?
 
-   \item What is the probability that every edge has two different colors on
+\textbf{Answer:} Let $G$ be a graph (assuming it to be a tree). And assume there are $n$ nodes and $n-1$ edges since $G$ is a tree.
 
-        assigned to its two nodes?
+Total number of options for the first node is 3, because there are 3 different colours.
+Then the second node must choose a different colour so it has 2 different choices.
+Thus the probability that a single node has two different colours is $P = \frac{3*2}{3*3} = \frac{6}{9} = \frac{2}{3}$.
+Then the probability that every node has different colours on it is $(\frac{2}{3})^e$ where $e$ is the number of edges.
 
-        
+\item What is the expected number of edges that have different colors
+assigned to its two nodes?
 
-        \textbf{Answer:} Let $G$ be a graph (assuming it to be a tree). And assume there are $n$ nodes and $n-1$ edges since $G$ is a tree
-        
-
-        Total number of options for the first node is 3, because there are 3 different colours
- Then the second node must choose a different colour so it has 2 different choices
- Thus the probability that a single node has two different colours is $P = \frac{3*2}{3*3} = \frac{6}{9} = \frac{2}{3}$
- Then the probability that every node has different colours on it is $(\frac{2}{3})^e$ where $e$ is the number of edges
-               
-
-    \item What is the expected number of edges that have different colors
-
-        assigned to its two nodes?
-
-        
-
-        \textbf{Answer:} As $n$ approaches infinity, The expected number of edges with different colours is $\frac{2}{3} e$
- As stated in the first part of the problem, the probability of a given node having two different colours is $\frac{2}{3}$
- Then the expected number of edges that have different colours on them is the product of the probability of one edge and the total number of edges
- because the events are independent. Therefore the expected number of edges with different colours is $\frac{2}{3} e$
-        
+\textbf{Answer:} As $n$ approaches infinity, The expected number of edges with different colours is $\frac{2}{3} e$.
+As stated in the first part of the problem, the probability of a given node having two different colours is $\frac{2}{3}$.
+Then the expected number of edges that have different colours on them is the product of the probability of one edge and the total number of edges,
+because the events are independent. Therefore the expected number of edges with different colours is $\frac{2}{3} e$.
 
 \end{enumerate}
 
+\nextprob
+CLRS, Question 15-6.
+
+\begin{algorithm}
+\caption{Guest List}\label{guests}
+\begin{algorithmic}[1]
+\Function{Guests}{$G$}
+\State guests\{\{\}\}
+\State vivality\{\}
+\For{$i$ in $[1, n]$}
+\State node = find next lowest node in graph
+\If{node doesn't have any children}
+\State guests[node] = \{node\}
+\State vivality[node] = node.vivality
+\Else
+\State $c = \sum_{child} vivality[child]$
+\State $g = node.vivality + \sum_{grandChild} vivality[grandChild]$
+\If{$c > g$}
+
+\State $guests[node] = \sum_{child} guests[child]$
+\State $vivality[node] = c$
+\Else
+\State $guests[node] = \{node\} + \sum_{grandChild} vivality[grandChild]$
+\State $vivality[node] = g$
+\EndIf
+\EndIf
+\EndFor
+
+\State \textbf{return} guests[root of tree]
+
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+This algorithm creates two lists that are indexed by the verticies of the graph. It then locates the node that is furthest down the tree that has not yet been explored.
+The if statement checks if the node is a leaf node. Otherwise, the optimal solution at that node is either one of two choices.
+The first one is if we choose the node and thus cannot choose the children, but we can choose the grandchildren.
+The second choice is if we do not choose the node so that we can choose the children.
+The second if statement takes care of these cases. This algorithm builds the optimal solution starting at the bottom nodes and builds up to the final solution.
+
+The runtime for this algorithm is $O(n^2)$. The loop repeats $n$ times. Inside the loop,
+the "find next lowest node in graph", as well as the summations all take $O(n)$ time.
+Thus, inside the loop is a summation of $O(n)$ processes, which is therefore also $O(n)$.
+So, an $O(n)$ process is repeated n times, and the overall runtime is $O(n^2)$.
+
+%TODO Loop invariant
+
+$L_i$ = guests[$v$] is the optimal solution with the head at $v$ $\forall v \in guests$ and vivality[$v$] is maximized and is the vivality produced from guests[$v$].
+
+Initialization: guests = $\emptyset$ and thus $L_i$ is vacuously true
+Maintenance: There are three cases
+\begin{enumerate}[1.]
+\item The node is a leaf node. Then the optimal solution would consist of just the node.
+\item It is best to add this node. Then we add this node to the optimal solution,
+and can add the optimal solution of the grandchildren. This skips the child generation.
+\item It is best to skip this node. Then the optimal solution would be choosing the optimal solutions of the children.
+\end{enumerate}
+cases 2 and 3 are distinguished by determining which one produces a higher vivality score.
+The one that maximizes vivality is chosen. Therefore, the guest list that maximizes vivality is selected and the loop invariant holds.
+
+End: The loop ends when all nodes have been explored. Therefore, the last node explored (the root of the tree) contains the optimal solution and $L_i \rightarrow Q$.
+
+Termination: The decrementing function is $D\{space\} \rightarrow \naturals)$ where D maps $n - i$.
+This approaches zero as $i$ approaches $n$. This maps to a well ordered set and decreases each iteration,
+and the algorithm therefore terminates.
 
 
 \nextprob
+For the Greedy make change algorithm described in class on 10/02, describe the
+problem and solution in your own words, including the use of pseudocode (with
+more details than what was written in class).  Note: you do not need to give a
+loop invariant and the proof of termination/runtime complexity.
 
-CLRS, Question 15-6.
+\textbf{Answer:} The make change problem asks for the fewest number of coins required to make a certain amount of change.
+The Greedy Make Change algorithm is used to solve an optimization problem. It has many solutions,
+but we wish to min/max some function defined over those solutions. The solutions are the different ways to make change.
+To optimize the solution to the make change problem means to minimize the number of coins used.
+And the solution might not be unique. The greedy approach works well for US (and most currencies) however it does not provide an optimal solution for all currencies.
 
+The solution works by giving the 'customer' the largest coins first. Coins are given until adding another coin of the denomination would go over the change amount.
+Then the process is repeated with smaller and smaller coins giving the customer the maximum number of coins without going over the target amount before proceeding to the next smallest denomination.
 
-
+\textbf{Pseudocode:}
 \begin{algorithm}
-
-    \caption{Guest List}\label{guests}
-
-    \begin{algorithmic}[1]
-
-    \Function{Guests}{$G$}
-
-        \State guests\{\{\}\}
-
-        \State vivality\{\}
-
-        \For{$i$ in $[1, n]$}
-
-			\State node = find next lowest node in graph
-
-			\If{node doesn't have any children}
-
-				\State guests[node] = \{node\}
-
-				\State vivality[node] = node.vivality
-
-			\Else
-
-				\State $c = \sum_{child} vivality[child]$
-
-				\State $g = node.vivality + \sum_{grandChild} vivality[grandChild]$
-
-				\If{$c > g$}
-
-
-
-					\State $guests[node] = \sum_{child} guests[child]$
-
-					\State $vivality[node] = c$
-
-				\Else
-
-					\State $guests[node] = \{node\} + \sum_{grandChild} vivality[grandChild]$
-
-					\State $vivality[node] = g$
-
-				\EndIf
-
-			\EndIf
-
-		\EndFor
-
-
-
-       \State \textbf{return} guests[root of tree]
-
-
-
-    \EndFunction
-
-    \end{algorithmic}
-
+\begin{algorithmic}
+\State $val$: the total value we want to make change from
+\State $d = [d_1, d_2, d_3, ......, d_k]$: a list of the changes we can make into (1 cent,
+5 cents, 10 cents, etc.)
+\Function{GMC}{val: Integer, d: Array}
+\State $S$: empty set to store the solution
+\State sort $d$ from largest to smallest
+\For{i = 1...k}
+\State $count = val // d_i$
+\State add $count$ of $d_i$ to $S$  \Comment{add as many $d_i$ as possible to $S$}
+\EndFor
+\newline
+\Return $S$
+\EndFunction
+\end{algorithmic}
 \end{algorithm}
 
 
-
-This algorithm creates two lists that are indexed by the verticies of the graph. It then locates the node that is furthest down the tree that has not yet been explored
- The if statement checks if the node is a leaf node. Otherwise, the optimal solution at that node is either one of two choices
- The first one is if we choose the node and thus cannot choose the children, but we can choose the grandchildren
- The second choice is if we do not choose the node so that we can choose the children
- The second if statement takes care of these cases. This algorithm builds the optimal solution starting at the bottom nodes and builds up to the final solution
- 
-
- The runtime for this algorithm is $O(n^2)$. The loop repeats $n$ times. Inside the loop
- the "find next lowest node in graph", as well as the summations all take $O(n)$ time
- Thus, inside the loop is a summation of $O(n)$ processes, which is therefore also $O(n)$
- So, an $O(n)$ process is repeated n times, and the overall runtime is $O(n^2)$.
-
- 
-
- %TODO Loop invariant
-
-
-
- $L_i$ = guests[$v$] is the optimal solution with the head at $v$ $\forall v \in guests$ and vivality[$v$] is maximized and is the vivality produced from guests[$v$]
- 
-
- Initialization: guests = $\emptyset$ and thus $L_i$ is vacuously true
-
- Maintenance: There are three cases
-
- \begin{enumerate}[1.]
-
- \item The node is a leaf node. Then the optimal solution would consist of just the node
- \item It is best to add this node. Then we add this node to the optimal solution
- and can add the optimal solution of the grandchildren. This skips the child generation
- \item It is best to skip this node. Then the optimal solution would be choosing the optimal solutions of the children
- \end{enumerate}
-
- cases 2 and 3 are distinguished by determining which one produces a higher vivality score
- The one that maximizes vivality is chosen. Therefore, the guest list that maximizes vivality is selected and the loop invariant holds
- 
-
- End: The loop ends when all nodes have been explored. Therefore, the last node explored (the root of the tree) contains the optimal solution and $L_i \rightarrow Q$
- 
-
- Termination: The decrementing function is $D\{space\} \rightarrow \naturals)$ where D maps $n - i$
- This approaches zero as $i$ approaches $n$. This maps to a well ordered set and decreases each iteration
- and the algorithm therefore terminates.
-
-
-
-
-
 \nextprob
-
-For the Greedy make change algorithm described in class on 10/02, describe the
-
-problem and solution in your own words, including the use of pseudocode (with
-
-more details than what was written in class).  Note: you do not need to give a
-
-loop invariant and the proof of termination/runtime complexity.
-
-
-
-\textbf{Answer:} The make change problem asks for the fewest number of coins required to make a certain amount of change
- The Greedy Make Change algorithm is used to solve an optimization problem. It has many solutions
- but we wish to min/max some function defined over those solutions. The solutions are the different ways to make change
- To optimize the solution to the make change problem means to minimize the number of coins used
- And the solution might not be unique. The greedy approach works well for US (and most currencies) however it does not provide an optimal solution for all currencies
-
-
-The solution works by giving the 'customer' the largest coins first. Coins are given until adding another coin of the denomination would go over the change amount
- Then the process is repeated with smaller and smaller coins giving the customer the maximum number of coins without going over the target amount before proceeding to the next smallest denomination
-
-
-\textbf{Pseudocode:}
-
-\begin{algorithm}
-
-            \begin{algorithmic}
-
-            \State $val$: the total value we want to make change from
-
-            \State $d = [d_1, d_2, d_3, ......, d_k]$: a list of the changes we can make into (1 cent
- 5 cents, 10 cents, etc.)
-
-                \Function{GMC}{val: Integer, d: Array}
-
-                    \State $S$: empty set to store the solution
-
-                    \State sort $d$ from largest to smallest
-
-                    \For{i = 1...k}
-
-                        \State $count = val // d_i$
-
-                        \State add $count$ of $d_i$ to $S$  \Comment{add as many $d_i$ as possible to $S$}
-
-                    \EndFor
-
-                    \newline
-
-                    \Return $S$
-
-                \EndFunction
-
-            \end{algorithmic}
-
-            \end{algorithm}
-
-
-
-
-
-\nextprob
-
 Suppose we have $n$ items hat we want to put in a knapsack of capacity $W$.  The i-th item has
-
 weight $w_i$ and value $v_i$.  The knapsack can hold a total weight of $W$ and
-
 we want to maximize the value of the items in the knapsack.
-
 The \emph{0-1 knapsack problem} will assign each item one of two states: in the
-
 knapsack, or not in the knapsack.  The \emph{fractional knapsack problem} allows
-
 you to take a percentage of each item.
 
-
-
 As a reminder, when giving an algorithm as an answer, you
-
 are expected to give:
-
 \begin{itemize}
-
-    \item A prose explanation of the problem and algorithm.
-
-    \item Psuedocode.
-
-    \item The decrementing function for any loop or recursion, or a runtime
-
-        justification.
-
-    \item Justification of runtime.
-
-    \item The loop invariant for any loops, with full justification.
-
+\item A prose explanation of the problem and algorithm.
+\item Psuedocode.
+\item The decrementing function for any loop or recursion, or a runtime
+justification.
+\item Justification of runtime.
+\item The loop invariant for any loops, with full justification.
 \end{itemize}
 
-
-
 \begin{enumerate}
+\item Give an $O(n\log n)$ greedy algorithm for the fractional knapsack problem.
 
-    \item Give an $O(n\log n)$ greedy algorithm for the fractional knapsack problem
-      
-
-This algorithm first sorts the items by the highest value:weight ratio. Then, if we can add the entire item we do (the if statement)
- Otherwise, we add a fraction of the item (the else statement). This fraction is the weight we have available over the item weight
-
+This algorithm first sorts the items by the highest value:weight ratio. Then, if we can add the entire item we do (the if statement).
+Otherwise, we add a fraction of the item (the else statement). This fraction is the weight we have available over the item weight.
 
 \begin{algorithm}
+\caption{Fractional Knapsack Problem}\label{fracKnap}
+\begin{algorithmic}[1]
+\Function{fractionalKnapsack}{$n,W$}
+\State list = sort (n by $v_i/w_i$)
+\State knapsack = \{\}
+\For {item in list}
+\If{$item.w < W$}
+\State knapsack.add(item)
+\State W -= item.w
+\Else
+\State knapsack.add(item * $\frac{W}{item.w}$
+\State \textbf{break out of loop}
+\EndIf
+\EndFor
+\State \textbf{return} knapsack
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
-    \caption{Fractional Knapsack Problem}\label{fracKnap}
+This algorithm runs in O(nlogn) time. The sorting takes O(nlogn) time. The for loop runs n times,
+and has an inner complexity of O(1). Therefore the complexity of th for loop is O(n).
+The runtime of this algorithm is O(nlogn + n) which, asymptotically, is O(nlogn).
 
-    \begin{algorithmic}[1]
-
-    \Function{fractionalKnapsack}{$n,W$}
-
-      \State list = sort (n by $v_i/w_i$)
-
-      \State knapsack = \{\}
-
-      \For {item in list}
-
-      	\If{$item.w < W$}
-
-      		\State knapsack.add(item)
-
-      		\State W -= item.w
-
-      	\Else
-
-      		\State knapsack.add(item * $\frac{W}{item.w}$
-
-      		\State \textbf{break out of loop}
-
-      	\EndIf
-
-      \EndFor
-
-      \State \textbf{return} knapsack
-
-    \EndFunction
-
-    \end{algorithmic}
-
-\end{algorithm} 
-
-
-
-This algorithm runs in O(nlogn) time. The sorting takes O(nlogn) time. The for loop runs n times
- and has an inner complexity of O(1). Therefore the complexity of th for loop is O(n)
- The runtime of this algorithm is O(nlogn + n) which, asymptotically, is O(nlogn)
-
-
-$P$ = the knapsack is empty, $Li$ = the knapsack holds the $i$ most valuable items and the weight does not exceed W
- $Q$ = the knapsack holds the most valuable set of items possible for weight W, $G$ = items remain in the list
- or the knapsack isn't full
-
-    \begin{enumerate}
-
-        \item Initialization: $P \implies L$, the knapsack is empty, therefore is vacuously true
-        \item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack holds the i most valued items
- is not full, and there are still items to choose from which implies that we loop through again and choose another item
-        \item End: $L_{i} \land \neg G \implies Q$, The knapsack holds the i most valuable items
- and is full, or we have no other items to put into it which implies our goal is accomplished
-        \item Termination: $D\{space\} \rightarrow \naturals)$, where $D$ is the number of items not yet considered
- Since a new item is considered each iteration, D is strictly decreasing, and the natural numbers are a well ordered set
- so the algorithm must terminate.
-
-    \end{enumerate}
-
-    
-
-    \item Give an $O(nW)$ time algorithm that uses dynamic programming to solve
-
-        the 0-1 knapsack problem.
-
-        
-
-This algorithm solves the 0-1 knapsack problem. It uses an approach very similar to that used in the rod cutting algorithm
- It keeps track of the items in the knapsack as well as their values in two lists
- Then it iterates over each weight and finds the optimal solution. It initializes the knapsack and values to be the optimal solution of the previous example in the case that adding items would make the knapsack worse (ie
- we already found the optimal solution for this weight). Then it goes through each item and tests if we can add it (doesn't exceed the weight) and if it would increase the value of the knapsack
- If it meets both of these conditions we add it to the knapsack; otherwise, we do nothing
-        
-
-\begin{algorithm}
-
-    \caption{0-1 Knapsack Problem}\label{knap}
-
-    \begin{algorithmic}[1]
-
-    \Function{knapsack}{$n,W$}
-
-      \State knapsack = \{\}
-
-      \State values = \{\}
-
-      \For {i in [1, W]}
-
-      	\State values[i] = values[i-1]
-
-      	\State knapsack[i] = knapsack[i-1]
-
-      	\For{j in [1, n]}
-
-      		\If{values[i] $<$ values[i-j.w] + j.v values[i] \textbf{and} W $\geq$ knapsack[i-j]
-w + j.w}
-
-      			\State values[i] $\gets$ values[i-j] + j.v values[i]
-
-      			\State knapsack[i] $\gets$ knapsack[i-j] + j
-
-      		\EndIf
-
-      	\EndFor
-
-      \EndFor
-
-      \State \textbf{return} knapsack
-
-    \EndFunction
-
-    \end{algorithmic}
-
-\end{algorithm} 
-
-
-
-The running time of this algorithm is O(nW). Inside of the inner loop the algorithm has a time complexity of O(1)
- This is repeated n times giving the inner loop a complexity of O(n). The inner loop repeats W times which results in the time complexity being O(Wn)
-
-
-$P$ = The knapsack is empty, $Li$ = The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized
- and the knapsack is a subset of an optimal solution, $Q$ = The knapsack is filled with items such that their combined weight $w \leq W$ and their combined value is maximized and is therefore an optimal solution
- $G$ = $i < W$ when $i = W$ the loop ends. The loop guard implies that for $i < W$ there are still weight values left to evaluate
-    \begin{enumerate}
-
-        \item Initialization: $P \implies L$, the knapsack is empty, and is therefore vacuously true and a subset of an optimal solution
-        \item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized so it is a subset of an optimal solution
- and there are still weights $i \leq W$ left to evaluate.
-
-        \item End: $L_{i} \land \neg G \implies Q$, The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized as a subset of the optimal solution
- and there are no more weights in $W$ left to evaluate. 
-
-        \item Termination: $D\{space\} = \naturals$ where $D$ is $i - W$. $D$ is strictly decreasing because $i$ is strictly increasing
- The naturals are a well ordered set. Therefore, the loop must terminate. 
-
-    \end{enumerate}
-
-        
-
+$P$ = the knapsack is empty, $Li$ = the knapsack holds the $i$ most valuable items and the weight does not exceed W,
+$Q$ = the knapsack holds the most valuable set of items possible for weight W, $G$ = items remain in the list,
+or the knapsack isn't full
+\begin{enumerate}
+\item Initialization: $P \implies L$, the knapsack is empty, therefore is vacuously true.
+\item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack holds the i most valued items,
+is not full, and there are still items to choose from which implies that we loop through again and choose another item.
+\item End: $L_{i} \land \neg G \implies Q$, The knapsack holds the i most valuable items,
+and is full, or we have no other items to put into it which implies our goal is accomplished.
+\item Termination: $D\{space\} \rightarrow \naturals)$, where $D$ is the number of items not yet considered.
+Since a new item is considered each iteration, D is strictly decreasing, and the natural numbers are a well ordered set,
+so the algorithm must terminate.
 \end{enumerate}
 
+\item Give an $O(nW)$ time algorithm that uses dynamic programming to solve
+the 0-1 knapsack problem.
 
+This algorithm solves the 0-1 knapsack problem. It uses an approach very similar to that used in the rod cutting algorithm.
+It keeps track of the items in the knapsack as well as their values in two lists.
+Then it iterates over each weight and finds the optimal solution. It initializes the knapsack and values to be the optimal solution of the previous example in the case that adding items would make the knapsack worse (ie.
+we already found the optimal solution for this weight). Then it goes through each item and tests if we can add it (doesn't exceed the weight) and if it would increase the value of the knapsack.
+If it meets both of these conditions we add it to the knapsack; otherwise, we do nothing.
+
+\begin{algorithm}
+\caption{0-1 Knapsack Problem}\label{knap}
+\begin{algorithmic}[1]
+\Function{knapsack}{$n,W$}
+\State knapsack = \{\}
+\State values = \{\}
+\For {i in [1, W]}
+\State values[i] = values[i-1]
+\State knapsack[i] = knapsack[i-1]
+\For{j in [1, n]}
+\If{values[i] $<$ values[i-j.w] + j.v values[i] \textbf{and} W $\geq$ knapsack[i-j].
+w + j.w}
+\State values[i] $\gets$ values[i-j] + j.v values[i]
+\State knapsack[i] $\gets$ knapsack[i-j] + j
+\EndIf
+\EndFor
+\EndFor
+\State \textbf{return} knapsack
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+The running time of this algorithm is O(nW). Inside of the inner loop the algorithm has a time complexity of O(1).
+This is repeated n times giving the inner loop a complexity of O(n). The inner loop repeats W times which results in the time complexity being O(Wn).
+
+$P$ = The knapsack is empty, $Li$ = The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized,
+and the knapsack is a subset of an optimal solution, $Q$ = The knapsack is filled with items such that their combined weight $w \leq W$ and their combined value is maximized and is therefore an optimal solution,
+$G$ = $i < W$ when $i = W$ the loop ends. The loop guard implies that for $i < W$ there are still weight values left to evaluate.
+\begin{enumerate}
+\item Initialization: $P \implies L$, the knapsack is empty, and is therefore vacuously true and a subset of an optimal solution.
+\item Maintenance: $L_{i} \land G \implies L_{i+1}$, The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized so it is a subset of an optimal solution;
+and there are still weights $i \leq W$ left to evaluate.
+\item End: $L_{i} \land \neg G \implies Q$, The knapsack is filled with items such that their combined weight $i \leq W$ and their combined value is maximized as a subset of the optimal solution;
+and there are no more weights in $W$ left to evaluate.
+\item Termination: $D\{space\} = \naturals$ where $D$ is $i - W$. $D$ is strictly decreasing because $i$ is strictly increasing.
+The naturals are a well ordered set. Therefore, the loop must terminate.
+\end{enumerate}
+
+\end{enumerate}
 
 \end{document}

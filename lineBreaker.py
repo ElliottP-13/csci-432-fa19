@@ -19,23 +19,45 @@ def findFirst(s, start):
 # This will return absolute paths
 file_list = [f for f in iglob('**/*', recursive=True) if os.path.isfile(f)]
 
-fileTest = open('project\part3\part3.tex', 'r')
+
+
+fileTest = open('demo.tex', 'r')
+arr = []
 for line in fileTest:
-    print(line)
+    for i in range(0, len(line), 80):
+        arr.append(line[i: i + 80].strip())
+print(arr)
 
 for path in file_list:
-    if path.endswith(".tex"):
-        print()
+    if path.endswith('.tex'):
         print(path)
-        path.strip()
-        infile = open(path, 'r')
-        outfile = open(path, 'w')
-        writeME = ""
-        for line in infile:
-            print(line)
-            if len(line) > 80:
-                writeME = writeME + ('\n'.join(line[i:i + 80] for i in range(0, len(line), 80)))
-                print(writeME)
-            else:
-                writeME = writeME + line
-        outfile.write(writeME)
+        fileTest = open(path, 'r')
+        arr = []
+        for line in fileTest:
+            for i in range(0, len(line), 80):
+                arr.append(line[i: i + 80].strip())
+        fileTest.close()
+
+        fileWrite = open(path, 'w')
+        writeStr = "\n".join(arr)
+        print(writeStr)
+        fileWrite.write(writeStr)
+        fileWrite.close()
+
+
+# for path in file_list:
+#     if path.endswith(".tex"):
+#         print()
+#         print(path)
+#         path.strip()
+#         infile = open(path, 'r')
+#         outfile = open(path, 'w')
+#         writeME = ""
+#         for line in infile:
+#             print(line)
+#             if len(line) > 80:
+#                 writeME = writeME + ('\n'.join(line[i:i + 80] for i in range(0, len(line), 80)))
+#                 print(writeME)
+#             else:
+#                 writeME = writeME + line
+#         outfile.write(writeME)

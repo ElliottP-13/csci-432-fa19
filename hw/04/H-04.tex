@@ -1,22 +1,18 @@
 \documentclass{article}
 \usepackage{../fasy-hw}
 \usepackage{ wasysym }
+\usepackage{forest}
 
 %% UPDATE these variables:
 \renewcommand{\hwnum}{4}
 \author{Your Name Goes Here}
 \collab{TODO-list your collaborators here}
-\date{due: 18 November 2019}
+\date{due: 19 November 2019}
 \title{Homework 4 - Individual}
 
 \begin{document}
 
 \maketitle
-
-This fourth homework assignment is due on 18 November 2019, and should be
-submitted to BOTH Gradescope and D2L.  If you want feedback on the HW before the
-final exam, please submit a draft of the hw to the H-04-FEEDBACK folder in
-Gradescope.  Early submissions will be given feedback, but will not be graded.
 
 If you are asked to come up with an algorithm, you are expected to give an
 algorithm that beats the brute force (and, if possible, of optimal time
@@ -42,6 +38,138 @@ connected components of the graph.
 Note: this problem is asking you to walk through the example.  Providing
 psuedocode will likely help improve your exposition, and is highly encouraged.
 
+\begin{algorithm}
+\caption{Union/Find}\label{guests}
+\begin{algorithmic}[1]
+\Function{Union}{$u, v$}
+	\State p1 $\gets$ u.findparent()
+	\State p2 $\gets$ v.findparent()
+	
+	\If{p1.depth > p2.depth}
+		\State p2.setparent(p1)
+	\Else
+		\State p1.setparent(p2)
+	\EndIf
+\EndFunction
+\end{algorithmic}
+\begin{algorithmic}[1]
+\Function{Find}{$u, v$}
+	\State p1 $\gets$ u.findparent()
+	\State p2 $\gets$ v.findparent()
+	
+	\State \textbf{return} p1 is the same as p2
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+So Joe really wants to eat icecream from as many local stores as possible. However, Joe's car doesn't work and he has to beg a friend to drop him off and then Joe walks to nearby stores. We can use Union/Find to analyze how many rides Joe needs from his friend. Lets say that we have the following list of stores:
+
+Sweet Peaks $\rightarrow$ Genuine Ice Cream, The Chocolate Moose $\rightarrow$ Genuine Ice Cream, Sweet Peaks $\rightarrow$ Genuine Ice Cream, Big Dipper, Cold Stone $\rightarrow$ Toppers, Toppers $\rightarrow$ Joe's Parkway.
+
+Each starts in its own connected component:
+
+\begin{forest}
+[Sweet Peaks]
+\end{forest}
+\begin{forest}
+[The Chocolate Moose]
+\end{forest}
+\begin{forest}
+[Genuine Ice Cream]
+\end{forest}
+\begin{forest}
+[Big Dipper]
+\end{forest}
+\begin{forest}
+[Cold Stone]
+\end{forest}
+\begin{forest}
+[Toppers]
+\end{forest}
+\begin{forest}
+[Joe's Parkway]
+\end{forest}
+
+
+Then we merge the Chocolate Moose and Genuine Ice Cream
+
+
+\begin{forest}
+[Sweet Peaks]
+\end{forest}
+\begin{forest}
+[The Chocolate Moose
+	[Genuine Ice Cream]]
+\end{forest}
+\begin{forest}
+[Big Dipper]
+\end{forest}
+\begin{forest}
+[Cold Stone]
+\end{forest}
+\begin{forest}
+[Toppers]
+\end{forest}
+\begin{forest}
+[Joe's Parkway]
+\end{forest}
+
+Then we merge Sweet Peaks and Genuine Ice Cream
+
+\begin{forest}
+[The Chocolate Moose
+	[Genuine Ice Cream]
+	[Sweet Peaks]]
+\end{forest}
+\begin{forest}
+[Big Dipper]
+\end{forest}
+\begin{forest}
+[Cold Stone]
+\end{forest}
+\begin{forest}
+[Toppers]
+\end{forest}
+\begin{forest}
+[Joe's Parkway]
+\end{forest}
+
+Then we try to merge Sweet Peaks and the Chocolate moose but it does nothing as they are already connected. So we merge Cold Stone and Toppers.
+
+\begin{forest}
+[The Chocolate Moose
+	[Genuine Ice Cream]
+	[Sweet Peaks]]
+\end{forest}
+\begin{forest}
+[Big Dipper]
+\end{forest}
+\begin{forest}
+[Cold Stone
+	[Toppers]]
+\end{forest}
+\begin{forest}
+[Joe's Parkway]
+\end{forest}
+
+Finally we merge Toppers and Joe's Parkway
+
+\begin{forest}
+[The Chocolate Moose
+	[Genuine Ice Cream]
+	[Sweet Peaks]]
+\end{forest}
+\begin{forest}
+[Big Dipper]
+\end{forest}
+\begin{forest}
+[Cold Stone
+	[Toppers]
+	[Joe's Parkway]]
+\end{forest}
+
+And we find that Joe will need 3 rides from his friend to make it to all the icecream stores.
+
 \nextprob
 Let $n \in R$ and let $M$ be an $n \times n$ binary matrix.  Consider a
 submatrix $S \subset M$; that is a rectangle-shaped contiguous set of
@@ -55,14 +183,55 @@ exists a cut $(S,T)$ such that $|f| = c(S,T)$.  (Note: this is the proof of $(1)
 \implies (3)$ in the max-flow/min-cut theorem.  Do not prove this by proving
 $(1) \implies (2) \implies (3)$.  Do the proof directly).
 
+We know by the corrolary given in class:
+$$\left | f \right | \leq C(S,T)$$
+where $\left | f \right |$ is any flow accross some cut $C(S,T)$. 
+Then, by the definition of a max flow, we know that $\left | F \right | \leq min(C,T)$ where $F$ is the max flow.
+
+\begin{proof} By Contradiction
+
+Now we show that given the max flow $F$ $\exists cut(S,T)$ s.t $\left | f \right | = C(S,T)$. Assume not, assume $\forall cut(S,T) \left | F \right | \neq C(S,T)$. Then the corrolary from class simplifies to $\left | F \right | < min C(S,T)$. This implies that no edge is using maximum capacity. Therefore $F$ is not a maximum flow: a contradiction. Therefore, the claim is proven true by contradiction.
+\end{proof}
+
+
 \nextprob
 Given a weighted graph $G=(V,E,\omega)$, and two vertices $v,w \in V$, we wish
 to find the \emph{shortest path} from $v$ to $w$.
 
 \begin{enumerate}
 \item Give an algorithm to compute the shortest path.
+
+We can use Dijkstra's Algorithm to quickly compute the shortest path from a vertex to any other. This uses edge relaxation to relax the current known distance to a node if we find a path that is shorter. We start by initializing all the distances to infinity. Then we set the distance to the start vertex to be zero. The algorithm then takes the vertex that is the 'closest' and explores it's neighbors. This is repeated until all the verticies are explored. 
+
+\begin{algorithm}
+\caption{Dijkstra's Algorithm}\label{guests}
+\begin{algorithmic}[1]
+\Function{Dijkstra}{$G, s, t$}
+	\State dist[s] $\gets$ 0
+	\For{ $v \in V$}
+		\State dist[v] $\gets \infty$
+	\EndFor
+	\State visited $\gets \emptyset$
+	\While{not all vertexes visted}
+		\State v $\gets$ min(dist) that is not visited
+		\State visited $\gets$ v
+		\For{u adjacent to v}
+			\State dist[u] $\gets$ min(dist[u], dist[v] + w(v, u)
+		\EndFor
+	\EndWhile
+	\State \textbf{return} dists[t]
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+It is well known that Dijkstra's runs in O((|E| + |V|) * log(|V|). It has also been proved to be correct \cite{Dijkstra}. 
+
 \item Formulate the shortest path problem as a linear program.
 \end{enumerate}
+
+
+
+
 
 \nextprob
 An \emph{integer linear program} is a linear program in which the unknowns
@@ -72,11 +241,25 @@ An \emph{integer linear program} is a linear program in which the unknowns
 \item Is solving a linear problem or an integer linear program harder?  Why?
 (Note: you will need to consult resources to answer this question, so
 please cite your sources).
+
+Solving integer programming problems is typically harder than solving the linear programming problem. We can easily use the simplex method to find a good real valued solution. However it is hard to round this solution to an integer value without violating constraints \cite{ip}. This makes the integer programming problem harder to solve. 
+
 \item Give an example of a problem that can be formulated as an integer
 linear program.  Explain why we need the integer solutions, as opposed
 to the real-valued ones.
+
+Problems involving the amount of something to produce are typically integer problems. It makes no sense to make 0.1431418 of a pencil. Therefore we must optimize a problem for the largest integer number as we can only produce integer numbers of a material (say pencils). Often, price problems can be integer problems as well. While monetary amounts are not integers, the amount times 100 is. It also doesn't make sense to sell a hamberger for \$7.6283. Therefore we can also consider these kinds of problems integer problems.
+
+
 \item Give an example of a problem that can be formulated as a linear
 program.  Explain why the solution needs to be real numbers, not integers.
+
+A problem with finding the optimal area for a yard would be a real valued linear programming problem. We have a few constraints such as length of fence, money, how happy the dog is, ect. The area can be any real valued number, so it makes sense not to restrict it to only integer solutions.
+
 \end{enumerate}
+
+\cite{*}
+\bibliographystyle{abbrvnat}
+\bibliography{citations}
 
 \end{document}

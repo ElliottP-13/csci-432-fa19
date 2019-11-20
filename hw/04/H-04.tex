@@ -177,6 +177,41 @@ elements of $M$.  Let $|S|$ denote the number of elements in $S$.  We call a
 submatrix \emph{fair} if it has an equal number of $1$'s and $0$'s.  Give an
 algorithm to find a fair submatrix $S$ that maximizes $|S|$.
 
+
+We first go through each element within $M$. We store counts of the number of zeros and ones within the area between the top left corner [0,0] and our elements [x,y] in a new matrix $S$. Then, we can go through each pair of elements, a and b, in $S$ and determine if the submatrix between a and b is fair. We choose $b$ such that $b_x \geq a_x$ and $b_y \geq a_y$ to avoid duplicate elements in $S$. We can determine if the submatrix is fair with a constant time lookup on $S$ by subtracting $S[b] - S[a]$. This results in the total number of 1s and 0s within the submatrix which we can then easily check if it is fair. If it is fair, we check the area and store $a$ and $b$ in a max variable if the area is greater than the previous maximum. At the end, we can calculate the area by $(b_x - a_x) * (b_y * a_y)$.
+
+\begin{algorithm}
+\caption{Largest Fair Submatrix}\label{guests}
+\begin{algorithmic}[1]
+\Function{fair}{$M$}
+	\State $S \gets \emptyset$
+	\For {$e \in M$} 
+			\State S[$e$] = S[$e_x - 1$][$e_y$] + S[$e_x$][$e_y - 1$]
+			\State increment S[$e$].one or S[$e$].zero depending on value of M[$e$]
+		\EndFor
+	\EndFor
+	
+	$A \gets 0$
+	
+	\For{$a \in M$} 
+		\For{$b \in M$ and $b$ is greater than $a$}
+			\State $val \gets S[b] - S[a]$
+			\If {$val.one = val.zero$}
+				\If {($(b_x - a_x) * (b_y - a_y) > A$}
+					\State $A \gets (b_x - a_x) * (b_y - a_y)$
+				\EndIf
+			\EndIf
+		\EndFor
+	\EndFor
+	\State \textbf{return} $A$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+This function runs in O($a^2$) time, where $a = n^2$. We choose to analyze using $a$ (the total number of elements in the matrix) instead of $n$ (the width of the matrix), because that is how the psudocode is written, but actual implementation would loop based upon $n$. In this case, the first loop runs in O($a$) time as it iterates through each element exactly once. The second loop must loop through each pair of corner verticies to find the max, so this runs in O($a^2$). Therefore the runtime is O($a^2 + a$) which is O($a^2$) or O($n^4$).
+
+We analyze the outer loop where we search for the largest fair submatrix. The loop invariant is that $A$ contains the area of the largest fair submatrix. The loop guard is that there are still elements in $M$ left to visit. When we enter the loop the first time, no submatricies have been explored and the loop invariant is vacously true. Then, if the loop invariant and loop guard 
+
 \nextprob
 Let $f$ be a flow in $G=(V,E,c)$.  Prove that if $f$ is a max flow, then there
 exists a cut $(S,T)$ such that $|f| = c(S,T)$.  (Note: this is the proof of $(1)

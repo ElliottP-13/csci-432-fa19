@@ -42,29 +42,33 @@ psuedocode will likely help improve your exposition, and is highly encouraged.
 \caption{Union/Find}\label{guests}
 \begin{algorithmic}[1]
 \Function{Union}{$u, v$}
-	\State p1 $\gets$ u.findparent()
-	\State p2 $\gets$ v.findparent()
-	
-	\If{p1.depth > p2.depth}
-		\State p2.setparent(p1)
-	\Else
-		\State p1.setparent(p2)
-	\EndIf
+\State p1 $\gets$ u.findparent()
+\State p2 $\gets$ v.findparent()
+
+\If{p1.depth > p2.depth}
+\State p2.setparent(p1)
+\Else
+\State p1.setparent(p2)
+\EndIf
 \EndFunction
 \end{algorithmic}
 \begin{algorithmic}[1]
 \Function{Find}{$u, v$}
-	\State p1 $\gets$ u.findparent()
-	\State p2 $\gets$ v.findparent()
-	
-	\State \textbf{return} p1 is the same as p2
+\State p1 $\gets$ u.findparent()
+\State p2 $\gets$ v.findparent()
+
+\State \textbf{return} p1 is the same as p2
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
 
-So Joe really wants to eat icecream from as many local stores as possible. However, Joe's car doesn't work and he has to beg a friend to drop him off and then Joe walks to nearby stores. We can use Union/Find to analyze how many rides Joe needs from his friend. Lets say that we have the following list of stores:
+So Joe really wants to eat icecream from as many local stores as possible. However,
+Joe's car doesn't work and he has to beg a friend to drop him off and then Joe walks to nearby stores.
+We can use Union/Find to analyze how many rides Joe needs from his friend. Lets say that we have the following list of stores:
 
-Sweet Peaks $\rightarrow$ Genuine Ice Cream, The Chocolate Moose $\rightarrow$ Genuine Ice Cream, Sweet Peaks $\rightarrow$ Genuine Ice Cream, Big Dipper, Cold Stone $\rightarrow$ Toppers, Toppers $\rightarrow$ Joe's Parkway.
+Sweet Peaks $\rightarrow$ Genuine Ice Cream, The Chocolate Moose $\rightarrow$ Genuine Ice Cream,
+Sweet Peaks $\rightarrow$ Genuine Ice Cream, Big Dipper, Cold Stone $\rightarrow$ Toppers,
+Toppers $\rightarrow$ Joe's Parkway.
 
 Each starts in its own connected component:
 
@@ -99,7 +103,7 @@ Then we merge the Chocolate Moose and Genuine Ice Cream
 \end{forest}
 \begin{forest}
 [The Chocolate Moose
-	[Genuine Ice Cream]]
+[Genuine Ice Cream]]
 \end{forest}
 \begin{forest}
 [Big Dipper]
@@ -118,8 +122,8 @@ Then we merge Sweet Peaks and Genuine Ice Cream
 
 \begin{forest}
 [The Chocolate Moose
-	[Genuine Ice Cream]
-	[Sweet Peaks]]
+[Genuine Ice Cream]
+[Sweet Peaks]]
 \end{forest}
 \begin{forest}
 [Big Dipper]
@@ -134,19 +138,20 @@ Then we merge Sweet Peaks and Genuine Ice Cream
 [Joe's Parkway]
 \end{forest}
 
-Then we try to merge Sweet Peaks and the Chocolate moose but it does nothing as they are already connected. So we merge Cold Stone and Toppers.
+Then we try to merge Sweet Peaks and the Chocolate moose but it does nothing as they are already connected.
+So we merge Cold Stone and Toppers.
 
 \begin{forest}
 [The Chocolate Moose
-	[Genuine Ice Cream]
-	[Sweet Peaks]]
+[Genuine Ice Cream]
+[Sweet Peaks]]
 \end{forest}
 \begin{forest}
 [Big Dipper]
 \end{forest}
 \begin{forest}
 [Cold Stone
-	[Toppers]]
+[Toppers]]
 \end{forest}
 \begin{forest}
 [Joe's Parkway]
@@ -156,16 +161,16 @@ Finally we merge Toppers and Joe's Parkway
 
 \begin{forest}
 [The Chocolate Moose
-	[Genuine Ice Cream]
-	[Sweet Peaks]]
+[Genuine Ice Cream]
+[Sweet Peaks]]
 \end{forest}
 \begin{forest}
 [Big Dipper]
 \end{forest}
 \begin{forest}
 [Cold Stone
-	[Toppers]
-	[Joe's Parkway]]
+[Toppers]
+[Joe's Parkway]]
 \end{forest}
 
 And we find that Joe will need 3 rides from his friend to make it to all the icecream stores.
@@ -178,39 +183,52 @@ submatrix \emph{fair} if it has an equal number of $1$'s and $0$'s.  Give an
 algorithm to find a fair submatrix $S$ that maximizes $|S|$.
 
 
-We first go through each element within $M$. We store counts of the number of zeros and ones within the area between the top left corner [0,0] and our elements [x,y] in a new matrix $S$. Then, we can go through each pair of elements, a and b, in $S$ and determine if the submatrix between a and b is fair. We choose $b$ such that $b_x \geq a_x$ and $b_y \geq a_y$ to avoid duplicate elements in $S$. We can determine if the submatrix is fair with a constant time lookup on $S$ by subtracting $S[b] - S[a]$. This results in the total number of 1s and 0s within the submatrix which we can then easily check if it is fair. If it is fair, we check the area and store $a$ and $b$ in a max variable if the area is greater than the previous maximum. At the end, we can calculate the area by $(b_x - a_x) * (b_y * a_y)$.
+We first go through each element within $M$. We store counts of the number of zeros and ones within the area between the top left corner [0,
+0] and our elements [x,y] in a new matrix $S$. Then, we can go through each pair of elements,
+a and b, in $S$ and determine if the submatrix between a and b is fair. We choose $b$ such that $b_x \geq a_x$ and $b_y \geq a_y$ to avoid duplicate elements in $S$.
+We can determine if the submatrix is fair with a constant time lookup on $S$ by subtracting $S[b] - S[a]$.
+This results in the total number of 1s and 0s within the submatrix which we can then easily check if it is fair.
+If it is fair, we check the area and store $a$ and $b$ in a max variable if the area is greater than the previous maximum.
+At the end, we can calculate the area by $(b_x - a_x) * (b_y * a_y)$.
 
 \begin{algorithm}
 \caption{Largest Fair Submatrix}\label{guests}
 \begin{algorithmic}[1]
 \Function{fair}{$M$}
-	\State $S \gets \emptyset$
-	\For {$e \in M$} 
-			\State S[$e$] = S[$e_x - 1$][$e_y$] + S[$e_x$][$e_y - 1$]
-			\State increment S[$e$].one or S[$e$].zero depending on value of M[$e$]
-		\EndFor
-	\EndFor
-	
-	$A \gets 0$
-	
-	\For{$a \in M$} 
-		\For{$b \in M$ and $b$ is greater than $a$}
-			\State $val \gets S[b] - S[a]$
-			\If {$val.one = val.zero$}
-				\If {($(b_x - a_x) * (b_y - a_y) > A$}
-					\State $A \gets (b_x - a_x) * (b_y - a_y)$
-				\EndIf
-			\EndIf
-		\EndFor
-	\EndFor
-	\State \textbf{return} $A$
+\State $S \gets \emptyset$
+\For {$e \in M$}
+\State S[$e$] = S[$e_x - 1$][$e_y$] + S[$e_x$][$e_y - 1$]
+\State increment S[$e$].one or S[$e$].zero depending on value of M[$e$]
+\EndFor
+\EndFor
+
+$A \gets 0$
+
+\For{$a \in M$}
+\For{$b \in M$ and $b$ is greater than $a$}
+\State $val \gets S[b] - S[a]$
+\If {$val.one = val.zero$}
+\If {($(b_x - a_x) * (b_y - a_y) > A$}
+\State $A \gets (b_x - a_x) * (b_y - a_y)$
+\EndIf
+\EndIf
+\EndFor
+\EndFor
+\State \textbf{return} $A$
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
 
-This function runs in O($a^2$) time, where $a = n^2$. We choose to analyze using $a$ (the total number of elements in the matrix) instead of $n$ (the width of the matrix), because that is how the psudocode is written, but actual implementation would loop based upon $n$. In this case, the first loop runs in O($a$) time as it iterates through each element exactly once. The second loop must loop through each pair of corner verticies to find the max, so this runs in O($a^2$). Therefore the runtime is O($a^2 + a$) which is O($a^2$) or O($n^4$).
+This function runs in O($a^2$) time, where $a = n^2$. We choose to analyze using $a$ (the total number of elements in the matrix) instead of $n$ (the width of the matrix),
+because that is how the psudocode is written, but actual implementation would loop based upon $n$.
+In this case, the first loop runs in O($a$) time as it iterates through each element exactly once.
+The second loop must loop through each pair of corner verticies to find the max,
+so this runs in O($a^2$). Therefore the runtime is O($a^2 + a$) which is O($a^2$) or O($n^4$).
 
-We analyze the outer loop where we search for the largest fair submatrix. The loop invariant is that $A$ contains the area of the largest fair submatrix. The loop guard is that there are still elements in $M$ left to visit. When we enter the loop the first time, no submatricies have been explored and the loop invariant is vacously true. Then, if the loop invariant and loop guard 
+We analyze the outer loop where we search for the largest fair submatrix. The loop invariant is that $A$ contains the area of the largest fair submatrix.
+The loop guard is that there are still elements in $M$ left to visit. When we enter the loop the first time,
+no submatricies have been explored and the loop invariant is vacously true. Then,
+if the loop invariant and loop guard
 
 \nextprob
 Let $f$ be a flow in $G=(V,E,c)$.  Prove that if $f$ is a max flow, then there
@@ -220,12 +238,16 @@ $(1) \implies (2) \implies (3)$.  Do the proof directly).
 
 We know by the corrolary given in class:
 $$\left | f \right | \leq C(S,T)$$
-where $\left | f \right |$ is any flow accross some cut $C(S,T)$. 
-Then, by the definition of a max flow, we know that $\left | F \right | \leq min(C,T)$ where $F$ is the max flow.
+where $\left | f \right |$ is any flow accross some cut $C(S,T)$.
+Then, by the definition of a max flow, we know that $\left | F \right | \leq min(C,
+T)$ where $F$ is the max flow.
 
 \begin{proof} By Contradiction
 
-Now we show that given the max flow $F$ $\exists cut(S,T)$ s.t $\left | f \right | = C(S,T)$. Assume not, assume $\forall cut(S,T) \left | F \right | \neq C(S,T)$. Then the corrolary from class simplifies to $\left | F \right | < min C(S,T)$. This implies that no edge is using maximum capacity. Therefore $F$ is not a maximum flow: a contradiction. Therefore, the claim is proven true by contradiction.
+Now we show that given the max flow $F$ $\exists cut(S,T)$ s.t $\left | f \right | = C(S,
+T)$. Assume not, assume $\forall cut(S,T) \left | F \right | \neq C(S,T)$. Then the corrolary from class simplifies to $\left | F \right | < min C(S,
+T)$. This implies that no edge is using maximum capacity. Therefore $F$ is not a maximum flow: a contradiction.
+Therefore, the claim is proven true by contradiction.
 \end{proof}
 
 
@@ -236,30 +258,34 @@ to find the \emph{shortest path} from $v$ to $w$.
 \begin{enumerate}
 \item Give an algorithm to compute the shortest path.
 
-We can use Dijkstra's Algorithm to quickly compute the shortest path from a vertex to any other. This uses edge relaxation to relax the current known distance to a node if we find a path that is shorter. We start by initializing all the distances to infinity. Then we set the distance to the start vertex to be zero. The algorithm then takes the vertex that is the 'closest' and explores it's neighbors. This is repeated until all the verticies are explored. 
+We can use Dijkstra's Algorithm to quickly compute the shortest path from a vertex to any other.
+This uses edge relaxation to relax the current known distance to a node if we find a path that is shorter.
+We start by initializing all the distances to infinity. Then we set the distance to the start vertex to be zero.
+The algorithm then takes the vertex that is the 'closest' and explores it's neighbors.
+This is repeated until all the verticies are explored.
 
 \begin{algorithm}
 \caption{Dijkstra's Algorithm}\label{guests}
 \begin{algorithmic}[1]
 \Function{Dijkstra}{$G, s, t$}
-	\State dist[s] $\gets$ 0
-	\For{ $v \in V$}
-		\State dist[v] $\gets \infty$
-	\EndFor
-	\State visited $\gets \emptyset$
-	\While{not all vertexes visted}
-		\State v $\gets$ min(dist) that is not visited
-		\State visited $\gets$ v
-		\For{u adjacent to v}
-			\State dist[u] $\gets$ min(dist[u], dist[v] + w(v, u)
-		\EndFor
-	\EndWhile
-	\State \textbf{return} dists[t]
+\State dist[s] $\gets$ 0
+\For{ $v \in V$}
+\State dist[v] $\gets \infty$
+\EndFor
+\State visited $\gets \emptyset$
+\While{not all vertexes visted}
+\State v $\gets$ min(dist) that is not visited
+\State visited $\gets$ v
+\For{u adjacent to v}
+\State dist[u] $\gets$ min(dist[u], dist[v] + w(v, u)
+\EndFor
+\EndWhile
+\State \textbf{return} dists[t]
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
 
-It is well known that Dijkstra's runs in O((|E| + |V|) * log(|V|). It has also been proved to be correct \cite{Dijkstra}. 
+It is well known that Dijkstra's runs in O((|E| + |V|) * log(|V|). It has also been proved to be correct \cite{Dijkstra}.
 
 \item Formulate the shortest path problem as a linear program.
 \end{enumerate}
@@ -277,19 +303,27 @@ An \emph{integer linear program} is a linear program in which the unknowns
 (Note: you will need to consult resources to answer this question, so
 please cite your sources).
 
-Solving integer programming problems is typically harder than solving the linear programming problem. We can easily use the simplex method to find a good real valued solution. However it is hard to round this solution to an integer value without violating constraints \cite{ip}. This makes the integer programming problem harder to solve. 
+Solving integer programming problems is typically harder than solving the linear programming problem.
+We can easily use the simplex method to find a good real valued solution. However it is hard to round this solution to an integer value without violating constraints \cite{ip}.
+This makes the integer programming problem harder to solve.
 
 \item Give an example of a problem that can be formulated as an integer
 linear program.  Explain why we need the integer solutions, as opposed
 to the real-valued ones.
 
-Problems involving the amount of something to produce are typically integer problems. It makes no sense to make 0.1431418 of a pencil. Therefore we must optimize a problem for the largest integer number as we can only produce integer numbers of a material (say pencils). Often, price problems can be integer problems as well. While monetary amounts are not integers, the amount times 100 is. It also doesn't make sense to sell a hamberger for \$7.6283. Therefore we can also consider these kinds of problems integer problems.
+Problems involving the amount of something to produce are typically integer problems.
+It makes no sense to make 0.1431418 of a pencil. Therefore we must optimize a problem for the largest integer number as we can only produce integer numbers of a material (say pencils).
+Often, price problems can be integer problems as well. While monetary amounts are not integers,
+the amount times 100 is. It also doesn't make sense to sell a hamberger for \$7.
+6283. Therefore we can also consider these kinds of problems integer problems.
 
 
 \item Give an example of a problem that can be formulated as a linear
 program.  Explain why the solution needs to be real numbers, not integers.
 
-A problem with finding the optimal area for a yard would be a real valued linear programming problem. We have a few constraints such as length of fence, money, how happy the dog is, ect. The area can be any real valued number, so it makes sense not to restrict it to only integer solutions.
+A problem with finding the optimal area for a yard would be a real valued linear programming problem.
+We have a few constraints such as length of fence, money, how happy the dog is, ect.
+The area can be any real valued number, so it makes sense not to restrict it to only integer solutions.
 
 \end{enumerate}
 

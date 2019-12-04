@@ -28,30 +28,41 @@ def findPeriod(g, N):  # Finds the period of f(x)= g^x % N
     return i
 
 
-p = -1  # initializes our variables
-N = 314191  # the number we are factoring
-g = 2
-while p % 2 != 0:
-    g = random.randint(3, N-2)  # guess a random number
-                                # the range limits the factors to not be 1 or N
+def shor(N):
+    p = -1  # initializes our variables
+    g = 2
+    while p % 2 != 0:
+        g = random.randint(3, N - 2)  # guess a random number
+        # the range limits the factors to not be 1 or N
 
-    if euclid(g, N) == 1:  # if we didn't guess a factor improve our guess
-        print("Finding period")
-        p = findPeriod(g, N)
-        print("WE FOUND: " + str(p))
+        print("Our guess: " + str(g))
+        if euclid(g, N) == 1:  # if we didn't guess a factor improve our guess
+            print("Finding period")
+            p = findPeriod(g, N)
+            print("Period: " + str(p))
+        else:
+            print("we guessed a factor")
+            break
+
+        if p % 2 != 0:
+            print("Odd period: we have to start over :(\n")
+
+    if p == -1:  # We guessed a factor so p was never updated
+        a = float(euclid(g, N)) # We float them just so they are consistent
+        b = float(N / a)
     else:
-        print("we guessed a factor")
-        break
+        num = power(g, p/2)
+        a = euclid(N, num + 1)
+        b = euclid(N, num - 1)
+    return a, b
 
-if p == -1:  # We guessed a factor so p was never updated
-    a = float(euclid(g, N)) # We float them just so they are consistent
-    b = float(N / a)
-else:
-    print("PERIOD: " + str(p))
-    print("GUESS: " + str(g))
-    num = power(g, p/2)
-    a = euclid(num + 1, N)
-    b = euclid(num - 1, N)
 
-print(a)
-print(b)
+factorMe = int(input("Enter a number to factor: "))
+a, b = 1, 1
+
+while a == 1 or b == 1 or a == factorMe or b == factorMe:
+    a, b = shor(factorMe)
+
+print("THE FACTORS")
+print("A: " + str(a))
+print("B: " + str(b))
